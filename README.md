@@ -32,3 +32,7 @@
 
 目前的缺陷：
 1. 仍然没有测试过pp计算器
+
+#### Date-Calculator v0.0.4
+
+移除了功能：osu！mania的pp计算器

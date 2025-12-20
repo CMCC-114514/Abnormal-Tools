@@ -18,21 +18,21 @@ public class Run {
         System.out.flush();
     }
 
-    public static void main() {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         clearConsole();
         System.out.print("========== 简易几何计算 ==========\n1. 矩形\n2. 圆形\n3. 三角形\n4. 平行四边形\n5. 梯形\n6. 圆锥\n7. 球体\n8. 长方体\n9. 圆柱\n输入选项：");
         byte choose = sc.nextByte();
         switch (choose) {
-            case 1 -> Calculators.rectangle();
-            case 2 -> Calculators.circle();
-            case 3 -> Calculators.triangle();
-            case 4 -> Calculators.rhomboid();
-            case 5 -> Calculators.trapezoid();
-            case 6 -> Calculators.cone();
-            case 7 -> Calculators.sphere();
-            case 8 -> Calculators.cuboid();
-            case 9 -> Calculators.cylinder();
+            case RECTANGLE -> Calculators.rectangle();
+            case CIRCLE -> Calculators.circle();
+            case TRIANGLE -> Calculators.triangle();
+            case RHOMBOID -> Calculators.rhomboid();
+            case TRAPEZOID -> Calculators.trapezoid();
+            case CONE -> Calculators.cone();
+            case SPHERE -> Calculators.sphere();
+            case CUBOID -> Calculators.cuboid();
+            case CYLINDER -> Calculators.cylinder();
         }
 
     }

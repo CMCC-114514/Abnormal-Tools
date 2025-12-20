@@ -21,7 +21,7 @@ public class Run {
     static Scanner sc = new Scanner(System.in);
 
     //主函数
-    public static void main() {
+    public static void main(String[] args) {
         System.out.print("""
                 ========== 日期计算器 ==========
                 1. 天数转年份
