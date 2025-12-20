@@ -1,103 +1,94 @@
 package geometricCalculation;
 
-import java.util.Scanner;
-
 public class Calculators {
-    static Scanner sc = new Scanner(System.in);
 
     private Calculators() {
     }
 
-    public static void rectangle() {
-        System.out.print("输入矩形的两条边长，用空格隔开：");
-        double a = sc.nextDouble();
-        double b = sc.nextDouble();
-        System.out.println("面积为：" + a * b);
-        System.out.println("周长为：" + 2 * (a + b));
-        System.out.println("对角线长为：" + Math.sqrt(a * a + b * b));
+    //计算矩形的面积、周长和对角线长
+    public static double[] rectangle(double a, double b) {
+        double[] results = new double[3];
+        results[0] = a * b;               //面积
+        results[1] = 2 * (a + b);         //周长
+        results[2] = Math.sqrt(a * a + b * b); //对角线长
+        return results;
     }
 
-    public static void circle() {
-        System.out.print("1. 半径\n2. 周长\n3. 面积\n请选择一个输入的类型：\n");
-        byte choose = sc.nextByte();
-        System.out.print("输入数值：");
-        double num = sc.nextDouble();
+    //计算圆的半径、周长和面积
+    public static double[] circle(byte choose, double num) {
+        //根据输入的choose计算半径
         double r = 0;
         switch (choose) {
-            case 1 -> r = num;
-            case 2 -> r = num / 2 * Math.PI;
-            case 3 -> r = Math.sqrt(num / Math.PI);
+            case 1 -> r = num;                      //半径
+            case 2 -> r = num / (2 * Math.PI);        //周长
+            case 3 -> r = Math.sqrt(num / Math.PI); //面积
         }
 
-        System.out.println("半径为：" + r);
-        System.out.println("周长为：" + (Math.PI * 2) * r);
-        System.out.println("面积为：" + Math.PI * r * r);
+        double[] results = new double[3];
+        results[0] = r;                         //半径
+        results[1] = (Math.PI * 2) * r;         //周长
+        results[2] = Math.PI * r * r;           //面积
+        return results;
     }
 
-    public static void triangle() {
-        System.out.print("输入底和高，用空格隔开：");
-        double a = sc.nextDouble();
-        double h = sc.nextDouble();
-        System.out.println("面积为：" + a * h / 2);
+    //计算三角形面积
+    public static double triangle(double a, double h) {
+        return a * h / 2;
     }
 
-    public static void rhomboid() {
-        System.out.print("输入底和高，用空格隔开：");
-        double a = sc.nextDouble();
-        double h = sc.nextDouble();
-        System.out.println("面积为：" + a * h);
+    //计算平行四边形面积
+    public static double rhomboid(double a, double h) {
+        return a * h;
     }
 
-    public static void trapezoid() {
-        System.out.print("输入上底、下底和高，用空格隔开：");
-        double a = sc.nextDouble();
-        double b = sc.nextDouble();
-        double h = sc.nextDouble();
-        System.out.println("面积为：" + (a + b) * h / 2);
+    //计算梯形面积
+    public static double trapezoid(double a, double b, double h) {
+        return (a + b) * h / 2;
     }
 
-    public static void cone() {
-        System.out.print("输入底面半径和高，用空格隔开：");
-        double r = sc.nextDouble();
-        double h = sc.nextDouble();
+    //计算圆锥体表面积和体积
+    public static double[] cone(double r, double h) {
         double l = Math.sqrt(r * r + h * h);
-        System.out.println("表面积为：" + (Math.PI * r * r + Math.PI * r * l));
-        System.out.println("体积为：" + Math.PI * r * r * h / 3);
+
+        double[] results = new double[2];
+        results[0] = Math.PI * r * r + Math.PI * r * l; //表面积
+        results[1] = Math.PI * r * r * h / 3;          //体积
+        return results;
     }
 
-    public static void sphere() {
-        System.out.print("1. 半径\n2. 表面积\n3. 体积\n请选择一个输入的类型：\n");
-        byte choose = sc.nextByte();
-        System.out.print("输入数值：");
-        double num = sc.nextDouble();
+    //计算球体半径、表面积和体积
+    public static double[] sphere(byte choose, double num) {
+        //根据输入的choose计算半径
         double r = 0;
         switch (choose) {
-            case 1 -> r = num;
-            case 2 -> r = Math.sqrt(num / 4 * Math.PI);
-            case 3 -> r = Math.pow(num / Math.PI, 1.0/3);
+            case 1 -> r = num;                          // 半径
+            case 2 -> r = Math.sqrt(num / (4 * Math.PI)); // 表面积
+            case 3 -> r = Math.pow(3 * num / (4 * Math.PI), 1.0/3); // 体积
         }
 
-        System.out.println("半径为：" + r);
-        System.out.println("表面积为：" + 4 * Math.PI * r * r);
-        System.out.println("体积为：" + Math.PI * Math.pow(r, 3));
+        double[] results = new double[3];
+        results[0] = r;                         //半径
+        results[1] = 4 * Math.PI * r * r;       //表面积
+        results[2] = (4.0 / 3.0) * Math.PI * r * r * r; //体积
+        return results;
     }
 
-    public static void cuboid() {
-        System.out.println("输入长、宽和高，用空格隔开：");
-        double a = sc.nextDouble();
-        double b = sc.nextDouble();
-        double h = sc.nextDouble();
-        System.out.println("对角线长为：" + Math.sqrt(a * a + b * b + h * h));
-        System.out.println("表面积为：" + 2 * (a * b + a * h + b * h));
-        System.out.println("体积为：" + a * b * h);
+    //计算长方体对角线长、表面积和体积
+    public static double[] cuboid(double a, double b, double h) {
+        double[] result = new double[3];
+        result[0] = Math.sqrt(a * a + b * b + h * h); //对角线长
+        result[1] = 2 * (a * b + a * h + b * h);       //表面积
+        result[2] = a * b * h;                     //体积
+        return result;
     }
 
-    public static void cylinder() {
-        System.out.print("输入底面半径和高，用空格隔开：");
-        double r = sc.nextDouble();
-        double h = sc.nextDouble();
-        System.out.println("表面积为：" + ((Math.PI * 2) * r + (Math.PI * 2) * r * h));
-        System.out.println("体积为：" + h * Math.PI * r * r);
+    //计算圆柱体表面积和体积
+    public static double[] cylinder(double r, double h) {
+
+        double[] results = new double[2];
+        results[0] = 2 * Math.PI * r * r + 2 * Math.PI * r * h; // 表面积
+        results[1] = Math.PI * r * r * h;                       // 体积
+        return results;
     }
 }
 
