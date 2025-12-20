@@ -33,7 +33,7 @@
 目前的缺陷：
 1. 仍然没有测试过pp计算器
 
-#### Date-Calculator v0.0.4
+#### Multifunctional-Calculator v0.0.4
 
 将项目名称改为了“多功能计算器”而不是“日期计算器”
 
