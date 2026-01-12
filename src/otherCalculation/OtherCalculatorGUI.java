@@ -10,6 +10,7 @@ public class OtherCalculatorGUI extends JFrame {
 
     // 计算面板
     private JPanel bmiPanel;
+    private JPanel md5Panel;
 
     // 设置面板框架
     public OtherCalculatorGUI() {
@@ -31,15 +32,17 @@ public class OtherCalculatorGUI extends JFrame {
 
         // 创建各功能面板
         createBmiPanel();
+        createMd5Panel();
 
         // 添加标签页
         tabbedPane.addTab("BMI计算", bmiPanel);
+        tabbedPane.addTab("MD5摘要", md5Panel);
 
         mainPanel.add(tabbedPane, BorderLayout.CENTER);
 
         // 添加状态栏
         JLabel infoLabel = new JLabel(
-                "<html><center>输入数值进行计算，这里整合一些不能归类的其他计算，单位使用标准单位</center></html>",
+                "<html><center>输入数值进行计算，这里整合一些不能归类的其他计算，单位按要求换算</center></html>",
                 SwingConstants.CENTER
         );
         infoLabel.setFont(new Font("宋体", Font.PLAIN, 12));
@@ -51,7 +54,7 @@ public class OtherCalculatorGUI extends JFrame {
         bmiPanel = new JPanel(new BorderLayout(10, 10));
         bmiPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        // 输出面板
+        // 输入面板
         JPanel inputPanel = new JPanel(new GridLayout(3, 2, 10, 10));
         inputPanel.setBorder(new TitledBorder("输入信息"));
 
@@ -83,13 +86,64 @@ public class OtherCalculatorGUI extends JFrame {
                 double height = Double.parseDouble(heightField.getText().trim());
                 double weight = Double.parseDouble(weightField.getText().trim());
 
-                double results = BMICalculator.calculate(weight, height);
+                double result = BMI.calculate(weight, height);
+                String type = BMI.returnType(result);
 
-                resultArea.setText("BMI：" + results);
+                String outText = String.format(
+                        """
+                        身高：%.2f m
+                        体重：%.2f kg
+                        
+                        BMI：%.2f
+                        你的体重%s""", height, weight, result, type);
+
+                resultArea.setText(outText);
             } catch (NumberFormatException ex) {
                 resultArea.setText("错误：请输入有效的数字！");
             } catch (IllegalArgumentException ex) {
                 resultArea.setText("错误：" + ex.getMessage());
+            }
+        });
+    }
+
+    private void createMd5Panel() {
+        md5Panel = new JPanel(new BorderLayout(10, 10));
+        md5Panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        // 输入面板
+        JPanel inputPanel = new JPanel(new GridLayout(1, 2, 10, 10));
+        inputPanel.setBorder(new TitledBorder("输入字符"));
+
+        JTextField strField = new JTextField();
+
+        inputPanel.add(strField);
+
+        JButton encryptButton = new JButton("获取MD5");
+        inputPanel.add(encryptButton);
+
+        // 结果面板
+        JTextArea resultArea = new JTextArea(8, 30);
+        resultArea.setEditable(false);
+        resultArea.setFont(new Font("宋体", Font.PLAIN, 14));
+        JScrollPane scrollPane = new JScrollPane(resultArea);
+        scrollPane.setBorder(new TitledBorder("加密结果"));
+
+        md5Panel.add(inputPanel, BorderLayout.NORTH);
+        md5Panel.add(scrollPane, BorderLayout.CENTER);
+
+        // 事件处理
+        encryptButton.addActionListener(e -> {
+            try {
+                String str = strField.getText();
+                String md5 = MD5.getMD5(str);
+
+                resultArea.setText("MD5: " + md5);
+            } catch (NumberFormatException ex) {
+                resultArea.setText("错误：请输入有效的内容！");
+            } catch (IllegalArgumentException ex) {
+                resultArea.setText("错误：" + ex.getMessage());
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
             }
         });
     }

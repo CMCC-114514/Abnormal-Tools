@@ -4,6 +4,7 @@ import java.awt.*;
 import dateCalculation.DateCalculatorGUI;
 import geometricCalculation.GeometricCalculatorGUI;
 import unitsConversion.UnitConverterGUI;
+import otherCalculation.OtherCalculatorGUI;
 
 public class MainGUI {
     public static void main(String[] args) {
@@ -19,7 +20,7 @@ public class MainGUI {
             UIManager.put("MenuItem.font", font);
 
             // 窗口基本属性
-            frame.setSize(350, 400);
+            frame.setSize(350, 300);
             frame.setLocationRelativeTo(null); // 居中显示
             frame.setLayout(new BorderLayout());
 
@@ -51,7 +52,7 @@ public class MainGUI {
         aboutItem.setFont(font);
         aboutItem.addActionListener(e -> JOptionPane.showMessageDialog(
                 frame,
-                "多功能计算器 v0.1.3\n\n包含以下功能：\n- 日期计算\n- 几何计算\n- 单位换算\n\n爱来自kk3TWT",
+                "多功能计算器 v1.4.0\n\n包含以下功能：\n- 日期计算\n- 几何计算\n- 单位换算\n- 其他计算\n\n爱来自kk3TWT",
                 "关于",
                 JOptionPane.INFORMATION_MESSAGE
         ));
@@ -62,33 +63,38 @@ public class MainGUI {
     }
 
     private static JPanel getJPanel(String[] args, Font font) {
-        JPanel buttonPanel = new JPanel(new GridLayout(3, 1, 10, 10));
+        JPanel buttonPanel = new JPanel(new GridLayout(2, 2, 10, 10));
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(40, 50, 40, 50)); // 增加边距
 
         JButton dateCalculation = new JButton("日期计算");
         JButton geometricCalculation = new JButton("几何计算");
         JButton unitsConversion = new JButton("单位转换");
+        JButton otherCalculation = new JButton("其他计算");
 
         // 设置按钮字体
         dateCalculation.setFont(font);
         geometricCalculation.setFont(font);
         unitsConversion.setFont(font);
+        otherCalculation.setFont(font);
 
         // 设置按钮大小（缩小）
-        Dimension buttonSize = new Dimension(120, 40);
+        Dimension buttonSize = new Dimension(80, 40);
         dateCalculation.setPreferredSize(buttonSize);
         geometricCalculation.setPreferredSize(buttonSize);
         unitsConversion.setPreferredSize(buttonSize);
+        otherCalculation.setPreferredSize(buttonSize);
 
         // 添加按钮监听
         dateCalculation.addActionListener(e -> DateCalculatorGUI.main(args));
         geometricCalculation.addActionListener(e -> GeometricCalculatorGUI.main(args));
         unitsConversion.addActionListener(e -> UnitConverterGUI.main(args));
+        otherCalculation.addActionListener(e -> OtherCalculatorGUI.main(args));
 
         // 将按钮添加到面板
         buttonPanel.add(dateCalculation);
         buttonPanel.add(geometricCalculation);
         buttonPanel.add(unitsConversion);
+        buttonPanel.add(otherCalculation);
         return buttonPanel;
     }
 }
