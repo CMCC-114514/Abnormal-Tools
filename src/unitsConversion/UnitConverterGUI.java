@@ -25,7 +25,7 @@ public class UnitConverterGUI extends JFrame {
     public UnitConverterGUI() {
         setTitle("单位换算器");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(450, 650);
+        setSize(650, 650);
         setLocationRelativeTo(null);
 
         initComponents();

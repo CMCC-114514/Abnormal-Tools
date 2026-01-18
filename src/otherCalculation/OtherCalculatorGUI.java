@@ -11,12 +11,14 @@ public class OtherCalculatorGUI extends JFrame {
     // 计算面板
     private JPanel bmiPanel;
     private JPanel md5Panel;
+    private JPanel houseLoanPanel;
+    private JPanel base64Panel;
 
     // 设置面板框架
     public OtherCalculatorGUI() {
-        setTitle("其他类型计算器");
+        setTitle("其他计算");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(450, 400);
+        setSize(400, 550);
         setLocationRelativeTo(null);
 
         initComponents();
@@ -33,10 +35,14 @@ public class OtherCalculatorGUI extends JFrame {
         // 创建各功能面板
         createBmiPanel();
         createMd5Panel();
+        createHouseLoanPanel();
+        createBase64Panel();
 
         // 添加标签页
         tabbedPane.addTab("BMI计算", bmiPanel);
         tabbedPane.addTab("MD5摘要", md5Panel);
+        tabbedPane.addTab("房贷计算", houseLoanPanel);
+        tabbedPane.addTab("Base64编码", base64Panel);
 
         mainPanel.add(tabbedPane, BorderLayout.CENTER);
 
@@ -50,6 +56,7 @@ public class OtherCalculatorGUI extends JFrame {
         mainPanel.add(infoLabel, BorderLayout.SOUTH);
     }
 
+    // bmi计算面板
     private void createBmiPanel() {
         bmiPanel = new JPanel(new BorderLayout(10, 10));
         bmiPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -106,6 +113,7 @@ public class OtherCalculatorGUI extends JFrame {
         });
     }
 
+    // md5摘要界面
     private void createMd5Panel() {
         md5Panel = new JPanel(new BorderLayout(10, 10));
         md5Panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -144,6 +152,148 @@ public class OtherCalculatorGUI extends JFrame {
                 resultArea.setText("错误：" + ex.getMessage());
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
+            }
+        });
+    }
+
+    // 房贷计算界面
+    private void createHouseLoanPanel() {
+        houseLoanPanel = new JPanel(new BorderLayout(10, 10));
+        houseLoanPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20,20));
+
+        // 输入面板
+        JPanel inputPanel = new JPanel(new GridLayout(5, 2, 5, 5));
+        inputPanel.setBorder(new TitledBorder("输入信息"));
+
+        JComboBox<String> patternCombo = new JComboBox<>(HouseLoan.PATTERNS);
+        JTextField limitField = new JTextField();
+        JTextField loanAmountField = new JTextField();
+        JTextField rateField = new JTextField();
+
+        inputPanel.add(new JLabel("贷款方式："));
+        inputPanel.add(patternCombo);
+        inputPanel.add(new JLabel("贷款期数："));
+        inputPanel.add(limitField);
+        inputPanel.add(new JLabel("贷款金额（万元）："));
+        inputPanel.add(loanAmountField);
+        inputPanel.add(new JLabel("贷款年利率（%）："));
+        inputPanel.add(rateField);
+
+        JButton calculateButton = new JButton("计算");
+        inputPanel.add(new JLabel(""));
+        inputPanel.add(calculateButton);
+
+        // 结果面板
+        JTextArea resultArea = new JTextArea(8, 30);
+        resultArea.setEditable(false);
+        resultArea.setFont(new Font("宋体", Font.PLAIN, 14));
+        JScrollPane scrollPane = new JScrollPane(resultArea);
+        scrollPane.setBorder(new TitledBorder("计算结果"));
+
+        houseLoanPanel.add(inputPanel, BorderLayout.NORTH);
+        houseLoanPanel.add(scrollPane, BorderLayout.CENTER);
+
+        // 事件处理
+        calculateButton.addActionListener(e -> {
+            try {
+                int selectedIndex = patternCombo.getSelectedIndex();
+                int totalMonth = Integer.parseInt(limitField.getText().trim());
+                double principal = Double.parseDouble(loanAmountField.getText().trim()) * 1e4;
+                double rate = Double.parseDouble(rateField.getText().trim()) / 1200;
+
+                if (selectedIndex == 0) {
+                    double result = HouseLoan.interest(principal, rate, totalMonth);
+                    double totalAmount = result * totalMonth;
+                    double totalInterest = totalAmount - principal;
+
+                    String outText = String.format("""
+                            贷款金额：%.2f 万元
+                            贷款期数：%d 期 （约 %.1f 年）
+                            
+                            还款总额：%.2f 元
+                            每月还款：%.2f 元
+                            总利息：%.2f 元
+                            """
+                    , principal/1e4, totalMonth, totalMonth/12.0, totalAmount, result, totalInterest);
+
+                    resultArea.setText(outText);
+
+                } else if (selectedIndex == 1) {
+                    double[] result = HouseLoan.capital(principal, rate, totalMonth);
+                    double totalAmount = (result[0] + result[result.length - 1]) * result.length / 2;
+                    double firstMonth = result[0];
+                    double degressive = result[0] - result[1];
+                    double lastMonth = result[result.length - 1];
+                    double totalInterest = principal * rate * (result.length + 1) / 2;
+
+                    String outText = String.format("""
+                            贷款金额：%.2f 万元
+                            贷款期数：%d 期 （约 %.1f 年）
+                            
+                            还款总额：%.2f 元
+                            首月还款：%.2f 元
+                            最后一月还款：%.2f 元
+                            每月递减：%.2f 元
+                            总利息：%.2f 元
+                            """,
+                            principal/1e4, totalMonth, totalMonth/12.0, totalAmount, firstMonth, degressive, lastMonth, totalInterest);
+
+                    resultArea.setText(outText);
+                }
+            } catch (NumberFormatException ex) {
+                resultArea.setText("错误：请输入有效的数字！");
+            } catch (IllegalArgumentException ex) {
+                resultArea.setText("错误：" + ex.getMessage());
+            }
+        });
+    }
+
+    // Base64编码界面
+    private void createBase64Panel() {
+        base64Panel = new JPanel(new BorderLayout(10, 10));
+        base64Panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        // 输入面板
+        JPanel inputPanel = new JPanel(new GridLayout(2, 2, 10, 10));
+        inputPanel.setBorder(new TitledBorder("输入内容"));
+
+        JComboBox<String> patternCombo = new JComboBox<>(Bas64.PATTERNS);
+        JTextField strField = new JTextField();
+        JButton convertButton = new JButton("转换");
+
+        inputPanel.add(new JLabel("转换方式："));
+        inputPanel.add(patternCombo);
+        inputPanel.add(strField);
+        inputPanel.add(convertButton);
+
+        // 结果面板
+        JTextArea resultArea = new JTextArea(8, 30);
+        resultArea.setEditable(false);
+        resultArea.setFont(new Font("宋体", Font.PLAIN, 14));
+        JScrollPane scrollPane = new JScrollPane(resultArea);
+        scrollPane.setBorder(new TitledBorder("转换结果"));
+
+        base64Panel.add(inputPanel, BorderLayout.NORTH);
+        base64Panel.add(scrollPane, BorderLayout.CENTER);
+
+        // 事件处理
+        convertButton.addActionListener(e -> {
+            try {
+                int selectIndex = patternCombo.getSelectedIndex();
+                String str = strField.getText();
+                String result;
+
+                switch (selectIndex) {
+                    case 0 -> result = Bas64.enCode(str);
+                    case 1 -> result = Bas64.deCode(str);
+                    default -> result = "错误：不合法的选项";
+                }
+
+                resultArea.setText("结果：" + result);
+            } catch (NumberFormatException ex) {
+                resultArea.setText("错误：请输入有效的内容！");
+            } catch (IllegalArgumentException ex) {
+                resultArea.setText("错误：" + ex.getMessage());
             }
         });
     }

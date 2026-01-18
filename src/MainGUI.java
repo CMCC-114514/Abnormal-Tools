@@ -52,7 +52,7 @@ public class MainGUI {
         aboutItem.setFont(font);
         aboutItem.addActionListener(e -> JOptionPane.showMessageDialog(
                 frame,
-                "多功能计算器 v1.4.0\n\n包含以下功能：\n- 日期计算\n- 几何计算\n- 单位换算\n- 其他计算\n\n爱来自kk3TWT",
+                "多功能计算器 v1.4.1\n\n包含以下功能：\n- 日期计算\n- 几何计算\n- 单位换算\n- 其他计算\n\n爱来自kk3TWT",
                 "关于",
                 JOptionPane.INFORMATION_MESSAGE
         ));

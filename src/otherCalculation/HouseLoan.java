@@ -1,16 +1,17 @@
 package otherCalculation;
 
 public class HouseLoan {
+    public static final String[] PATTERNS = {"等额本息", "等额本金"};
 
     // 等额本息还款:返回每个月还款额
-    private static double interest(double principal, double rate, int month) {
-        double up = principal * rate * Math.pow((1+rate), month);   // 分母
-        double down = Math.pow((1+rate), month) - 1;                // 分子
+    public static double interest(double principal, double rate, int totalMonth) {
+        double up = principal * rate * Math.pow((1+rate), totalMonth);   // 分母
+        double down = Math.pow((1+rate), totalMonth) - 1;                // 分子
         return up / down;
     }
 
     // 等额本金还款:返回每个月还款额
-    private static double[] capital(double principal, double rate, int totalMonth, int month) {
+    public static double[] capital(double principal, double rate, int totalMonth) {
         double avePrincipal = principal / totalMonth;
         double aveInterest;
 
