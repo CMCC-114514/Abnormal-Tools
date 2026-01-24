@@ -112,3 +112,8 @@
 
 其他：
 1. 现在可以通过exe文件直接启动程序了，但是需要先安装Java（推荐版本为JDK17及以上）
+
+#### Multifunctional-Calculator v1.4.2
+
+添加了功能：
+1. 其他计算 -> ncmdump：可将下载的网易云音乐缓存文件（ncm）转换为 mp3 格式，基于 [/taurusxin/ncmdump](https://github.com/taurusxin/ncmdump) 二次开发

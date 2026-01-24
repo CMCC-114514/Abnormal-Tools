@@ -1,8 +1,12 @@
 package otherCalculation;
 
+import otherCalculation.ncmdump.NeteaseCrypt;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import javax.swing.filechooser.FileFilter;
 import java.awt.*;
+import java.io.File;
 
 public class OtherCalculatorGUI extends JFrame {
     private JPanel mainPanel;
@@ -13,6 +17,7 @@ public class OtherCalculatorGUI extends JFrame {
     private JPanel md5Panel;
     private JPanel houseLoanPanel;
     private JPanel base64Panel;
+    private JPanel ncmDumpPanel;
 
     // 设置面板框架
     public OtherCalculatorGUI() {
@@ -37,12 +42,14 @@ public class OtherCalculatorGUI extends JFrame {
         createMd5Panel();
         createHouseLoanPanel();
         createBase64Panel();
+        createNcmDumpPanel();
 
         // 添加标签页
         tabbedPane.addTab("BMI计算", bmiPanel);
         tabbedPane.addTab("MD5摘要", md5Panel);
         tabbedPane.addTab("房贷计算", houseLoanPanel);
         tabbedPane.addTab("Base64编码", base64Panel);
+        tabbedPane.addTab("NcmDump", ncmDumpPanel);
 
         mainPanel.add(tabbedPane, BorderLayout.CENTER);
 
@@ -56,7 +63,7 @@ public class OtherCalculatorGUI extends JFrame {
         mainPanel.add(infoLabel, BorderLayout.SOUTH);
     }
 
-    // bmi计算面板
+    // bmi计算界面
     private void createBmiPanel() {
         bmiPanel = new JPanel(new BorderLayout(10, 10));
         bmiPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -295,6 +302,90 @@ public class OtherCalculatorGUI extends JFrame {
             } catch (IllegalArgumentException ex) {
                 resultArea.setText("错误：" + ex.getMessage());
             }
+        });
+    }
+
+    // ncmdump面板
+    private void createNcmDumpPanel() {
+        ncmDumpPanel = new JPanel(new BorderLayout(10, 10));
+        ncmDumpPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        // 输入面板
+        JPanel inputPanel = new JPanel(new GridLayout(3, 2, 10, 10));
+        inputPanel.setBorder(new TitledBorder("选择文件"));
+
+        JTextField inputField = new JTextField();
+        JTextField outputField = new JTextField();
+        JButton inputButton = new JButton("选择NCM文件");
+        JButton outputButton = new JButton("选择输出位置");
+        JButton convertButton = new JButton("转换");
+
+        inputPanel.add(inputField);
+        inputPanel.add(inputButton);
+        inputPanel.add(outputField);
+        inputPanel.add(outputButton);
+        inputPanel.add(new JLabel(""));
+        inputPanel.add(convertButton);
+
+        // 结果面板
+        JTextArea resultArea = new JTextArea(8, 30);
+        resultArea.setEditable(false);
+        resultArea.setFont(new Font("宋体", Font.PLAIN, 14));
+        JScrollPane scrollPane = new JScrollPane(resultArea);
+        scrollPane.setBorder(new TitledBorder("信息"));
+
+        ncmDumpPanel.add(inputPanel, BorderLayout.NORTH);
+        ncmDumpPanel.add(scrollPane, BorderLayout.CENTER);
+
+        // 选择文件
+        inputButton.addActionListener(e -> {
+            JFileChooser chooser = new JFileChooser();
+            chooser.setFileFilter(new FileFilter() {
+                @Override
+                public boolean accept(File f) {
+                    return f.getName().toLowerCase().endsWith(".ncm") || f.isDirectory();
+                }
+
+                @Override
+                public String getDescription() {
+                    return "NCM文件 (*.ncm)";
+                }
+            });
+
+            if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+                inputField.setText(chooser.getSelectedFile().getAbsolutePath());
+                // 自动生成输出文件名
+                String inputPath = inputField.getText();
+                String outputPath = inputPath.replace(".ncm", ".mp3");
+                outputField.setText(outputPath);
+            }
+        });
+
+        // 选择输出位置
+        outputButton.addActionListener(e -> {
+            JFileChooser chooser = new JFileChooser();
+            chooser.setSelectedFile(new File(outputField.getText()));
+
+            if (chooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+                outputField.setText(chooser.getSelectedFile().getAbsolutePath());
+            }
+        });
+
+        // 文件转换
+        convertButton.addActionListener(e -> {
+            String input = inputField.getText();
+            String output = outputField.getText();
+
+            if (input.isEmpty() || output.isEmpty()) {
+                resultArea.setText("请选择文件或输出路径！");
+                return;
+            }
+
+            NeteaseCrypt crypt = new NeteaseCrypt(input);
+            crypt.dump("");
+            crypt.fixMetadata();
+
+            resultArea.setText("转换成功！");
         });
     }
 

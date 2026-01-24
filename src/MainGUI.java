@@ -52,7 +52,7 @@ public class MainGUI {
         aboutItem.setFont(font);
         aboutItem.addActionListener(e -> JOptionPane.showMessageDialog(
                 frame,
-                "多功能计算器 v1.4.1\n\n包含以下功能：\n- 日期计算\n- 几何计算\n- 单位换算\n- 其他计算\n\n爱来自kk3TWT",
+                "多功能计算器 v1.4.2\n\n包含以下功能：\n- 日期计算\n- 几何计算\n- 单位换算\n- 其他计算\n\n爱来自kk3TWT",
                 "关于",
                 JOptionPane.INFORMATION_MESSAGE
         ));
@@ -63,7 +63,7 @@ public class MainGUI {
     }
 
     private static JPanel getJPanel(String[] args, Font font) {
-        JPanel buttonPanel = new JPanel(new GridLayout(2, 2, 10, 10));
+        JPanel buttonPanel = new JPanel(new GridLayout(3, 2, 10, 10));
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(40, 50, 40, 50)); // 增加边距
 
         JButton dateCalculation = new JButton("日期计算");
@@ -77,7 +77,7 @@ public class MainGUI {
         unitsConversion.setFont(font);
         otherCalculation.setFont(font);
 
-        // 设置按钮大小（缩小）
+        // 设置按钮大小
         Dimension buttonSize = new Dimension(80, 40);
         dateCalculation.setPreferredSize(buttonSize);
         geometricCalculation.setPreferredSize(buttonSize);
