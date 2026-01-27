@@ -1,49 +1,70 @@
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 
-import dateCalculation.DateCalculatorGUI;
-import geometricCalculation.GeometricCalculatorGUI;
-import unitsConversion.UnitConverterGUI;
-import otherCalculation.OtherCalculatorGUI;
+import calculators.dateCalculation.DateCalculatorGUI;
+import calculators.geometricCalculation.GeometricCalculatorGUI;
+import calculators.unitsConversion.UnitConverterGUI;
+import calculators.bmi.BmiGUI;
+import calculators.houseLoan.HouseLoanGUI;
+
+import fileFunctions.imgConversion.ImageFormatConverterGUI;
+import fileFunctions.ncmdump.NCMConverterGUI;
+
+import otherFunctions.base64.Bas64GUI;
+import otherFunctions.md5.Md5GUI;
 
 public class MainGUI {
+    private static final Dimension BUTTON_SIZE = new Dimension(80, 40);
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("多功能计算器");
+            JFrame frame = new JFrame("某科学的工具箱");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            // 设置中文字体
-            Font font = new Font("Microsoft YaHei", Font.PLAIN, 15);
+            // 中文字体
+            Font font = new Font("Microsoft YaHei", Font.PLAIN, 12);
             UIManager.put("Button.font", font);
             UIManager.put("Label.font", font);
             UIManager.put("Menu.font", font);
             UIManager.put("MenuItem.font", font);
 
-            // 窗口基本属性
-            frame.setSize(350, 300);
-            frame.setLocationRelativeTo(null); // 居中显示
+            // 窗口属性
+            frame.setSize(380, 400);
+            frame.setLocationRelativeTo(null);      // 使窗口居中显示
             frame.setLayout(new BorderLayout());
 
-            // 创建中间按钮面板
-            JPanel buttonPanel = getJPanel(args, font);
+            // 创建按钮面板，根据功能分类
+            JPanel mainPanel = new JPanel(new GridLayout(3, 1, 10, 10));
+            JPanel calculatorPanel = getCalculatorPanel(args, font);
+            JPanel convertorPanel = getFileFunctionPanel(args, font);
+            JPanel otherFunctionPanel = getOtherFunctionPanel(args, font);
 
-            frame.add(buttonPanel, BorderLayout.CENTER);
+            mainPanel.add(calculatorPanel, BorderLayout.CENTER);
+            mainPanel.add(convertorPanel, BorderLayout.CENTER);
+            mainPanel.add(otherFunctionPanel, BorderLayout.CENTER);
+            frame.add(mainPanel, BorderLayout.CENTER);
 
-            // 创建菜单栏
-            JMenuBar menuBar = getJMenuBar(font, frame);
+            // 创建菜单栏和底部标签
+            JMenuBar menuBar = getMenuBar(font, frame);
+            JLabel footerLabel = getFooterLabel(font);
             frame.setJMenuBar(menuBar);
-
-            // 底部标签（可选）
-            JLabel footerLabel = new JLabel("请选择一个功能开始使用", SwingConstants.CENTER);
-            footerLabel.setFont(new Font("Microsoft YaHei", Font.PLAIN, 12));
-            footerLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
             frame.add(footerLabel, BorderLayout.SOUTH);
 
             frame.setVisible(true);
         });
     }
 
-    private static JMenuBar getJMenuBar(Font font, JFrame frame) {
+    // 底部标签
+    private static JLabel getFooterLabel(Font font) {
+        JLabel footerLabel = new JLabel("选择功能开始使用", SwingConstants.CENTER);
+        footerLabel.setFont(font);
+        footerLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        return footerLabel;
+    }
+
+    // 菜单栏和关于界面
+    private static JMenuBar getMenuBar(Font font, JFrame frame) {
         JMenuBar menuBar = new JMenuBar();
         JMenu aboutMenu = new JMenu("关于");
         aboutMenu.setFont(font);
@@ -52,7 +73,7 @@ public class MainGUI {
         aboutItem.setFont(font);
         aboutItem.addActionListener(e -> JOptionPane.showMessageDialog(
                 frame,
-                "多功能计算器 v1.4.2\n\n包含以下功能：\n- 日期计算\n- 几何计算\n- 单位换算\n- 其他计算\n\n爱来自kk3TWT",
+                "某科学的工具箱 v1.4.3\n\n爱来自kk3TWT\n\n作者不会排版，别问为什么这么丑了\n\n",
                 "关于",
                 JOptionPane.INFORMATION_MESSAGE
         ));
@@ -62,39 +83,108 @@ public class MainGUI {
         return menuBar;
     }
 
-    private static JPanel getJPanel(String[] args, Font font) {
-        JPanel buttonPanel = new JPanel(new GridLayout(3, 2, 10, 10));
-        buttonPanel.setBorder(BorderFactory.createEmptyBorder(40, 50, 40, 50)); // 增加边距
+    // 计算功能
+    private static JPanel getCalculatorPanel(String[] args, Font font) {
+        // 计算功能：日期计算、单位换算、几何计算、bmi计算、房贷计算
+        JPanel calculatorPanel = new JPanel(new GridLayout(2, 3, 10, 10));
+        calculatorPanel.setBorder(new TitledBorder("计算功能"));
 
         JButton dateCalculation = new JButton("日期计算");
+        JButton unitConversion = new JButton("单位换算");
         JButton geometricCalculation = new JButton("几何计算");
-        JButton unitsConversion = new JButton("单位转换");
-        JButton otherCalculation = new JButton("其他计算");
+        JButton bmiCalculation = new JButton("BMI计算");
+        JButton houseLoanCalculation = new JButton("房贷计算");
 
         // 设置按钮字体
         dateCalculation.setFont(font);
+        unitConversion.setFont(font);
         geometricCalculation.setFont(font);
-        unitsConversion.setFont(font);
-        otherCalculation.setFont(font);
+        bmiCalculation.setFont(font);
+        houseLoanCalculation.setFont(font);
 
         // 设置按钮大小
-        Dimension buttonSize = new Dimension(80, 40);
-        dateCalculation.setPreferredSize(buttonSize);
-        geometricCalculation.setPreferredSize(buttonSize);
-        unitsConversion.setPreferredSize(buttonSize);
-        otherCalculation.setPreferredSize(buttonSize);
+        dateCalculation.setPreferredSize(BUTTON_SIZE);
+        unitConversion.setPreferredSize(BUTTON_SIZE);
+        geometricCalculation.setPreferredSize(BUTTON_SIZE);
+        bmiCalculation.setPreferredSize(BUTTON_SIZE);
+        houseLoanCalculation.setPreferredSize(BUTTON_SIZE);
 
-        // 添加按钮监听
+        // 按钮监听
         dateCalculation.addActionListener(e -> DateCalculatorGUI.main(args));
+        unitConversion.addActionListener(e -> UnitConverterGUI.main(args));
         geometricCalculation.addActionListener(e -> GeometricCalculatorGUI.main(args));
-        unitsConversion.addActionListener(e -> UnitConverterGUI.main(args));
-        otherCalculation.addActionListener(e -> OtherCalculatorGUI.main(args));
+        bmiCalculation.addActionListener(e -> BmiGUI.main(args));
+        houseLoanCalculation.addActionListener(e -> HouseLoanGUI.main(args));
 
-        // 将按钮添加到面板
-        buttonPanel.add(dateCalculation);
-        buttonPanel.add(geometricCalculation);
-        buttonPanel.add(unitsConversion);
-        buttonPanel.add(otherCalculation);
-        return buttonPanel;
+        // 添加按钮到面板
+        calculatorPanel.add(dateCalculation);
+        calculatorPanel.add(unitConversion);
+        calculatorPanel.add(geometricCalculation);
+        calculatorPanel.add(bmiCalculation);
+        calculatorPanel.add(houseLoanCalculation);
+
+        return calculatorPanel;
+    }
+
+    // 文件功能
+    private static JPanel getFileFunctionPanel(String[] args, Font font) {
+        // 文件功能
+        JPanel convertorPanel = new JPanel(new GridLayout(1, 3, 10, 10));
+        convertorPanel.setBorder(new TitledBorder("文件功能"));
+
+        JButton ncmDump = new JButton("ncmDump");
+        JButton imgConversion = new JButton("图片格式转换");
+        JButton audioConversion = new JButton("音频格式转换");
+
+        // 设置按钮字体
+        ncmDump.setFont(font);
+        imgConversion.setFont(font);
+        audioConversion.setFont(font);
+
+        // 设置按钮大小
+        ncmDump.setPreferredSize(BUTTON_SIZE);
+        imgConversion.setPreferredSize(BUTTON_SIZE);
+        audioConversion.setPreferredSize(BUTTON_SIZE);
+
+        // 按钮监听
+        ncmDump.addActionListener(e -> NCMConverterGUI.main(args));
+        imgConversion.addActionListener(e -> ImageFormatConverterGUI.main(args));
+        audioConversion.addActionListener(e -> {});
+
+        // 添加按钮
+        convertorPanel.add(ncmDump);
+        convertorPanel.add(imgConversion);
+        convertorPanel.add(audioConversion);
+
+        return convertorPanel;
+    }
+
+    // 其他功能
+    private static JPanel getOtherFunctionPanel(String[] args, Font font) {
+        // 其他功能：md5摘要、base64编码
+        JPanel otherFunctionPanel = new JPanel(new GridLayout(1, 3, 10, 10));
+        otherFunctionPanel.setBorder(new TitledBorder("其他功能"));
+
+        JButton md5 = new JButton("MD5摘要");
+        JButton base64 = new JButton("Base64编解码");
+
+        // 设置按钮字体
+        md5.setFont(font);
+        base64.setFont(font);
+
+        // 设置按钮大小
+        md5.setPreferredSize(BUTTON_SIZE);
+        base64.setPreferredSize(BUTTON_SIZE);
+
+        // 按钮监听
+        md5.addActionListener(e -> Md5GUI.main(args));
+        base64.addActionListener(e -> Bas64GUI.main(args));
+
+        // 添加按钮
+        otherFunctionPanel.add(md5);
+        otherFunctionPanel.add(base64);
+        otherFunctionPanel.add(new JLabel(""));
+
+        return otherFunctionPanel;
     }
 }
