@@ -118,6 +118,7 @@
 添加了功能：
 1. 其他计算 -> ncmDump：可将下载的网易云音乐缓存文件（ncm）转换为 mp3 格式，基于 [/taurusxin/ncmdump](https://github.com/taurusxin/ncmdump) 二次开发
 
+<<<<<<< HEAD
 #### Abnormal-Tools v1.4.3
 
 添加了功能：
