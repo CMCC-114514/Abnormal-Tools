@@ -2,15 +2,19 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
+// 计算功能
 import calculators.dateCalculation.DateCalculatorGUI;
 import calculators.geometricCalculation.GeometricCalculatorGUI;
 import calculators.unitsConversion.UnitConverterGUI;
 import calculators.bmi.BmiGUI;
 import calculators.houseLoan.HouseLoanGUI;
 
+// 文件功能
+import fileFunctions.audioConversion.AudioConversionGUI;
 import fileFunctions.imgConversion.ImageFormatConverterGUI;
 import fileFunctions.ncmdump.NCMConverterGUI;
 
+// 其他功能
 import otherFunctions.base64.Bas64GUI;
 import otherFunctions.md5.Md5GUI;
 
@@ -85,7 +89,7 @@ public class MainGUI {
 
     // 计算功能
     private static JPanel getCalculatorPanel(String[] args, Font font) {
-        // 计算功能：日期计算、单位换算、几何计算、bmi计算、房贷计算
+        // 计算功能
         JPanel calculatorPanel = new JPanel(new GridLayout(2, 3, 10, 10));
         calculatorPanel.setBorder(new TitledBorder("计算功能"));
 
@@ -134,7 +138,7 @@ public class MainGUI {
 
         JButton ncmDump = new JButton("ncmDump");
         JButton imgConversion = new JButton("图片格式转换");
-        JButton audioConversion = new JButton("音频格式转换");
+        JButton audioConversion = new JButton("mp3转wav");
 
         // 设置按钮字体
         ncmDump.setFont(font);
@@ -149,7 +153,7 @@ public class MainGUI {
         // 按钮监听
         ncmDump.addActionListener(e -> NCMConverterGUI.main(args));
         imgConversion.addActionListener(e -> ImageFormatConverterGUI.main(args));
-        audioConversion.addActionListener(e -> {});
+        audioConversion.addActionListener(e -> AudioConversionGUI.main(args));
 
         // 添加按钮
         convertorPanel.add(ncmDump);
@@ -161,20 +165,23 @@ public class MainGUI {
 
     // 其他功能
     private static JPanel getOtherFunctionPanel(String[] args, Font font) {
-        // 其他功能：md5摘要、base64编码
+        // 其他功能
         JPanel otherFunctionPanel = new JPanel(new GridLayout(1, 3, 10, 10));
         otherFunctionPanel.setBorder(new TitledBorder("其他功能"));
 
         JButton md5 = new JButton("MD5摘要");
         JButton base64 = new JButton("Base64编解码");
+        // JButton bpmAnalyser = new JButton("BPM分析");
 
         // 设置按钮字体
         md5.setFont(font);
         base64.setFont(font);
+        // bpmAnalyser.setFont(font);
 
         // 设置按钮大小
         md5.setPreferredSize(BUTTON_SIZE);
         base64.setPreferredSize(BUTTON_SIZE);
+        // bpmAnalyser.setPreferredSize(BUTTON_SIZE);
 
         // 按钮监听
         md5.addActionListener(e -> Md5GUI.main(args));
@@ -184,6 +191,7 @@ public class MainGUI {
         otherFunctionPanel.add(md5);
         otherFunctionPanel.add(base64);
         otherFunctionPanel.add(new JLabel(""));
+        // otherFunctionPanel.add(bpmAnalyser);
 
         return otherFunctionPanel;
     }

@@ -17,10 +17,7 @@ repositories {
 
 dependencies {
     implementation("net.java.dev.jna:jna:5.13.0")
-    implementation("be.tarsos.dsp:core:2.5")
-    implementation("be.tarsos.dsp:jvm:2.5")
-    implementation("com.github.kokorin.jaffree:jaffree:2023.09.10")
-    implementation("org.slf4j:slf4j-simple:2.0.9")
+    implementation("com.googlecode.soundlibs:mp3spi:1.9.5.4")
 
     testImplementation("junit:junit:4.13.1")
     testImplementation("org.hamcrest:hamcrest-core:1.3")
