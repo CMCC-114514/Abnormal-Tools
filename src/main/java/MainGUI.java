@@ -4,6 +4,7 @@ import java.awt.*;
 
 // 计算功能
 import calculators.dateCalculation.DateCalculatorGUI;
+import calculators.factorial.FactorialGUI;
 import calculators.geometricCalculation.GeometricCalculatorGUI;
 import calculators.unitsConversion.UnitConverterGUI;
 import calculators.bmi.BmiGUI;
@@ -17,6 +18,7 @@ import fileFunctions.ncmdump.NCMConverterGUI;
 // 其他功能
 import otherFunctions.base64.Bas64GUI;
 import otherFunctions.md5.Md5GUI;
+import otherFunctions.randomNumGenerator.RandomGUI;
 
 public class MainGUI {
     private static final Dimension BUTTON_SIZE = new Dimension(80, 40);
@@ -77,7 +79,13 @@ public class MainGUI {
         aboutItem.setFont(font);
         aboutItem.addActionListener(e -> JOptionPane.showMessageDialog(
                 frame,
-                "某科学的工具箱 v1.4.3\n\n爱来自kk3TWT\n\n作者不会排版，别问为什么这么丑了\n\n",
+                """
+                        某科学的工具箱 v1.4.4
+                        
+                        爱来自kk3TWT
+                        
+                        作者不会排版，别问为什么这么丑了
+                        """,
                 "关于",
                 JOptionPane.INFORMATION_MESSAGE
         ));
@@ -98,6 +106,7 @@ public class MainGUI {
         JButton geometricCalculation = new JButton("几何计算");
         JButton bmiCalculation = new JButton("BMI计算");
         JButton houseLoanCalculation = new JButton("房贷计算");
+        JButton factorialCalculation = new JButton("排列数计算");
 
         // 设置按钮字体
         dateCalculation.setFont(font);
@@ -105,6 +114,7 @@ public class MainGUI {
         geometricCalculation.setFont(font);
         bmiCalculation.setFont(font);
         houseLoanCalculation.setFont(font);
+        factorialCalculation.setFont(font);
 
         // 设置按钮大小
         dateCalculation.setPreferredSize(BUTTON_SIZE);
@@ -112,6 +122,7 @@ public class MainGUI {
         geometricCalculation.setPreferredSize(BUTTON_SIZE);
         bmiCalculation.setPreferredSize(BUTTON_SIZE);
         houseLoanCalculation.setPreferredSize(BUTTON_SIZE);
+        factorialCalculation.setPreferredSize(BUTTON_SIZE);
 
         // 按钮监听
         dateCalculation.addActionListener(e -> DateCalculatorGUI.main(args));
@@ -119,6 +130,7 @@ public class MainGUI {
         geometricCalculation.addActionListener(e -> GeometricCalculatorGUI.main(args));
         bmiCalculation.addActionListener(e -> BmiGUI.main(args));
         houseLoanCalculation.addActionListener(e -> HouseLoanGUI.main(args));
+        factorialCalculation.addActionListener(e -> FactorialGUI.main(args));
 
         // 添加按钮到面板
         calculatorPanel.add(dateCalculation);
@@ -126,6 +138,7 @@ public class MainGUI {
         calculatorPanel.add(geometricCalculation);
         calculatorPanel.add(bmiCalculation);
         calculatorPanel.add(houseLoanCalculation);
+        calculatorPanel.add(factorialCalculation);
 
         return calculatorPanel;
     }
@@ -171,26 +184,30 @@ public class MainGUI {
 
         JButton md5 = new JButton("MD5摘要");
         JButton base64 = new JButton("Base64编解码");
+        JButton randomNum = new JButton("随机数生成");
         // JButton bpmAnalyser = new JButton("BPM分析");
 
         // 设置按钮字体
         md5.setFont(font);
         base64.setFont(font);
+        randomNum.setFont(font);
         // bpmAnalyser.setFont(font);
 
         // 设置按钮大小
         md5.setPreferredSize(BUTTON_SIZE);
         base64.setPreferredSize(BUTTON_SIZE);
+        randomNum.setPreferredSize(BUTTON_SIZE);
         // bpmAnalyser.setPreferredSize(BUTTON_SIZE);
 
         // 按钮监听
         md5.addActionListener(e -> Md5GUI.main(args));
         base64.addActionListener(e -> Bas64GUI.main(args));
+        randomNum.addActionListener(e -> RandomGUI.main(args));
 
         // 添加按钮
         otherFunctionPanel.add(md5);
         otherFunctionPanel.add(base64);
-        otherFunctionPanel.add(new JLabel(""));
+        otherFunctionPanel.add(randomNum);
         // otherFunctionPanel.add(bpmAnalyser);
 
         return otherFunctionPanel;

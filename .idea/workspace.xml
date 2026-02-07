@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7157c458-9316-40d9-89dc-5f8aa60a7c60" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/audioConversion/AudioConversionGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/audioConversion/Mp3ToWav.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/checksums/sha1-checksums.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/calculators/factorial/Calculators.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/calculators/factorial/FactorialGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/otherFunctions/randomNumGenerator/Generators.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/otherFunctions/randomNumGenerator/RandomGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.bin" afterDir="false" />
@@ -17,26 +16,23 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/MainGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MainGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/AudioConvert.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Calculators.class.uniqueId2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/DateCalculatorGUI$1.class.uniqueId5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/DateCalculatorGUI$2.class.uniqueId1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/DateCalculatorGUI$3.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/DateCalculatorGUI$4.class.uniqueId3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/DateCalculatorGUI$5.class.uniqueId6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/DateCalculatorGUI.class.uniqueId4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMDumpLibrary.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMDumpLibrary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/md5/Md5GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/md5/Md5GUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/native/libncmdump.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MainGUI.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MainGUI.class.uniqueId0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/compileTransaction/stash-dir/AudioConvert.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/test.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/hamcrest-core-1.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/junit-4.13.1.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AudioConvert.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NCMConverterGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NCMConverterGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NCMDumpLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NCMDumpLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/otherFunctions/md5/Md5GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/otherFunctions/md5/Md5GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/native/libncmdump.dll" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,8 +119,13 @@
     "Gradle.Abnormal-Tools [:BpmAnalyzer.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:MainGUI.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:bpm.Mp3BpmAnalyzer.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:calculators.bmi.BmiGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:calculators.factorial.FactorialGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:calculators.unitsConversion.UnitConverterGUI.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:fileFunctions.audioConversion.AudioConversionGUI.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:fileFunctions.ncmdump.NCMConverterGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:otherFunctions.randomNumGenerator.Generators.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:otherFunctions.randomNumGenerator.RandomGUI.main()].executor": "Run",
     "Gradle.下载源代码.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",

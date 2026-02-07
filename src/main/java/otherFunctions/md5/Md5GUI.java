@@ -31,7 +31,7 @@ public class Md5GUI extends JFrame {
         resultArea.setEditable(false);
         resultArea.setFont(new Font("宋体", Font.PLAIN, 14));
         JScrollPane scrollPane = new JScrollPane(resultArea);
-        scrollPane.setBorder(new TitledBorder("加密结果"));
+        scrollPane.setBorder(new TitledBorder("获取结果"));
 
         md5Panel.add(inputPanel, BorderLayout.NORTH);
         md5Panel.add(scrollPane, BorderLayout.CENTER);
