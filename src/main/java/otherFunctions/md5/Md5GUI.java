@@ -42,7 +42,7 @@ public class Md5GUI extends JFrame {
                 String str = strField.getText();
                 String md5 = MD5.getMD5(str);
 
-                resultArea.setText("MD5: " + md5);
+                resultArea.setText(md5);
             } catch (NumberFormatException ex) {
                 resultArea.setText("错误：请输入有效的内容！");
             } catch (IllegalArgumentException ex) {

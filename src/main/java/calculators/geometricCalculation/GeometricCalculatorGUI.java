@@ -125,7 +125,7 @@ public class GeometricCalculatorGUI extends JFrame {
         circlePanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         // 输入面板
-        JPanel inputPanel = new JPanel(new GridLayout(4, 2, 10, 10));
+        JPanel inputPanel = new JPanel(new GridLayout(3, 2, 10, 10));
         inputPanel.setBorder(new TitledBorder("输入圆形参数"));
 
         JComboBox<String> typeCombo = new JComboBox<>(new String[]{"已知半径", "已知周长", "已知面积"});
@@ -551,7 +551,7 @@ public class GeometricCalculatorGUI extends JFrame {
         // 设置统一的字体
         Font titleFont = new Font("微软雅黑", Font.BOLD, 16);
         Font labelFont = new Font("宋体", Font.PLAIN, 14);
-        Font buttonFont = new Font("宋体", Font.BOLD, 14);
+        Font buttonFont = new Font("微软雅黑", Font.PLAIN, 14);
 
         // 设置所有组件的字体
         Component[] components = tabbedPane.getComponents();
@@ -582,13 +582,6 @@ public class GeometricCalculatorGUI extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            try {
-                // 设置系统外观
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
             GeometricCalculatorGUI gui = new GeometricCalculatorGUI();
             gui.setVisible(true);
         });

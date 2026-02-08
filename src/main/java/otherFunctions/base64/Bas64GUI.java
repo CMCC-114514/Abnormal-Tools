@@ -54,7 +54,7 @@ public class Bas64GUI extends JFrame {
                         case 1 -> result = Bas64.deCode(str);
                         default -> result = "错误：不合法的选项";
                     }
-                    resultArea.setText("结果：" + result);
+                    resultArea.setText(result);
                 }
 
             } catch (NumberFormatException ex) {

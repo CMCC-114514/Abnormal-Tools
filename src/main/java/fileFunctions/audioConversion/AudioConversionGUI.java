@@ -26,24 +26,26 @@ public class AudioConversionGUI extends JFrame {
         //inputPanel.setBorder(new TitledBorder("文件选择"));
 
         inputField = new JTextField(30);
-        JButton inputBtn = new JButton("选择mp3文件");
+        JButton inputBtn = new JButton("选择音频文件");
         inputBtn.addActionListener(e -> chooseInputFile());
         inputPanel.add(inputField);
         inputPanel.add(inputBtn);
 
-        // 选择输出位置面板
-        JPanel outputPanel = new JPanel(new GridLayout(1, 2, 10, 10));
-        //outputPanel.setBorder(new TitledBorder("输出位置选择"));
-
+        // 选择输出位置
+        JPanel outputPanel = new JPanel(new GridLayout(1,2,10,10));
         outputField = new JTextField(30);
-        JButton outputBtn = new JButton("选择输出位置");
-        outputBtn.addActionListener(e -> chooseOutputFile());
         outputPanel.add(outputField);
-        outputPanel.add(outputBtn);
+
+        // 选择目标格式
+        JComboBox<String> formatCombo = new JComboBox<>(Converter.AUDIO_FORMATS);
+        outputPanel.add(formatCombo);
 
         // 转换按钮
         JButton convertBtn = new JButton("开始转换");
-        convertBtn.addActionListener(e -> convertFile());
+        convertBtn.addActionListener(e -> {
+            int formatIndex = formatCombo.getSelectedIndex();
+            convertFile(formatIndex);
+        });
 
         mainPanel.add(inputPanel, BorderLayout.NORTH);
         mainPanel.add(outputPanel, BorderLayout.CENTER);
@@ -59,36 +61,34 @@ public class AudioConversionGUI extends JFrame {
         chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
             @Override
             public boolean accept(File f) {
-                return f.getName().toLowerCase().endsWith(".mp3") || f.isDirectory();
+                for (String audioFormat : Converter.AUDIO_FORMATS) {
+                    if (f.getName().endsWith("." + audioFormat) || f.getName().endsWith("." + audioFormat.toLowerCase())) {
+                        return true;
+                    }
+                }
+                return f.isDirectory();
             }
 
             @Override
             public String getDescription() {
-                return "MP3文件 (*.mp3)";
+                return "音频文件（" + Converter.getSupportedFormat() + ")";
             }
         });
 
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             inputField.setText(chooser.getSelectedFile().getAbsolutePath());
-            // 自动生成输出文件名
+
             String inputPath = inputField.getText();
-            String outputPath = inputPath.replace(".mp3", ".wav");
-            outputField.setText(outputPath);
+            int dot = inputPath.lastIndexOf('.');
+            String base = (dot > 0) ? inputPath.substring(0, dot + 1) : inputPath + ".";
+            outputField.setText(base);
         }
     }
 
-    private void chooseOutputFile() {
-        JFileChooser chooser = new JFileChooser();
-        chooser.setSelectedFile(new File(outputField.getText()));
-
-        if (chooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
-            outputField.setText(chooser.getSelectedFile().getAbsolutePath());
-        }
-    }
-
-    private void convertFile() {
+    private void convertFile(int formatIndex) {
+        String format = Converter.AUDIO_FORMATS[formatIndex];
         String input = inputField.getText();
-        String output = outputField.getText();
+        String output = outputField.getText() + format;
 
         if (input.isEmpty() || output.isEmpty()) {
             JOptionPane.showMessageDialog(this, "请选择输入和输出文件");
@@ -96,7 +96,7 @@ public class AudioConversionGUI extends JFrame {
         }
 
         try {
-            Mp3ToWav.convert(input, output);
+            Converter.convert(input, output);
             JOptionPane.showMessageDialog(this, "转换成功！");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "转换失败: " + e.getMessage());
@@ -104,7 +104,7 @@ public class AudioConversionGUI extends JFrame {
     }
 
     private static JLabel getFooterLabel(Font font) {
-        JLabel footerLabel = new JLabel("目前只支持mp3转wav，后续会支持更多格式", SwingConstants.CENTER);
+        JLabel footerLabel = new JLabel("基于FFmpeg二次开发，需要下载压缩包并解压到lib目录下，转换需要时间，请耐心等待", SwingConstants.CENTER);
         footerLabel.setFont(font);
         footerLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
         return footerLabel;

@@ -20,45 +20,42 @@ import otherFunctions.base64.Bas64GUI;
 import otherFunctions.md5.Md5GUI;
 import otherFunctions.randomNumGenerator.RandomGUI;
 
-public class MainGUI {
+public class MainGUI extends JFrame{
     private static final Dimension BUTTON_SIZE = new Dimension(80, 40);
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("某科学的工具箱");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public MainGUI(String[] args) {
+        setTitle("某科学的工具箱");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            // 中文字体
-            Font font = new Font("Microsoft YaHei", Font.PLAIN, 12);
-            UIManager.put("Button.font", font);
-            UIManager.put("Label.font", font);
-            UIManager.put("Menu.font", font);
-            UIManager.put("MenuItem.font", font);
+        // 设置中文字体
+        Font font = new Font("微软雅黑", Font.PLAIN, 12);
+        UIManager.put("Button.font", font);
+        UIManager.put("Label.font", font);
+        UIManager.put("Menu.font", font);
+        UIManager.put("MenuItem.font", font);
 
-            // 窗口属性
-            frame.setSize(380, 400);
-            frame.setLocationRelativeTo(null);      // 使窗口居中显示
-            frame.setLayout(new BorderLayout());
+        // 设置窗口属性
+        setSize(380, 400);
+        setLocationRelativeTo(null);      // 使窗口居中显示
+        setLayout(new BorderLayout());
 
-            // 创建按钮面板，根据功能分类
-            JPanel mainPanel = new JPanel(new GridLayout(3, 1, 10, 10));
-            JPanel calculatorPanel = getCalculatorPanel(args, font);
-            JPanel convertorPanel = getFileFunctionPanel(args, font);
-            JPanel otherFunctionPanel = getOtherFunctionPanel(args, font);
+        // 创建主面板和各功能面板，根据功能分类
+        JPanel mainPanel = new JPanel(new GridLayout(3, 1, 10, 10));
+        JPanel calculatorPanel = getCalculatorPanel(args, font);
+        JPanel convertorPanel = getFileFunctionPanel(args, font);
+        JPanel otherFunctionPanel = getOtherFunctionPanel(args, font);
 
-            mainPanel.add(calculatorPanel, BorderLayout.CENTER);
-            mainPanel.add(convertorPanel, BorderLayout.CENTER);
-            mainPanel.add(otherFunctionPanel, BorderLayout.CENTER);
-            frame.add(mainPanel, BorderLayout.CENTER);
+        // 添加面板
+        mainPanel.add(calculatorPanel, BorderLayout.CENTER);
+        mainPanel.add(convertorPanel, BorderLayout.CENTER);
+        mainPanel.add(otherFunctionPanel, BorderLayout.CENTER);
+        add(mainPanel, BorderLayout.CENTER);
 
-            // 创建菜单栏和底部标签
-            JMenuBar menuBar = getMenuBar(font, frame);
-            JLabel footerLabel = getFooterLabel(font);
-            frame.setJMenuBar(menuBar);
-            frame.add(footerLabel, BorderLayout.SOUTH);
-
-            frame.setVisible(true);
-        });
+        // 创建菜单栏和底部标签
+        JMenuBar menuBar = getMenuBar(font, this);
+        JLabel footerLabel = getFooterLabel(font);
+        setJMenuBar(menuBar);
+        add(footerLabel, BorderLayout.SOUTH);
     }
 
     // 底部标签
@@ -106,7 +103,7 @@ public class MainGUI {
         JButton geometricCalculation = new JButton("几何计算");
         JButton bmiCalculation = new JButton("BMI计算");
         JButton houseLoanCalculation = new JButton("房贷计算");
-        JButton factorialCalculation = new JButton("排列数计算");
+        JButton factorialCalculation = new JButton("阶乘计算");
 
         // 设置按钮字体
         dateCalculation.setFont(font);
@@ -151,7 +148,7 @@ public class MainGUI {
 
         JButton ncmDump = new JButton("ncmDump");
         JButton imgConversion = new JButton("图片格式转换");
-        JButton audioConversion = new JButton("mp3转wav");
+        JButton audioConversion = new JButton("音频格式转换");
 
         // 设置按钮字体
         ncmDump.setFont(font);
@@ -211,5 +208,17 @@ public class MainGUI {
         // otherFunctionPanel.add(bpmAnalyser);
 
         return otherFunctionPanel;
+    }
+
+    // 程序入口
+    public static void main(String[] args) {
+        try {
+            // 设置系统外观
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"错误" + e.getMessage(),"错误",JOptionPane.ERROR_MESSAGE);
+        }
+
+        SwingUtilities.invokeLater(() -> new MainGUI(args).setVisible(true));
     }
 }

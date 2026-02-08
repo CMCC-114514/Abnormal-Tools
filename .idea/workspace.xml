@@ -4,36 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7157c458-9316-40d9-89dc-5f8aa60a7c60" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/calculators/factorial/Calculators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/calculators/factorial/FactorialGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/otherFunctions/randomNumGenerator/Generators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/otherFunctions/randomNumGenerator/RandomGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MainGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MainGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMDumpLibrary.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMDumpLibrary.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/md5/Md5GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/md5/Md5GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/native/libncmdump.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MainGUI.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MainGUI.class.uniqueId0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NCMConverterGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NCMConverterGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NCMDumpLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NCMDumpLibrary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/otherFunctions/md5/Md5GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/otherFunctions/md5/Md5GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/native/libncmdump.dll" beforeDir="false" />
-    </list>
+    <list default="true" id="7157c458-9316-40d9-89dc-5f8aa60a7c60" name="更改" comment="update README.md" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -112,35 +83,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Abnormal-Tools [:AudioConvert.main()].executor": "Run",
-    "Gradle.Abnormal-Tools [:AudioConverter.main()].executor": "Run",
-    "Gradle.Abnormal-Tools [:BpmAnalyzer.main()].executor": "Run",
-    "Gradle.Abnormal-Tools [:MainGUI.main()].executor": "Run",
-    "Gradle.Abnormal-Tools [:bpm.Mp3BpmAnalyzer.main()].executor": "Run",
-    "Gradle.Abnormal-Tools [:calculators.bmi.BmiGUI.main()].executor": "Run",
-    "Gradle.Abnormal-Tools [:calculators.factorial.FactorialGUI.main()].executor": "Run",
-    "Gradle.Abnormal-Tools [:calculators.unitsConversion.UnitConverterGUI.main()].executor": "Run",
-    "Gradle.Abnormal-Tools [:fileFunctions.audioConversion.AudioConversionGUI.main()].executor": "Run",
-    "Gradle.Abnormal-Tools [:fileFunctions.ncmdump.NCMConverterGUI.main()].executor": "Run",
-    "Gradle.Abnormal-Tools [:otherFunctions.randomNumGenerator.Generators.main()].executor": "Run",
-    "Gradle.Abnormal-Tools [:otherFunctions.randomNumGenerator.RandomGUI.main()].executor": "Run",
-    "Gradle.下载源代码.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "项目",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "应用程序.MainGUI.executor": "Run",
-    "应用程序.Mp3BpmAnalyzer.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Abnormal-Tools [:AudioConvert.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Abnormal-Tools [:AudioConverter.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Abnormal-Tools [:BpmAnalyzer.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Abnormal-Tools [:MainGUI.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Abnormal-Tools [:bpm.Mp3BpmAnalyzer.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Abnormal-Tools [:calculators.bmi.BmiGUI.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Abnormal-Tools [:calculators.dateCalculation.DateCalculatorGUI.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Abnormal-Tools [:calculators.factorial.FactorialGUI.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Abnormal-Tools [:calculators.geometricCalculation.GeometricCalculatorGUI.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Abnormal-Tools [:calculators.unitsConversion.UnitConverterGUI.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Abnormal-Tools [:fileFunctions.audioConversion.AudioConversionGUI.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Abnormal-Tools [:fileFunctions.ncmdump.NCMConverterGUI.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Abnormal-Tools [:otherFunctions.base64.Bas64GUI.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Abnormal-Tools [:otherFunctions.randomNumGenerator.Generators.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Abnormal-Tools [:otherFunctions.randomNumGenerator.RandomGUI.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.下载源代码.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;工件&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;应用程序.MainGUI.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.Mp3BpmAnalyzer.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Code\java\Abnormal-Tools\src\main\resources\native" />
@@ -156,6 +130,19 @@
       <option name="presentableId" value="Default" />
       <updated>1762424182943</updated>
     </task>
+    <task id="LOCAL-00001" summary="update README.md">
+      <option name="closed" value="true" />
+      <created>1770458330340</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1770458330340</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
   </component>
 </project>

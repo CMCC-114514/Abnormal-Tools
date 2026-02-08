@@ -35,7 +35,7 @@ public class ImageFormatConverterGUI extends JFrame {
         outputPanel.add(outputField);
 
         // 选择目标格式
-        JComboBox<String> formatCombo = new JComboBox<>(ImageFormatConverter.IMAGE_FORMATS);
+        JComboBox<String> formatCombo = new JComboBox<>(Converter.IMAGE_FORMATS);
         outputPanel.add(formatCombo);
 
         // 转换过程
@@ -60,7 +60,7 @@ public class ImageFormatConverterGUI extends JFrame {
         chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
             @Override
             public boolean accept(File f) {
-                for (String format : ImageFormatConverter.IMAGE_FORMATS) {
+                for (String format : Converter.IMAGE_FORMATS) {
                     if (f.getName().endsWith("." + format) || f.getName().endsWith("." + format.toLowerCase())) {
                         return true;
                     }
@@ -70,7 +70,7 @@ public class ImageFormatConverterGUI extends JFrame {
 
             @Override
             public String getDescription() {
-                return "图片文件" + "(" + ImageFormatConverter.getSupportedFormat() + ")";
+                return "图片文件（" + Converter.getSupportedFormat() + "）";
             }
         });
 
@@ -85,7 +85,7 @@ public class ImageFormatConverterGUI extends JFrame {
     }
 
     private void convertFile(int formatIndex) {
-        String format = ImageFormatConverter.IMAGE_FORMATS[formatIndex];
+        String format = Converter.IMAGE_FORMATS[formatIndex];
         String input = inputField.getText();
         String output = outputField.getText() + format;
 
@@ -95,7 +95,7 @@ public class ImageFormatConverterGUI extends JFrame {
         }
 
         try {
-            ImageFormatConverter.convert(input, output, format);
+            Converter.convert(input, output, format);
             JOptionPane.showMessageDialog(this, "转换成功!");
         }catch (Exception e) {
             JOptionPane.showMessageDialog(this, "转换失败：" + e.getMessage());
@@ -103,7 +103,7 @@ public class ImageFormatConverterGUI extends JFrame {
     }
 
     private JLabel getFooterLabel(Font font) {
-        JLabel footerLabel = new JLabel("支持的格式:" + ImageFormatConverter.getSupportedFormat(), SwingConstants.CENTER);
+        JLabel footerLabel = new JLabel("支持的格式:" + Converter.getSupportedFormat(), SwingConstants.CENTER);
         footerLabel.setFont(font);
         footerLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
         return footerLabel;

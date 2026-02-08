@@ -64,7 +64,7 @@ public class UnitConverterGUI extends JFrame {
                         "部分类型的换算支持国际单位、英制单位和市制单位之间的换算</center></html>",
                 SwingConstants.CENTER
         );
-        infoLabel.setFont(new Font("宋体", Font.PLAIN, 12));
+        infoLabel.setFont(new Font("微软雅黑", Font.PLAIN, 12));
         infoLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         mainPanel.add(infoLabel, BorderLayout.SOUTH);
     }
@@ -905,8 +905,8 @@ public class UnitConverterGUI extends JFrame {
         // 设置统一的字体
         Font titleFont = new Font("微软雅黑", Font.BOLD, 16);
         Font labelFont = new Font("宋体", Font.PLAIN, 14);
-        Font buttonFont = new Font("宋体", Font.BOLD, 14);
-        Font tableFont = new Font("宋体", Font.PLAIN, 13);
+        Font buttonFont = new Font("微软雅黑", Font.PLAIN, 13);
+        Font tableFont = new Font("微软雅黑", Font.PLAIN, 12);
 
         // 设置所有组件的字体
         Component[] components = tabbedPane.getComponents();
@@ -943,17 +943,6 @@ public class UnitConverterGUI extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            try {
-                // 设置系统外观
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-
-                // 设置UI样式
-                UIManager.put("TabbedPane.selected", new Color(230, 240, 255));
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
             UnitConverterGUI gui = new UnitConverterGUI();
             gui.setVisible(true);
         });

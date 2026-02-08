@@ -5,7 +5,7 @@ public class Calculators {
     // 阶乘计算
     public static int Factorial(int num) {
         int result = 1;
-        for (int i = 1; i < num; i++) {
+        for (int i = 1; i <= num; i++) {
             result *= i;
         }
         return result;

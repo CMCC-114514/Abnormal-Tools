@@ -3,8 +3,6 @@ package calculators.dateCalculation;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.time.Instant;
 
 public class DateCalculatorGUI extends JFrame {
@@ -115,12 +113,7 @@ public class DateCalculatorGUI extends JFrame {
         conversionPanel.add(resultPanel, BorderLayout.CENTER);
 
         // 添加事件监听
-        convertButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                convertDaysToDate();
-            }
-        });
+        convertButton.addActionListener(e -> convertDaysToDate());
     }
 
     private void createCalculationPanel() {
@@ -168,12 +161,7 @@ public class DateCalculatorGUI extends JFrame {
         calculationPanel.add(resultPanel, BorderLayout.CENTER);
 
         // 添加事件监听
-        calculateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                calculateDate();
-            }
-        });
+        calculateButton.addActionListener(e -> calculateDate());
     }
 
     private void createIntervalPanel() {
@@ -232,12 +220,7 @@ public class DateCalculatorGUI extends JFrame {
         intervalPanel.add(resultPanel, BorderLayout.CENTER);
 
         // 添加事件监听
-        intervalButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                calculateInterval();
-            }
-        });
+        intervalButton.addActionListener(e -> calculateInterval());
     }
 
     private void createSolarToLunarPanel() {
@@ -281,12 +264,7 @@ public class DateCalculatorGUI extends JFrame {
         solarToLunarPanel.add(resultPanel, BorderLayout.CENTER);
 
         // 添加事件监听
-        toLunarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                convertSolarToLunar();
-            }
-        });
+        toLunarButton.addActionListener(e -> convertSolarToLunar());
     }
 
     private void setupLayout() {
@@ -441,19 +419,6 @@ public class DateCalculatorGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    // 设置系统外观
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                DateCalculatorGUI gui = new DateCalculatorGUI();
-                gui.setVisible(true);
-            }
-        });
+        SwingUtilities.invokeLater(() -> new DateCalculatorGUI().setVisible(true));
     }
 }

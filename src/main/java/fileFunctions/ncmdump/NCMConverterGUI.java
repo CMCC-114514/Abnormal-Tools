@@ -21,7 +21,6 @@ public class NCMConverterGUI extends JFrame {
 
         // 选择文件面板
         JPanel inputPanel = new JPanel(new GridLayout(1, 2, 10, 10));
-        //inputPanel.setBorder(new TitledBorder("文件选择"));
 
         inputField = new JTextField(30);
         JButton inputBtn = new JButton("选择NCM文件");
@@ -31,7 +30,6 @@ public class NCMConverterGUI extends JFrame {
 
         // 选择输出位置面板
         JPanel outputPanel = new JPanel(new GridLayout(1, 2, 10, 10));
-        //outputPanel.setBorder(new TitledBorder("输出位置选择"));
 
         outputField = new JTextField(30);
         JButton outputBtn = new JButton("选择输出位置");
@@ -104,7 +102,7 @@ public class NCMConverterGUI extends JFrame {
     }
 
     private static JLabel getFooterLabel(Font font) {
-        JLabel footerLabel = new JLabel("选择ncm文件，程序将自动生成输出位置", SwingConstants.CENTER);
+        JLabel footerLabel = new JLabel("选择ncm文件，程序将自动生成输出位置，目前路径中不能包含中文", SwingConstants.CENTER);
         footerLabel.setFont(font);
         footerLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
         return footerLabel;

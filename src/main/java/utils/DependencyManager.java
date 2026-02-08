@@ -1,6 +1,5 @@
 package utils;
 
-import javax.swing.*;
 import java.io.*;
 import java.net.*;
 import java.nio.file.*;
@@ -8,15 +7,15 @@ import java.nio.file.*;
 public class DependencyManager {
 
     public static void ensureDllPresent(String name, String url) throws Exception {
-        Path dll = AppPaths.dllPath(name + ".dll");
+        Path resource = AppPath.resourcePath(name);
 
-        if (Files.exists(dll)) {
+        if (Files.exists(resource)) {
             return;
         }
 
         // 这里写你的下载逻辑
-        downloadFromServer(dll, url);
-        // verifySha256(dll);
+        downloadFromServer(resource, url);
+        // verifySha256(resource);
     }
 
     // 下载内容
@@ -39,7 +38,7 @@ public class DependencyManager {
                 total += len;
 
                 int percent = (int) (total * 100 / contentLength);
-                System.out.print("\rDownloading DLL: " + percent + "%");
+                System.out.print("\rDownloading: " + percent + "%");
             }
         }
     }
