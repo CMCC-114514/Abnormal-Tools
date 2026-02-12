@@ -8,8 +8,8 @@ public interface NCMDumpLibrary extends Library {
     // 动态库名称（无扩展名）
     NCMDumpLibrary INSTANCE = LibLoader.load("libncmdump.dll", url);
 
-    Pointer CreateNeteaseCrypt(String path);
-    int Dump(Pointer neteaseCrypt, String outputPath);
+    Pointer CreateNeteaseCrypt(Pointer path);
+    int Dump(Pointer neteaseCrypt, Pointer path);
     void FixMetadata(Pointer neteaseCrypt);
     void DestroyNeteaseCrypt(Pointer neteaseCrypt);
 }

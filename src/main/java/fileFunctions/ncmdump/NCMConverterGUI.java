@@ -91,6 +91,7 @@ public class NCMConverterGUI extends JFrame {
             return;
         }
 
+
         try(NeteaseCrypt crypt = new NeteaseCrypt(input)) {
             crypt.dump("");
             crypt.fixMetadata();
@@ -102,7 +103,7 @@ public class NCMConverterGUI extends JFrame {
     }
 
     private static JLabel getFooterLabel(Font font) {
-        JLabel footerLabel = new JLabel("选择ncm文件，程序将自动生成输出位置，目前路径中不能包含中文", SwingConstants.CENTER);
+        JLabel footerLabel = new JLabel("选择ncm文件，程序将自动生成输出位置", SwingConstants.CENTER);
         footerLabel.setFont(font);
         footerLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
         return footerLabel;

@@ -52,6 +52,11 @@ public class Converts {
             "兆字节(MB)", "吉字节(GB)", "太字节(TB)", "拍字节(PB)"
     };
 
+    // 颜色码名称数组
+    public static final String[] COLOR_CODES = {
+            "RGB", "CMYK", "HEX"
+    };
+
     //换算方法1：长度换算
     public static double[] length(byte choose, double num) {
 
@@ -130,5 +135,47 @@ public class Converts {
             result[i] = std / Math.pow(1024, i - 1);
         }
         return result;
+    }
+
+    // 颜色码转换函数
+    public static String RGB2HEX(int[] rgb) {
+        StringBuilder hex = new StringBuilder("#");
+        for (int i : rgb) {
+            if (i == -1) continue;
+            hex.append(Integer.toHexString(i));
+        }
+        return hex.toString();
+    }
+    public static int[] HEX2RGB(String hex) {
+        int[] rgb = new int[3];
+        for (int i = 0; i < rgb.length; i++) {
+            rgb[i] = Integer.parseInt(hex.substring(2*i, 2*(i+1)), 16);
+        }
+        return rgb;
+    }
+    public static int[] RGB2CMYK(int[] rgb) {
+        double r = rgb[0] / 255.0;
+        double g = rgb[1] / 255.0;
+        double b = rgb[2] / 255.0;
+
+        double k = 1 - Math.max(Math.max(r, g), b);
+        return new int[]{
+                (int) (((1 - r - k) / (1 - k)) * 100),
+                (int) (((1 - g - k) / (1 - k)) * 100),
+                (int) (((1 - b - k) / (1 - k)) * 100),
+                (int) (k * 100)
+        };
+    }
+    public static int[] CMYK2RGB(int[] cmyk) {
+        double c = cmyk[0] / 100.0;
+        double m = cmyk[1] / 100.0;
+        double y = cmyk[2] / 100.0;
+        double k = cmyk[3] / 100.0;
+
+        double r = 255 * (1 - c) * (1 - k);
+        double g = 255 * (1 - m) * (1 - k);
+        double b = 255 * (1 - y) * (1 - k);
+
+        return new int[] {(int) r, (int) g, (int) b};
     }
 }

@@ -1,10 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Abnormal-Tools:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7157c458-9316-40d9-89dc-5f8aa60a7c60" name="更改" comment="update README.md" />
+    <list default="true" id="7157c458-9316-40d9-89dc-5f8aa60a7c60" name="更改" comment="update README.md">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md.bak" beforeDir="false" afterPath="$PROJECT_DIR$/README.md.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MainGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MainGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/dateCalculation/DateCalculatorGUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/dateCalculation/DateCalculatorGUI$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/dateCalculation/DateCalculatorGUI$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/dateCalculation/DateCalculatorGUI$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/dateCalculation/DateCalculatorGUI$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/dateCalculation/DateCalculatorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/calculators/dateCalculation/DateCalculatorGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/factorial/Calculators.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/calculators/factorial/Calculators.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/factorial/FactorialGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/calculators/factorial/FactorialGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/geometricCalculation/GeometricCalculatorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/calculators/geometricCalculation/GeometricCalculatorGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/unitsConversion/AuxFunctions.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/calculators/unitsConversion/AuxFunctions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/unitsConversion/Converts.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/calculators/unitsConversion/Converts.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/unitsConversion/UnitConverterGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/calculators/unitsConversion/UnitConverterGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/audioConversion/AudioConversionGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/audioConversion/AudioConversionGUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/audioConversion/AudioConversionGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/audioConversion/AudioConversionGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/audioConversion/Mp3ToWav.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/imgConversion/ImageFormatConverterGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/imgConversion/ImageFormatConverterGUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/imgConversion/ImageFormatConverterGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/imgConversion/ImageFormatConverterGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMDumpLibrary.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMDumpLibrary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/base64/Bas64GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/base64/Bas64GUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/md5/Md5GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/md5/Md5GUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/utils/DependencyManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/utils/DependencyManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MainGUI.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/unitsConversion/AuxFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/unitsConversion/AuxFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/unitsConversion/Converts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/unitsConversion/Converts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/unitsConversion/UnitConverterGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/unitsConversion/UnitConverterGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/audioConversion/AudioConversionGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/audioConversion/AudioConversionGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/audioConversion/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/audioConversion/Converter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/audioConversion/Mp3ToWav.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NCMConverterGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NCMConverterGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NCMDumpLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NCMDumpLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NeteaseCrypt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NeteaseCrypt.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,6 +149,7 @@
     &quot;Gradle.Abnormal-Tools [:calculators.geometricCalculation.GeometricCalculatorGUI.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.Abnormal-Tools [:calculators.unitsConversion.UnitConverterGUI.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.Abnormal-Tools [:fileFunctions.audioConversion.AudioConversionGUI.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Abnormal-Tools [:fileFunctions.audioConversion.Converter.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.Abnormal-Tools [:fileFunctions.ncmdump.NCMConverterGUI.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.Abnormal-Tools [:otherFunctions.base64.Bas64GUI.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.Abnormal-Tools [:otherFunctions.randomNumGenerator.Generators.main()].executor&quot;: &quot;Run&quot;,

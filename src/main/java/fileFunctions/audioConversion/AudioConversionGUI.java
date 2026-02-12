@@ -11,7 +11,7 @@ public class AudioConversionGUI extends JFrame {
     public AudioConversionGUI() {
 
         // 窗口基本参数
-        setTitle("mp3转wav");
+        setTitle("音频格式转换");
         setSize(500, 200);
         setLayout(new BorderLayout());
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -104,7 +104,7 @@ public class AudioConversionGUI extends JFrame {
     }
 
     private static JLabel getFooterLabel(Font font) {
-        JLabel footerLabel = new JLabel("基于FFmpeg二次开发，需要下载压缩包并解压到lib目录下，转换需要时间，请耐心等待", SwingConstants.CENTER);
+        JLabel footerLabel = new JLabel("基于FFmpeg二次开发，需要下载FFmpeg本体并设置系统PATH，转换需要时间，请耐心等待", SwingConstants.CENTER);
         footerLabel.setFont(font);
         footerLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
         return footerLabel;

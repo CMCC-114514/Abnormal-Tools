@@ -1,11 +1,12 @@
 // build.gradle.kts
 plugins {
     java
+    idea
     application
 }
 
 group = "com.abnormal.tools"
-version = "1.4.3"
+version = "1.4.5"
 
 repositories {
     mavenCentral()

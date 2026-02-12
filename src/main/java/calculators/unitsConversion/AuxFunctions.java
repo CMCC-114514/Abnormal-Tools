@@ -1,5 +1,8 @@
 package calculators.unitsConversion;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class AuxFunctions {
     private AuxFunctions(){}
 
@@ -109,7 +112,7 @@ public class AuxFunctions {
 
     //存储空间标准单位
     public static double getStorageStd(byte choose, double num) {
-        double std = 0;
+        double std;
         if (choose == 1) {
             std = num / 8;    //bit
         } else {
