@@ -1,4 +1,4 @@
-package utils;
+package utils.dependencyManager;
 
 import java.io.*;
 import java.net.*;
@@ -6,7 +6,9 @@ import java.nio.file.*;
 
 public class DependencyManager {
 
-    public static void ensureDllPresent(String name, String url) throws Exception {
+    public static final String libUrl = "https://github.com/CMCC-114514/Abnormal_Dependencies/releases/download/lib/lib.zip";
+
+    public static void ensurePresent(String name) throws Exception {
         Path resource = AppPath.resourcePath(name);
 
         if (Files.exists(resource)) {
@@ -14,7 +16,7 @@ public class DependencyManager {
         }
 
         // 这里写你的下载逻辑
-        downloadFromServer(resource, url);
+        downloadFromServer(resource, libUrl);
         // verifySha256(resource);
     }
 

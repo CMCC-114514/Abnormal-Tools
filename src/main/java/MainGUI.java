@@ -19,6 +19,7 @@ import fileFunctions.ncmdump.NCMConverterGUI;
 import otherFunctions.base64.Bas64GUI;
 import otherFunctions.md5.Md5GUI;
 import otherFunctions.randomNumGenerator.RandomGUI;
+import utils.Initializer;
 
 public class MainGUI extends JFrame{
     private static final Dimension BUTTON_SIZE = new Dimension(80, 40);
@@ -215,10 +216,10 @@ public class MainGUI extends JFrame{
         try {
             // 设置系统外观
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            SwingUtilities.invokeLater(() -> new MainGUI(args).setVisible(true));
+            Initializer.main(args);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"错误" + e.getMessage(),"错误",JOptionPane.ERROR_MESSAGE);
         }
-
-        SwingUtilities.invokeLater(() -> new MainGUI(args).setVisible(true));
     }
 }

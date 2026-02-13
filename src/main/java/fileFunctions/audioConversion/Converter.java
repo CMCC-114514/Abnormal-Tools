@@ -1,6 +1,6 @@
 package fileFunctions.audioConversion;
 
-import utils.AppPath;
+import utils.dependencyManager.AppPath;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

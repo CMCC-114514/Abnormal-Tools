@@ -1,4 +1,4 @@
-package utils;
+package utils.dependencyManager;
 
 import java.nio.file.*;
 
@@ -40,7 +40,6 @@ public final class AppPath {
         }
     }
 
-
     public static Path libDir() {
         Path lib = appHome().resolve("lib");
         try {
@@ -53,6 +52,10 @@ public final class AppPath {
 
     public static Path resourcePath(String name) {
         return libDir().resolve(name);
+    }
+
+    public static boolean resourceCheck(String name) {
+        return Files.exists(AppPath.resourcePath(name));
     }
 
     public static void main(String[] args) {
