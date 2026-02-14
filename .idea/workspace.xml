@@ -10,85 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7157c458-9316-40d9-89dc-5f8aa60a7c60" name="更改" comment="update README.md">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/otherFunctions/fileDownloader/FileDownloaderGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/ZipExtractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md.bak" beforeDir="false" afterPath="$PROJECT_DIR$/README.md.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MainGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/bmi/BMI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/bmi/BmiGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/dateCalculation/AuxFunctions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/dateCalculation/Calculators.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/dateCalculation/Date.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/dateCalculation/DateCalculatorGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/dateCalculation/LunarCalendar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/dateCalculation/LunarDate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/factorial/Calculators.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/factorial/FactorialGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/geometricCalculation/Calculators.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/geometricCalculation/GeometricCalculatorGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/houseLoan/HouseLoan.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/houseLoan/HouseLoanGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/unitsConversion/AuxFunctions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/unitsConversion/Converts.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/unitsConversion/UnitConverterGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/audioConversion/AudioConversionGUI$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/audioConversion/AudioConversionGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/audioConversion/Converter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/imgConversion/Converter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/imgConversion/ImageFormatConverter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/imgConversion/ImageFormatConverterGUI$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/imgConversion/ImageFormatConverterGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMDumpLibrary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NeteaseCrypt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/base64/Bas64.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/base64/Bas64GUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/md5/MD5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/md5/Md5GUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/randomNumGenerator/Generators.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/randomNumGenerator/RandomGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/utils/Initializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/utils/dependencyManager/AppPath.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/utils/dependencyManager/DependencyManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/utils/dependencyManager/LibLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/utils/fileDownloader/Download.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/utils/fileDownloader/Worker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/AudioConverter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/AudioFormats.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Download.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Worker.class.uniqueId1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/compileTransaction/stash-dir/AudioConverter.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/audioConversion/AudioConversionGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/audioConversion/AudioConversionGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/audioConversion/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/audioConversion/Converter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/otherFunctions/randomNumGenerator/Generators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/otherFunctions/randomGenerator/Generators.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/otherFunctions/randomNumGenerator/RandomGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/otherFunctions/randomGenerator/RandomGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/dependencyManager/AppPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/dependencyManager/AppPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/dependencyManager/DependencyManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/dependencyManager/LibLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/dependencyManager/LibLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/fileDownloader/Download.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/fileDownloader/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Downloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/otherFunctions/fileDownloader/FileDownloaderGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/otherFunctions/fileDownloader/FileDownloaderGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +123,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "正在合并 main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "E:/Code/java/Abnormal-Tools",
     "project.structure.last.edited": "项目",

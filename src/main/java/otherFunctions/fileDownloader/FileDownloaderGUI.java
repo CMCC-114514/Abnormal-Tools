@@ -14,12 +14,15 @@ public class FileDownloaderGUI extends JFrame {
 
     public FileDownloaderGUI() {
         setTitle("文件下载器");
-        setSize(400, 230);
+        setSize(400, 250);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
+        JPanel mainPanel = new JPanel(new BorderLayout(10,10));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(15,15,10,15));
+
         JPanel inputPanel = new JPanel(new GridLayout(3, 2, 10, 10));
-        inputPanel.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
+        inputPanel.setBorder(new TitledBorder("输入下载链接和文件名"));
         JButton downloadButton = new JButton("开始下载");
 
         inputPanel.add(new JLabel("下载链接："));
@@ -35,9 +38,11 @@ public class FileDownloaderGUI extends JFrame {
         footerLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
         setLayout(new BorderLayout(10, 10));
-        add(inputPanel, BorderLayout.NORTH);
-        add(progressBar, BorderLayout.CENTER);
-        add(footerLabel, BorderLayout.SOUTH);
+        mainPanel.add(inputPanel, BorderLayout.NORTH);
+        mainPanel.add(progressBar, BorderLayout.CENTER);
+        mainPanel.add(footerLabel, BorderLayout.SOUTH);
+
+        add(mainPanel);
     }
 
     private void startDownload() {
