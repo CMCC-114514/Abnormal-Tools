@@ -17,8 +17,11 @@ import fileFunctions.ncmdump.NCMConverterGUI;
 
 // 其他功能
 import otherFunctions.base64.Bas64GUI;
+import otherFunctions.fileDownloader.FileDownloaderGUI;
 import otherFunctions.md5.Md5GUI;
-import otherFunctions.randomNumGenerator.RandomGUI;
+import otherFunctions.randomGenerator.RandomGUI;
+
+// 初始化
 import utils.Initializer;
 
 public class MainGUI extends JFrame{
@@ -78,7 +81,7 @@ public class MainGUI extends JFrame{
         aboutItem.addActionListener(e -> JOptionPane.showMessageDialog(
                 frame,
                 """
-                        某科学的工具箱 v1.4.6
+                        某科学的工具箱 v1.4.7
                         
                         爱来自kk3TWT
                         
@@ -177,36 +180,37 @@ public class MainGUI extends JFrame{
     // 其他功能
     private static JPanel getOtherFunctionPanel(String[] args, Font font) {
         // 其他功能
-        JPanel otherFunctionPanel = new JPanel(new GridLayout(1, 3, 10, 10));
+        JPanel otherFunctionPanel = new JPanel(new GridLayout(2, 3, 10, 10));
         otherFunctionPanel.setBorder(new TitledBorder("其他功能"));
 
         JButton md5 = new JButton("MD5摘要");
         JButton base64 = new JButton("Base64编解码");
         JButton randomNum = new JButton("随机数生成");
-        // JButton bpmAnalyser = new JButton("BPM分析");
+        JButton fileDownloader = new JButton("文件下载器");
 
         // 设置按钮字体
         md5.setFont(font);
         base64.setFont(font);
         randomNum.setFont(font);
-        // bpmAnalyser.setFont(font);
+        fileDownloader.setFont(font);
 
         // 设置按钮大小
         md5.setPreferredSize(BUTTON_SIZE);
         base64.setPreferredSize(BUTTON_SIZE);
         randomNum.setPreferredSize(BUTTON_SIZE);
-        // bpmAnalyser.setPreferredSize(BUTTON_SIZE);
+        fileDownloader.setPreferredSize(BUTTON_SIZE);
 
         // 按钮监听
         md5.addActionListener(e -> Md5GUI.main(args));
         base64.addActionListener(e -> Bas64GUI.main(args));
         randomNum.addActionListener(e -> RandomGUI.main(args));
+        fileDownloader.addActionListener(e -> FileDownloaderGUI.main(args));
 
         // 添加按钮
         otherFunctionPanel.add(md5);
         otherFunctionPanel.add(base64);
         otherFunctionPanel.add(randomNum);
-        // otherFunctionPanel.add(bpmAnalyser);
+        otherFunctionPanel.add(fileDownloader);
 
         return otherFunctionPanel;
     }
@@ -216,8 +220,10 @@ public class MainGUI extends JFrame{
         try {
             // 设置系统外观
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            SwingUtilities.invokeLater(() -> new MainGUI(args).setVisible(true));
-            Initializer.main(args);
+
+            if (Initializer.isInitialized(args)) {
+                SwingUtilities.invokeLater(() -> new MainGUI(args).setVisible(true));
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"错误" + e.getMessage(),"错误",JOptionPane.ERROR_MESSAGE);
         }

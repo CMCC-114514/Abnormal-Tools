@@ -1,4 +1,4 @@
-package otherFunctions.randomNumGenerator;
+package otherFunctions.randomGenerator;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;

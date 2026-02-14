@@ -9,7 +9,7 @@ import java.nio.file.Path;
 
 public class Converter {
 
-    private static final String FFMPEG_PATH_SYSTEM = System.getenv("ffmpeg"); // 或 "ffmpeg"
+    private static final String FFMPEG_PATH_SYSTEM = System.getenv("ffmpeg");
     private static final String FFMPEG_PATH = AppPath.resourcePath("ffmpeg\\ffmpeg.exe").toString();
 
     // 假设已经设置了系统变量PATH
@@ -20,7 +20,7 @@ public class Converter {
     public static void convert(String input, String output) throws Exception {
         String path = Files.exists(Path.of(FFMPEG_PATH_SYSTEM)) ? "ffmpeg" : FFMPEG_PATH;
 
-        if (!Files.exists(Path.of(FFMPEG_PATH))) {
+        if (!Files.exists(Path.of(path))) {
             throw new Exception("没有在计算机上寻找到ffmpeg，请确保其已被安装并设置了系统PATH");
         }
 

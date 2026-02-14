@@ -14,7 +14,7 @@ public final class LibLoader {
             synchronized (LibLoader.class) {
                 if (instance == null) {
                     try {
-                        // 1. 确保 DLL 已经下载
+                        // 1. 确保 资源文件 已经下载
                         AppPath.resourceCheck(name);
 
                         // 2. 设置 JNA 搜索路径

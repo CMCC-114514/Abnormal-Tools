@@ -1,4 +1,4 @@
-package utils.fileDownloader;
+package utils;
 
 import javax.swing.*;
 import java.io.*;
@@ -8,14 +8,14 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.time.Duration;
+import java.util.Optional;
 
-public class Worker extends SwingWorker<Void, Integer> {
+public class Downloader extends SwingWorker<Void, Integer> {
 
     private final Path target;
     private final String url;
 
-    public Worker(Path target, String url) {
+    public Downloader(Path target, String url) {
         this.target = target;
         this.url = url;
     }
@@ -70,8 +70,7 @@ public class Worker extends SwingWorker<Void, Integer> {
     protected void done() {
         try {
             get(); // 触发异常检查
-            JOptionPane.showMessageDialog(null, "依赖下载完成，请重新启动程序");
-            System.exit(0);
+            JOptionPane.showMessageDialog(null, "下载完成！");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
                     "下载失败：" + e.getMessage(),

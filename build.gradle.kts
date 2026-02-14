@@ -1,12 +1,11 @@
 // build.gradle.kts
 plugins {
     java
-    idea
     application
 }
 
 group = "com.abnormal.tools"
-version = "1.4.5"
+version = "1.4.7"
 
 repositories {
     mavenCentral()
@@ -29,8 +28,22 @@ java {
         languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
+
 tasks {
     compileJava {
         options.encoding = "UTF-8"
     }
+}
+
+tasks.jar {
+    manifest {
+        attributes(
+            "Main-Class" to "MainGUI" // 替换为你的主类全限定名
+        )
+    }
+    // 将依赖打包进 JAR
+    from(configurations.runtimeClasspath.get().map {
+        if (it.isDirectory) it else zipTree(it)
+    })
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }

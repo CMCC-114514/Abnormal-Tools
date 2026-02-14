@@ -29,8 +29,8 @@ public final class AppPath {
             }
 
             // ② 发布期：jar 在 app 目录
-            if (path.endsWith(".jar")) {
-                return location.getParent().getParent();
+            if (path.endsWith(".exe")) {
+                return location.getParent();
             }
 
             throw new IllegalStateException("无法识别运行环境: " + path);
