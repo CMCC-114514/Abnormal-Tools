@@ -1,7 +1,5 @@
 package utils;
 
-import utils.dependencyManager.AppPath;
-
 import javax.swing.*;
 import java.awt.*;
 import java.nio.file.Files;
@@ -23,7 +21,11 @@ public class Initializer extends JFrame {
                 if (!Files.exists(libZip)){
                     Initializer.main(args);
                 }
+
+                JOptionPane.showMessageDialog(null, "需要时间解压依赖包，请等一会");
                 ZipExtractor.unzip(libZip, AppPath.appHome());
+                JOptionPane.showMessageDialog(null, "依赖解压完成，请重新启动程序");
+
                 Files.write(initFile, "1".getBytes(), StandardOpenOption.CREATE_NEW);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -39,7 +41,7 @@ public class Initializer extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         progressBar.setStringPainted(true);
-        JLabel footerLabel = new JLabel("初次启动，需要下载相关依赖，下载完成后请重新启动程序", SwingConstants.CENTER);
+        JLabel footerLabel = new JLabel("初次启动，需要下载相关依赖", SwingConstants.CENTER);
         footerLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
 

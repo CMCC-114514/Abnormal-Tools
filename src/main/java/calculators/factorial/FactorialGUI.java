@@ -75,8 +75,8 @@ public class FactorialGUI extends JFrame {
                     throw new Exception("m必须小于等于n");
                 }
 
-                int permutation = Calculators.Permutation(m, n);
-                int combination = Calculators.Combination(m, n);
+                long permutation = Calculators.Permutation(m, n);
+                long combination = Calculators.Combination(m, n);
 
                 String outText = String.format("""
                         排列数A：%d
@@ -126,7 +126,7 @@ public class FactorialGUI extends JFrame {
                     throw new Exception("输入的数字必须大等于0");
                 }
 
-                int factorial = Calculators.Factorial(m);
+                long factorial = Calculators.Factorial(m);
 
                 String outText = String.format("""
                         %d 的阶乘：%d

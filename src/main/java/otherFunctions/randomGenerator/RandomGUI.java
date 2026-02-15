@@ -56,7 +56,7 @@ public class RandomGUI extends JFrame{
         inputPanel.add(minField);
 
         JTextField maxField = new JTextField();
-        inputPanel.add(new JLabel("最大值"));
+        inputPanel.add(new JLabel("最大值："));
         inputPanel.add(maxField);
 
         JButton generateButton = new JButton("生成");
@@ -130,8 +130,8 @@ public class RandomGUI extends JFrame{
     private void setupLayout() {
         // 设置统一的字体
         Font titleFont = new Font("微软雅黑", Font.BOLD, 16);
-        Font labelFont = new Font("宋体", Font.PLAIN, 14);
-        Font buttonFont = new Font("宋体", Font.BOLD, 14);
+        Font labelFont = new Font("微软雅黑", Font.PLAIN, 13);
+        Font buttonFont = new Font("微软雅黑", Font.PLAIN, 13);
         Font tableFont = new Font("宋体", Font.PLAIN, 13);
 
         // 设置所有组件的字体

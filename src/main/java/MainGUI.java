@@ -13,13 +13,14 @@ import calculators.houseLoan.HouseLoanGUI;
 // 文件功能
 import fileFunctions.audioConversion.AudioConversionGUI;
 import fileFunctions.imgConversion.ImageFormatConverterGUI;
-import fileFunctions.ncmdump.NCMConverterGUI;
+import fileFunctions.musicUnlocker.MusicUnlockerGUI;
+import fileFunctions.fileDownloader.FileDownloaderGUI;
 
 // 其他功能
 import otherFunctions.base64.Bas64GUI;
-import otherFunctions.fileDownloader.FileDownloaderGUI;
 import otherFunctions.md5.Md5GUI;
 import otherFunctions.randomGenerator.RandomGUI;
+import otherFunctions.scoreBoard.ScoreBoard;
 
 // 初始化
 import utils.Initializer;
@@ -81,7 +82,7 @@ public class MainGUI extends JFrame{
         aboutItem.addActionListener(e -> JOptionPane.showMessageDialog(
                 frame,
                 """
-                        某科学的工具箱 v1.4.7
+                        某科学的工具箱 v1.4.8
                         
                         爱来自kk3TWT
                         
@@ -147,34 +148,39 @@ public class MainGUI extends JFrame{
     // 文件功能
     private static JPanel getFileFunctionPanel(String[] args, Font font) {
         // 文件功能
-        JPanel convertorPanel = new JPanel(new GridLayout(1, 3, 10, 10));
-        convertorPanel.setBorder(new TitledBorder("文件功能"));
+        JPanel fileFunctionPanel = new JPanel(new GridLayout(2, 3, 10, 10));
+        fileFunctionPanel.setBorder(new TitledBorder("文件功能"));
 
-        JButton ncmDump = new JButton("ncmDump");
+        JButton ncmDump = new JButton("音乐解锁");
         JButton imgConversion = new JButton("图片格式转换");
         JButton audioConversion = new JButton("音频格式转换");
+        JButton fileDownloader = new JButton("文件下载器");
 
         // 设置按钮字体
         ncmDump.setFont(font);
         imgConversion.setFont(font);
         audioConversion.setFont(font);
+        fileDownloader.setFont(font);
 
         // 设置按钮大小
         ncmDump.setPreferredSize(BUTTON_SIZE);
         imgConversion.setPreferredSize(BUTTON_SIZE);
         audioConversion.setPreferredSize(BUTTON_SIZE);
+        fileDownloader.setPreferredSize(BUTTON_SIZE);
 
         // 按钮监听
-        ncmDump.addActionListener(e -> NCMConverterGUI.main(args));
+        ncmDump.addActionListener(e -> MusicUnlockerGUI.main(args));
         imgConversion.addActionListener(e -> ImageFormatConverterGUI.main(args));
         audioConversion.addActionListener(e -> AudioConversionGUI.main(args));
+        fileDownloader.addActionListener(e -> FileDownloaderGUI.main(args));
 
         // 添加按钮
-        convertorPanel.add(ncmDump);
-        convertorPanel.add(imgConversion);
-        convertorPanel.add(audioConversion);
+        fileFunctionPanel.add(ncmDump);
+        fileFunctionPanel.add(imgConversion);
+        fileFunctionPanel.add(audioConversion);
+        fileFunctionPanel.add(fileDownloader);
 
-        return convertorPanel;
+        return fileFunctionPanel;
     }
 
     // 其他功能
@@ -186,31 +192,31 @@ public class MainGUI extends JFrame{
         JButton md5 = new JButton("MD5摘要");
         JButton base64 = new JButton("Base64编解码");
         JButton randomNum = new JButton("随机数生成");
-        JButton fileDownloader = new JButton("文件下载器");
+        JButton scoreBoard = new JButton("计分板");
 
         // 设置按钮字体
         md5.setFont(font);
         base64.setFont(font);
         randomNum.setFont(font);
-        fileDownloader.setFont(font);
+        scoreBoard.setFont(font);
 
         // 设置按钮大小
         md5.setPreferredSize(BUTTON_SIZE);
         base64.setPreferredSize(BUTTON_SIZE);
         randomNum.setPreferredSize(BUTTON_SIZE);
-        fileDownloader.setPreferredSize(BUTTON_SIZE);
+        scoreBoard.setPreferredSize(BUTTON_SIZE);
 
         // 按钮监听
         md5.addActionListener(e -> Md5GUI.main(args));
         base64.addActionListener(e -> Bas64GUI.main(args));
         randomNum.addActionListener(e -> RandomGUI.main(args));
-        fileDownloader.addActionListener(e -> FileDownloaderGUI.main(args));
+        scoreBoard.addActionListener(e -> ScoreBoard.main(args));
 
         // 添加按钮
         otherFunctionPanel.add(md5);
         otherFunctionPanel.add(base64);
         otherFunctionPanel.add(randomNum);
-        otherFunctionPanel.add(fileDownloader);
+        otherFunctionPanel.add(scoreBoard);
 
         return otherFunctionPanel;
     }

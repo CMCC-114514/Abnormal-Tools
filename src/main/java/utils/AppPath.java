@@ -1,4 +1,4 @@
-package utils.dependencyManager;
+package utils;
 
 import java.nio.file.*;
 

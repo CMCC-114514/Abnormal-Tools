@@ -1,4 +1,4 @@
-package otherFunctions.fileDownloader;
+package fileFunctions.fileDownloader;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;

@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7157c458-9316-40d9-89dc-5f8aa60a7c60" name="更改" comment="update README.md">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/checksums/checksums.lock" afterDir="false" />
+    <list default="true" id="7157c458-9316-40d9-89dc-5f8aa60a7c60" name="更改" comment="Update">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/musicUnlocker/Unlocker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/otherFunctions/scoreBoard/ScoreBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.bin" afterDir="false" />
@@ -18,8 +19,36 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md.bak" beforeDir="false" afterPath="$PROJECT_DIR$/README.md.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/otherFunctions/fileDownloader/FileDownloaderGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/otherFunctions/fileDownloader/FileDownloaderGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MainGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MainGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/factorial/Calculators.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/calculators/factorial/Calculators.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/calculators/factorial/FactorialGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/calculators/factorial/FactorialGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/audioConversion/Converter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/audioConversion/Converter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMConverterGUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NCMDumpLibrary.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fileFunctions/ncmdump/NeteaseCrypt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/fileDownloader/FileDownloaderGUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/randomGenerator/RandomGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/otherFunctions/randomGenerator/RandomGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/utils/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/utils/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/utils/dependencyManager/AppPath.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/utils/dependencyManager/LibLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/Abnormal-Tools-1.4.7.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Abnormal-Tools-1.4.7.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/factorial/Calculators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/factorial/Calculators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/factorial/FactorialGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/factorial/FactorialGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/audioConversion/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/audioConversion/Converter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NCMConverterGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/musicUnlocker/MusicUnlockerGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NCMDumpLibrary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fileFunctions/ncmdump/NeteaseCrypt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/otherFunctions/fileDownloader/FileDownloaderGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fileFunctions/fileDownloader/FileDownloaderGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/otherFunctions/randomGenerator/RandomGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/otherFunctions/randomGenerator/RandomGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/dependencyManager/AppPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/AppPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/dependencyManager/LibLoader.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +128,7 @@
     "Gradle.Abnormal-Tools [:AudioConverter.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:BpmAnalyzer.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:MainGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:ScoreBoard.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:bpm.Mp3BpmAnalyzer.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:calculators.bmi.BmiGUI.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:calculators.dateCalculation.DateCalculatorGUI.main()].executor": "Run",
@@ -108,10 +138,12 @@
     "Gradle.Abnormal-Tools [:fileFunctions.audioConversion.AudioConversionGUI.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:fileFunctions.audioConversion.Converter.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:fileFunctions.ncmdump.NCMConverterGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:fileFunctions.unlockMusic.NCMConverterGUI.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:otherFunctions.base64.Bas64GUI.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:otherFunctions.fileDownloader.Downloader.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:otherFunctions.fileDownloader.FileDownloaderGUI.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:otherFunctions.fileDownloader.fileDownloader.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:otherFunctions.randomGenerator.RandomGUI.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:otherFunctions.randomNumGenerator.Generators.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:otherFunctions.randomNumGenerator.RandomGUI.main()].executor": "Run",
     "Gradle.Abnormal-Tools [:utils.Initialize.main()].executor": "Run",
@@ -123,7 +155,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "正在合并 main",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "E:/Code/java/Abnormal-Tools",
     "project.structure.last.edited": "项目",

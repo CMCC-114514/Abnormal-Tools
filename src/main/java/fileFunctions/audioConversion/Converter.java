@@ -1,6 +1,6 @@
 package fileFunctions.audioConversion;
 
-import utils.dependencyManager.AppPath;
+import utils.AppPath;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -21,7 +21,7 @@ public class Converter {
         String path = Files.exists(Path.of(FFMPEG_PATH_SYSTEM)) ? "ffmpeg" : FFMPEG_PATH;
 
         if (!Files.exists(Path.of(path))) {
-            throw new Exception("没有在计算机上寻找到ffmpeg，请确保其已被安装并设置了系统PATH");
+            throw new Exception("没有在计算机上寻找到ffmpeg，可能需要重新下载依赖");
         }
 
         ProcessBuilder pb = new ProcessBuilder(

@@ -1,15 +1,16 @@
-package fileFunctions.ncmdump;
+package fileFunctions.musicUnlocker;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.nio.file.Path;
 
-public class NCMConverterGUI extends JFrame {
+public class MusicUnlockerGUI extends JFrame {
     private final JTextField inputField;
     private final JTextField outputField;
 
-    public NCMConverterGUI() {
-        setTitle("NCMDump");
+    public MusicUnlockerGUI() {
+        setTitle("音乐解锁");
         setSize(500, 200);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -23,7 +24,7 @@ public class NCMConverterGUI extends JFrame {
         JPanel inputPanel = new JPanel(new GridLayout(1, 2, 10, 10));
 
         inputField = new JTextField(30);
-        JButton inputBtn = new JButton("选择NCM文件");
+        JButton inputBtn = new JButton("选择文件或文件夹");
         inputBtn.addActionListener(e -> chooseInputFile());
         inputPanel.add(inputField);
         inputPanel.add(inputBtn);
@@ -55,21 +56,25 @@ public class NCMConverterGUI extends JFrame {
         chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
             @Override
             public boolean accept(File f) {
-                return f.getName().toLowerCase().endsWith(".ncm") || f.isDirectory();
+                for (String format : Unlocker.DECRYPTED_FORMAT) {
+                    if (f.getName().endsWith("." + format) || f.getName().endsWith("." + format.toLowerCase())) {
+                        return true;
+                    }
+                }
+                return f.isDirectory();
             }
 
             @Override
             public String getDescription() {
-                return "NCM文件 (*.ncm)";
+                return "加密音频文件";
             }
         });
 
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             inputField.setText(chooser.getSelectedFile().getAbsolutePath());
             // 自动生成输出文件名
-            String inputPath = inputField.getText();
-            String outputPath = inputPath.replace(".ncm", ".mp3");
-            outputField.setText(outputPath);
+            Path outputPath = Path.of(inputField.getText()).getParent();
+            outputField.setText(outputPath.toString());
         }
     }
 
@@ -91,25 +96,22 @@ public class NCMConverterGUI extends JFrame {
             return;
         }
 
-
-        try(NeteaseCrypt crypt = new NeteaseCrypt(input)) {
-            crypt.dump("");
-            crypt.fixMetadata();
+        try {
+            Unlocker.decrypt(input, output);
             JOptionPane.showMessageDialog(this, "转换成功!");
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "转换失败: " + e.getMessage());
         }
     }
 
     private static JLabel getFooterLabel(Font font) {
-        JLabel footerLabel = new JLabel("选择ncm文件，程序将自动生成输出位置", SwingConstants.CENTER);
+        JLabel footerLabel = new JLabel("仅用于学习和技术研究，转换后请在24小时内删除", SwingConstants.CENTER);
         footerLabel.setFont(font);
         footerLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
         return footerLabel;
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new NCMConverterGUI().setVisible(true));
+        SwingUtilities.invokeLater(() -> new MusicUnlockerGUI().setVisible(true));
     }
 }
