@@ -105,7 +105,7 @@ public class MusicUnlockerGUI extends JFrame {
     }
 
     private static JLabel getFooterLabel(Font font) {
-        JLabel footerLabel = new JLabel("仅用于学习和技术研究，转换后请在24小时内删除", SwingConstants.CENTER);
+        JLabel footerLabel = new JLabel("基于um二次开发，仅用于学习和技术研究，转换后请在24小时内删除", SwingConstants.CENTER);
         footerLabel.setFont(font);
         footerLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
         return footerLabel;

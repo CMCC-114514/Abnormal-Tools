@@ -987,12 +987,14 @@ public class UnitConverterGUI extends JFrame {
         gbc.gridy = 1;
         gbc.weightx = 1;
         codeBox.addActionListener(e -> {
-            panelIndex[1] = codeBox.getSelectedIndex();
-            inputPanel.add(codePanels[panelIndex[1]],gbc);
-            inputPanel.remove(codePanels[panelIndex[0]]);
-            inputPanel.revalidate();
-            inputPanel.repaint();
-            panelIndex[0] = panelIndex[1];
+            if (panelIndex[0] != codeBox.getSelectedIndex()) {
+                panelIndex[1] = codeBox.getSelectedIndex();
+                inputPanel.add(codePanels[panelIndex[1]], gbc);
+                inputPanel.remove(codePanels[panelIndex[0]]);
+                inputPanel.revalidate();
+                inputPanel.repaint();
+                panelIndex[0] = panelIndex[1];
+            }
         });
 
         convertButton.addActionListener(e -> {
@@ -1055,9 +1057,7 @@ public class UnitConverterGUI extends JFrame {
             }
         });
 
-        clearButton.addActionListener(e -> {
-            tableModel.setRowCount(0);
-        });
+        clearButton.addActionListener(e -> tableModel.setRowCount(0));
 
         hexField.addActionListener(e -> convertButton.doClick());
         bField.addActionListener(e -> convertButton.doClick());

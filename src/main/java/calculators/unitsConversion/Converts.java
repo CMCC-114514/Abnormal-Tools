@@ -137,7 +137,7 @@ public class Converts {
         return result;
     }
 
-    // 颜色码转换函数
+    // 换算方法9：颜色码转换函数
     public static String RGB2HEX(int[] rgb) {
         StringBuilder hex = new StringBuilder("#");
         for (int i : rgb) {

@@ -42,7 +42,7 @@ public class Date {
     }
 
     public void showDate() {
-        System.out.print(year + "年" + month + "月" + day + "日");
+        System.out.println(year + "年" + month + "月" + day + "日");
     }
 
     public void showNumOfYears() {
