@@ -25,7 +25,8 @@ public final class AppPath {
                         .getParent()   // main
                         .getParent()   // java
                         .getParent()   // classes
-                        .getParent();  // build
+                        .getParent()   // build
+                        .getParent();   // 项目根目录的父目录
             }
 
             // ② 发布期：jar 在 app 目录

@@ -11,6 +11,7 @@ public class ScoreBoard extends JFrame {
 
     private final JLabel teamA = new JLabel(String.valueOf(scoreA));
     private final JLabel teamB = new JLabel(String.valueOf(scoreB));
+
     public ScoreBoard() {
         setTitle("计分板");
         setSize(250,250);

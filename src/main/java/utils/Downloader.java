@@ -8,7 +8,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Optional;
 
 public class Downloader extends SwingWorker<Void, Integer> {
 
@@ -22,61 +21,100 @@ public class Downloader extends SwingWorker<Void, Integer> {
 
     @Override
     protected Void doInBackground() throws Exception {
+
         HttpClient client = HttpClient.newBuilder()
                 .followRedirects(HttpClient.Redirect.ALWAYS)
                 .build();
 
-        HttpRequest.Builder requestBuilder = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                // .timeout(Duration.ofSeconds(30)) // 设置读取超时
-                .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
-                .header("Accept", "*/*")
-                .header("Accept-Encoding", "identity");
-        HttpRequest request = requestBuilder.build();
-
-        // 获取InputStream
-        HttpResponse<InputStream> response = client.send(request, HttpResponse.BodyHandlers.ofInputStream());
-
-        int statusCode = response.statusCode();
-        if (statusCode != 200) {
-            throw new Exception("下载失败，ERROR = " + statusCode);
+        // ===== 1. 读取本地已下载大小 =====
+        long existingSize = 0;
+        if (Files.exists(target)) {
+            existingSize = Files.size(target);
         }
 
-        // 获取文件大小
-        long contentLength = response.headers().firstValueAsLong("Content-Length").orElse(-1);
+        HttpRequest.Builder requestBuilder = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .header("User-Agent", "Mozilla/5.0")
+                .header("Accept", "*/*")
+                .header("Accept-Encoding", "identity");
+
+        // ===== 2. 如果存在文件则请求 Range =====
+        if (existingSize > 0) {
+            requestBuilder.header("Range", "bytes=" + existingSize + "-");
+        }
+
+        HttpRequest request = requestBuilder.build();
+
+        HttpResponse<InputStream> response =
+                client.send(request, HttpResponse.BodyHandlers.ofInputStream());
+
+        int status = response.statusCode();
+
+        // ===== 3. 校验服务器是否支持断点 =====
+        if (existingSize > 0 && status != 206) {
+            // 服务器不支持断点，重新下载
+            existingSize = 0;
+        }
+
+        if (status != 200 && status != 206) {
+            throw new Exception("下载失败，HTTP=" + status);
+        }
+
+        long contentLength = response.headers()
+                .firstValueAsLong("Content-Length")
+                .orElse(-1);
+
+        // ===== 4. 总大小 = 已下载 + 本次 =====
+        long totalSize = contentLength > 0 ? contentLength + existingSize : -1;
 
         // 创建父目录
-        // Files.createDirectories(target.getParent());
+        Files.createDirectories(target.getParent());
 
         try (InputStream in = response.body();
-             OutputStream out = Files.newOutputStream(target)) {
+             OutputStream out = new BufferedOutputStream(
+                     new FileOutputStream(target.toFile(), existingSize > 0))) {
 
             byte[] buffer = new byte[8192];
-            long totalBytesRead = 0;
+            long totalBytesRead = existingSize;
             int bytesRead;
 
             while ((bytesRead = in.read(buffer)) != -1) {
+
+                if (isCancelled()) break;
+
                 out.write(buffer, 0, bytesRead);
                 totalBytesRead += bytesRead;
 
-                int percent = (int) (totalBytesRead * 100 / contentLength);
-                setProgress(percent); // 关键：通知 Swing
+                if (totalSize > 0) {
+                    int percent = (int) (totalBytesRead * 100 / totalSize);
+                    setProgress(Math.min(percent, 100));
+                }
             }
         }
+
         return null;
     }
 
     @Override
     protected void done() {
+
         try {
-            get(); // 触发异常检查
+            get(); // 完成 or 异常 or 取消
+
             JOptionPane.showMessageDialog(null, "下载完成！");
+
+        } catch (java.util.concurrent.CancellationException e) {
+            // 用户暂停
+            JOptionPane.showMessageDialog(null, "下载已暂停");
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,
+            JOptionPane.showMessageDialog(
+                    null,
                     "下载失败：" + e.getMessage(),
                     "错误",
-                    JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.ERROR_MESSAGE
+            );
         }
     }
-}
 
+}

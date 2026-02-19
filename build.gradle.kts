@@ -4,8 +4,7 @@ plugins {
     application
 }
 
-group = "com.abnormal.tools"
-version = "1.4.7"
+group = "kk3twt.abnormal.tools"
 
 repositories {
     mavenCentral()

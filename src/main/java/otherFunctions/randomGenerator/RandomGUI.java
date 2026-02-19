@@ -34,14 +34,6 @@ public class RandomGUI extends JFrame{
         tabbedPane.addTab("随机字符串生成", strPanel);
 
         mainPanel.add(tabbedPane, BorderLayout.CENTER);
-
-        JLabel infoLabel = new JLabel(
-                "<html><center>随机生成的字符串包括符号</center></html>",
-                SwingConstants.CENTER
-        );
-        infoLabel.setFont(new Font("宋体", Font.PLAIN, 12));
-        infoLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        mainPanel.add(infoLabel, BorderLayout.SOUTH);
     }
 
     private void createNumPanel() {
@@ -92,17 +84,27 @@ public class RandomGUI extends JFrame{
         strPanel = new JPanel(new BorderLayout(10, 10));
         strPanel.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
 
-        JPanel inputPanel = new JPanel(new GridLayout(2,2, 10, 10));
-        inputPanel.setBorder(new TitledBorder("输入参数"));
-
+        // 输入面板
+        JPanel inputPanel = new JPanel(new GridLayout(1, 2, 10, 10));
+        inputPanel.setBorder(new TitledBorder("输入字符串长度"));
         JTextField lengthField = new JTextField();
-        inputPanel.add(new JLabel("字符串长度："));
-        inputPanel.add(lengthField);
-
         JButton generateButton = new JButton("生成");
-        inputPanel.add(new Label(""));
+        inputPanel.add(lengthField);
         inputPanel.add(generateButton);
 
+        // 复选框
+        JPanel setPanel = new JPanel(new GridLayout(4, 1,5,5));
+        setPanel.setBorder(new TitledBorder("字符类型"));
+        JCheckBox numBox = new JCheckBox("数字");
+        JCheckBox capitalBox = new JCheckBox("大写字母");
+        JCheckBox lowerBox = new JCheckBox("小写字母");
+        JCheckBox punctuationBox = new JCheckBox("标点符号");
+        setPanel.add(numBox);
+        setPanel.add(capitalBox);
+        setPanel.add(lowerBox);
+        setPanel.add(punctuationBox);
+
+        // 输出结果
         JTextArea resultArea = new JTextArea(1, 30);
         resultArea.setEditable(false);
         resultArea.setFont(new Font("宋体", Font.PLAIN, 14));
@@ -110,13 +112,26 @@ public class RandomGUI extends JFrame{
         scrollPane.setBorder(new TitledBorder("生成结果"));
 
         strPanel.add(inputPanel, BorderLayout.NORTH);
+        strPanel.add(setPanel, BorderLayout.EAST);
         strPanel.add(scrollPane, BorderLayout.CENTER);
 
+        // 事件监听
         generateButton.addActionListener(e -> {
             try {
                 int length = Integer.parseInt(lengthField.getText().trim());
 
-                resultArea.setText(Generators.randomStr(length));
+                String characters = "";
+                Generators generators = new Generators();
+                if (numBox.isSelected())
+                    characters += Generators.NUM;
+                if (capitalBox.isSelected())
+                    characters += Generators.CAPITAL;
+                if (lowerBox.isSelected())
+                    characters += Generators.LOWERCASE;
+                if (punctuationBox.isSelected())
+                    characters += Generators.PUNCTUATIONS;
+
+                resultArea.setText(Generators.randomStr(length, characters));
             } catch (NumberFormatException ex) {
                 resultArea.setText("错误：请输入有效的内容！");
             } catch (IllegalArgumentException ex) {

@@ -82,7 +82,7 @@ public class MainGUI extends JFrame{
         aboutItem.addActionListener(e -> JOptionPane.showMessageDialog(
                 frame,
                 """
-                        某科学的工具箱 v1.5.1
+                        某科学的工具箱 v1.5.2
                         
                         爱来自kk3TWT
                         
@@ -230,6 +230,7 @@ public class MainGUI extends JFrame{
             if (Initializer.isInitialized(args)) {
                 SwingUtilities.invokeLater(() -> new MainGUI(args).setVisible(true));
             }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"错误" + e.getMessage(),"错误",JOptionPane.ERROR_MESSAGE);
         }

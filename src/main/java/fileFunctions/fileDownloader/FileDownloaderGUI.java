@@ -1,5 +1,7 @@
 package fileFunctions.fileDownloader;
 
+import utils.Downloader;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -11,6 +13,7 @@ public class FileDownloaderGUI extends JFrame {
     private final JProgressBar progressBar = new JProgressBar(0, 100);
     private final JTextField urlField = new JTextField();
     private final JTextField fileNameField = new JTextField();
+    private Downloader downloader;
 
     public FileDownloaderGUI() {
         setTitle("文件下载器");
@@ -23,15 +26,23 @@ public class FileDownloaderGUI extends JFrame {
 
         JPanel inputPanel = new JPanel(new GridLayout(3, 2, 10, 10));
         inputPanel.setBorder(new TitledBorder("输入下载链接和文件名"));
-        JButton downloadButton = new JButton("开始下载");
 
         inputPanel.add(new JLabel("下载链接："));
         inputPanel.add(urlField);
         inputPanel.add(new JLabel("文件名："));
         inputPanel.add(fileNameField);
-        inputPanel.add(new JLabel());
+
+        JButton downloadButton = new JButton("开始");
         inputPanel.add(downloadButton);
+
+        JButton pauseButton = new JButton("暂停");
+        inputPanel.add(pauseButton);
+
         downloadButton.addActionListener(e -> startDownload());
+        pauseButton.addActionListener(e -> {
+            pause();
+            downloadButton.setText("继续");
+        });
 
         progressBar.setStringPainted(true);
         JLabel footerLabel = new JLabel("默认下载到 C:\\Users\\user-name\\Downloads", SwingConstants.CENTER);
@@ -50,14 +61,20 @@ public class FileDownloaderGUI extends JFrame {
         Path target = Paths.get(System.getProperty("user.home"), "Downloads").resolve(fileName);
         String url = urlField.getText();
 
-        utils.Downloader Downloader = new utils.Downloader(target, url);
-        Downloader.addPropertyChangeListener(evt -> {
+        downloader = new Downloader(target, url);
+        downloader.addPropertyChangeListener(evt -> {
             if ("progress".equals(evt.getPropertyName())) {
                 progressBar.setValue((Integer) evt.getNewValue());
             }
         });
 
-        Downloader.execute();
+        downloader.execute();
+    }
+
+    private void pause() {
+        if (downloader != null && !downloader.isDone()) {
+            downloader.cancel(true);
+        }
     }
 
     public static void main(String[] args) {
