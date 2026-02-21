@@ -96,28 +96,40 @@ public class UnitConverterGUI extends JFrame {
         JTextField valueField = new JTextField();
         inputPanel.add(valueField, gbc);
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 第二列：单位选择
-        gbc.gridx = 1;
-        gbc.gridy = 0;
+        gbc.gridx = 0;
+        gbc.gridy = 3;
         gbc.weightx = 0;
         inputPanel.add(new JLabel("单位:"), gbc);
 
-        gbc.gridx = 1;
-        gbc.gridy = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 4;
         gbc.weightx = 1;
         JComboBox<String> unitCombo = new JComboBox<>(Converts.LENGTH_UNITS);
         inputPanel.add(unitCombo, gbc);
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 第三列：按钮
-        JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 5, 5));
+        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
         JButton convertButton = new JButton("换算");
         JButton clearButton = new JButton("清空");
         buttonPanel.add(convertButton);
         buttonPanel.add(clearButton);
 
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.gridheight = 2;
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.gridwidth = 2;
         gbc.weightx = 0;
         inputPanel.add(buttonPanel, gbc);
 
@@ -132,7 +144,7 @@ public class UnitConverterGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(resultTable);
         scrollPane.setBorder(new TitledBorder("长度换算结果"));
 
-        lengthPanel.add(inputPanel, BorderLayout.NORTH);
+        lengthPanel.add(inputPanel, BorderLayout.WEST);
         lengthPanel.add(scrollPane, BorderLayout.CENTER);
 
         // 事件处理
@@ -201,31 +213,42 @@ public class UnitConverterGUI extends JFrame {
         JTextField valueField = new JTextField();
         inputPanel.add(valueField, gbc);
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 第二列：单位选择
-        gbc.gridx = 1;
-        gbc.gridy = 0;
+        gbc.gridx = 0;
+        gbc.gridy = 3;
         gbc.weightx = 0;
         inputPanel.add(new JLabel("单位:"), gbc);
 
-        gbc.gridx = 1;
-        gbc.gridy = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 4;
         gbc.weightx = 1;
         JComboBox<String> unitCombo = new JComboBox<>(Converts.AREA_UNITS);
         inputPanel.add(unitCombo, gbc);
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 第三列：按钮
-        JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 5, 5));
+        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
         JButton convertButton = new JButton("换算");
         JButton clearButton = new JButton("清空");
         buttonPanel.add(convertButton);
         buttonPanel.add(clearButton);
 
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.gridheight = 2;
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.gridwidth = 2;
         gbc.weightx = 0;
         inputPanel.add(buttonPanel, gbc);
-
         // 结果表格
         String[] columnNames = {"单位", "换算结果"};
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
@@ -237,7 +260,7 @@ public class UnitConverterGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(resultTable);
         scrollPane.setBorder(new TitledBorder("面积换算结果"));
 
-        areaPanel.add(inputPanel, BorderLayout.NORTH);
+        areaPanel.add(inputPanel, BorderLayout.WEST);
         areaPanel.add(scrollPane, BorderLayout.CENTER);
 
         // 事件处理
@@ -305,28 +328,40 @@ public class UnitConverterGUI extends JFrame {
         JTextField valueField = new JTextField();
         inputPanel.add(valueField, gbc);
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 第二列：单位选择
-        gbc.gridx = 1;
-        gbc.gridy = 0;
+        gbc.gridx = 0;
+        gbc.gridy = 3;
         gbc.weightx = 0;
         inputPanel.add(new JLabel("单位:"), gbc);
 
-        gbc.gridx = 1;
-        gbc.gridy = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 4;
         gbc.weightx = 1;
         JComboBox<String> unitCombo = new JComboBox<>(Converts.VOLUME_UNITS);
         inputPanel.add(unitCombo, gbc);
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 第三列：按钮
-        JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 5, 5));
+        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
         JButton convertButton = new JButton("换算");
         JButton clearButton = new JButton("清空");
         buttonPanel.add(convertButton);
         buttonPanel.add(clearButton);
 
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.gridheight = 2;
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.gridwidth = 2;
         gbc.weightx = 0;
         inputPanel.add(buttonPanel, gbc);
 
@@ -341,7 +376,7 @@ public class UnitConverterGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(resultTable);
         scrollPane.setBorder(new TitledBorder("体积换算结果"));
 
-        volumePanel.add(inputPanel, BorderLayout.NORTH);
+        volumePanel.add(inputPanel, BorderLayout.WEST);
         volumePanel.add(scrollPane, BorderLayout.CENTER);
 
         // 事件处理
@@ -409,28 +444,40 @@ public class UnitConverterGUI extends JFrame {
         JTextField valueField = new JTextField();
         inputPanel.add(valueField, gbc);
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 第二列：单位选择
-        gbc.gridx = 1;
-        gbc.gridy = 0;
+        gbc.gridx = 0;
+        gbc.gridy = 3;
         gbc.weightx = 0;
         inputPanel.add(new JLabel("单位:"), gbc);
 
-        gbc.gridx = 1;
-        gbc.gridy = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 4;
         gbc.weightx = 1;
         JComboBox<String> unitCombo = new JComboBox<>(Converts.MASS_UNITS);
         inputPanel.add(unitCombo, gbc);
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 第三列：按钮
-        JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 5, 5));
+        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
         JButton convertButton = new JButton("换算");
         JButton clearButton = new JButton("清空");
         buttonPanel.add(convertButton);
         buttonPanel.add(clearButton);
 
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.gridheight = 2;
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.gridwidth = 2;
         gbc.weightx = 0;
         inputPanel.add(buttonPanel, gbc);
 
@@ -445,7 +492,7 @@ public class UnitConverterGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(resultTable);
         scrollPane.setBorder(new TitledBorder("质量换算结果"));
 
-        massPanel.add(inputPanel, BorderLayout.NORTH);
+        massPanel.add(inputPanel, BorderLayout.WEST);
         massPanel.add(scrollPane, BorderLayout.CENTER);
 
         // 事件处理
@@ -513,28 +560,40 @@ public class UnitConverterGUI extends JFrame {
         JTextField valueField = new JTextField();
         inputPanel.add(valueField, gbc);
 
-        // 第二列：单位选择
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        gbc.weightx = 0;
-        inputPanel.add(new JLabel("进制:"), gbc);
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
 
-        gbc.gridx = 1;
-        gbc.gridy = 1;
+        // 第二列：单位选择
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.weightx = 0;
+        inputPanel.add(new JLabel("单位:"), gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
         gbc.weightx = 1;
         JComboBox<String> unitCombo = new JComboBox<>(Converts.NUM_SYSTEM_UNITS);
         inputPanel.add(unitCombo, gbc);
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 第三列：按钮
-        JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 5, 5));
+        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
         JButton convertButton = new JButton("换算");
         JButton clearButton = new JButton("清空");
         buttonPanel.add(convertButton);
         buttonPanel.add(clearButton);
 
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.gridheight = 2;
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.gridwidth = 2;
         gbc.weightx = 0;
         inputPanel.add(buttonPanel, gbc);
 
@@ -549,7 +608,7 @@ public class UnitConverterGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(resultTable);
         scrollPane.setBorder(new TitledBorder("进制换算结果"));
 
-        numSystemPanel.add(inputPanel, BorderLayout.NORTH);
+        numSystemPanel.add(inputPanel, BorderLayout.WEST);
         numSystemPanel.add(scrollPane, BorderLayout.CENTER);
 
         // 事件处理
@@ -616,28 +675,40 @@ public class UnitConverterGUI extends JFrame {
         JTextField valueField = new JTextField();
         inputPanel.add(valueField, gbc);
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 第二列：单位选择
-        gbc.gridx = 1;
-        gbc.gridy = 0;
+        gbc.gridx = 0;
+        gbc.gridy = 3;
         gbc.weightx = 0;
         inputPanel.add(new JLabel("单位:"), gbc);
 
-        gbc.gridx = 1;
-        gbc.gridy = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 4;
         gbc.weightx = 1;
         JComboBox<String> unitCombo = new JComboBox<>(Converts.SPEED_UNITS);
         inputPanel.add(unitCombo, gbc);
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 第三列：按钮
-        JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 5, 5));
+        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
         JButton convertButton = new JButton("换算");
         JButton clearButton = new JButton("清空");
         buttonPanel.add(convertButton);
         buttonPanel.add(clearButton);
 
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.gridheight = 2;
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.gridwidth = 2;
         gbc.weightx = 0;
         inputPanel.add(buttonPanel, gbc);
 
@@ -652,7 +723,7 @@ public class UnitConverterGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(resultTable);
         scrollPane.setBorder(new TitledBorder("单位换算结果"));
 
-        speedPanel.add(inputPanel, BorderLayout.NORTH);
+        speedPanel.add(inputPanel, BorderLayout.WEST);
         speedPanel.add(scrollPane, BorderLayout.CENTER);
 
         // 事件处理
@@ -720,28 +791,40 @@ public class UnitConverterGUI extends JFrame {
         JTextField valueField = new JTextField();
         inputPanel.add(valueField, gbc);
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 第二列：单位选择
-        gbc.gridx = 1;
-        gbc.gridy = 0;
+        gbc.gridx = 0;
+        gbc.gridy = 3;
         gbc.weightx = 0;
         inputPanel.add(new JLabel("单位:"), gbc);
 
-        gbc.gridx = 1;
-        gbc.gridy = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 4;
         gbc.weightx = 1;
         JComboBox<String> unitCombo = new JComboBox<>(Converts.TEMPERATURE_UNITS);
         inputPanel.add(unitCombo, gbc);
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 第三列：按钮
-        JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 5, 5));
+        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
         JButton convertButton = new JButton("换算");
         JButton clearButton = new JButton("清空");
         buttonPanel.add(convertButton);
         buttonPanel.add(clearButton);
 
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.gridheight = 2;
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.gridwidth = 2;
         gbc.weightx = 0;
         inputPanel.add(buttonPanel, gbc);
 
@@ -756,7 +839,7 @@ public class UnitConverterGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(resultTable);
         scrollPane.setBorder(new TitledBorder("单位换算结果"));
 
-        temperaturePanel.add(inputPanel, BorderLayout.NORTH);
+        temperaturePanel.add(inputPanel, BorderLayout.WEST);
         temperaturePanel.add(scrollPane, BorderLayout.CENTER);
 
         // 事件处理
@@ -824,28 +907,40 @@ public class UnitConverterGUI extends JFrame {
         JTextField valueField = new JTextField();
         inputPanel.add(valueField, gbc);
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 第二列：单位选择
-        gbc.gridx = 1;
-        gbc.gridy = 0;
+        gbc.gridx = 0;
+        gbc.gridy = 3;
         gbc.weightx = 0;
         inputPanel.add(new JLabel("单位:"), gbc);
 
-        gbc.gridx = 1;
-        gbc.gridy = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 4;
         gbc.weightx = 1;
         JComboBox<String> unitCombo = new JComboBox<>(Converts.STORAGE_UNITS);
         inputPanel.add(unitCombo, gbc);
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 第三列：按钮
-        JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 5, 5));
+        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
         JButton convertButton = new JButton("换算");
         JButton clearButton = new JButton("清空");
         buttonPanel.add(convertButton);
         buttonPanel.add(clearButton);
 
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.gridheight = 2;
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.gridwidth = 2;
         gbc.weightx = 0;
         inputPanel.add(buttonPanel, gbc);
 
@@ -860,7 +955,7 @@ public class UnitConverterGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(resultTable);
         scrollPane.setBorder(new TitledBorder("单位换算结果"));
 
-        storagePanel.add(inputPanel, BorderLayout.NORTH);
+        storagePanel.add(inputPanel, BorderLayout.WEST);
         storagePanel.add(scrollPane, BorderLayout.CENTER);
 
         // 事件处理
@@ -919,19 +1014,32 @@ public class UnitConverterGUI extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 0;
-        JPanel infoPanel = new JPanel(new GridLayout(1, 2, 5, 5));
+        inputPanel.add(new JLabel("编码类型："), gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 1;
         JComboBox<String> codeBox = new JComboBox<>(Converts.COLOR_CODES);
-        infoPanel.add(new JLabel("选择编码类型："));
-        infoPanel.add(codeBox);
-        inputPanel.add(infoPanel, gbc);
+        inputPanel.add(codeBox, gbc);
+
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
 
         // 数据输入面板
-        JPanel hexPanel = new JPanel(new GridLayout(1, 2, 10, 10));
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.weightx = 0;
+        inputPanel.add(new JLabel("数值："), gbc);
+
+        JPanel hexPanel = new JPanel(new GridLayout(2,1, 10, 10));
         JTextField hexField = new JTextField();
         hexPanel.add(hexField);
         hexPanel.add(new JLabel());
 
-        JPanel rgbPanel = new JPanel(new GridLayout(1, 3, 10, 10));
+        JPanel rgbPanel = new JPanel(new GridLayout(3,1, 10, 10));
         JTextField rField = new JTextField();
         JTextField gField = new JTextField();
         JTextField bField = new JTextField();
@@ -939,7 +1047,7 @@ public class UnitConverterGUI extends JFrame {
         rgbPanel.add(gField);
         rgbPanel.add(bField);
 
-        JPanel cmykPanel = new JPanel(new GridLayout(1, 4, 10, 10));
+        JPanel cmykPanel = new JPanel(new GridLayout(4,1, 10, 10));
         JTextField cField = new JTextField();
         JTextField mField = new JTextField();
         JTextField yField = new JTextField();
@@ -950,22 +1058,27 @@ public class UnitConverterGUI extends JFrame {
         cmykPanel.add(kField);
 
         gbc.gridx = 0;
-        gbc.gridy = 1;
+        gbc.gridy = 4;
         gbc.weightx = 1;
         JPanel[] codePanels = {rgbPanel, cmykPanel, hexPanel};
         inputPanel.add(codePanels[0], gbc);
         final int[] panelIndex = {0, -1};
 
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.weightx = 0;
+        inputPanel.add(new JLabel(" "), gbc);
+
         // 按钮面板
-        JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 5, 5));
+        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
         JButton convertButton = new JButton("换算");
         JButton clearButton = new JButton("清空");
         buttonPanel.add(convertButton);
         buttonPanel.add(clearButton);
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.gridheight = 2;
-        gbc.weightx = 0;
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.weightx = 1;
         inputPanel.add(buttonPanel, gbc);
 
         // 结果表格
@@ -979,12 +1092,12 @@ public class UnitConverterGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(resultTable);
         scrollPane.setBorder(new TitledBorder("颜色码换算结果"));
 
-        colorCodePanel.add(inputPanel, BorderLayout.NORTH);
+        colorCodePanel.add(inputPanel, BorderLayout.WEST);
         colorCodePanel.add(scrollPane, BorderLayout.CENTER);
 
         // 事件处理
         gbc.gridx = 0;
-        gbc.gridy = 1;
+        gbc.gridy = 4;
         gbc.weightx = 1;
         codeBox.addActionListener(e -> {
             if (panelIndex[0] != codeBox.getSelectedIndex()) {

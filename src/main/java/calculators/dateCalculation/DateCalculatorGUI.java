@@ -46,7 +46,7 @@ public class DateCalculatorGUI extends JFrame {
     public DateCalculatorGUI() {
         setTitle("日期计算器");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(450, 500);
+        setSize(450, 400);
         setLocationRelativeTo(null);
 
         initComponents();
@@ -85,7 +85,7 @@ public class DateCalculatorGUI extends JFrame {
 
     private void createConversionPanel() {
         conversionPanel = new JPanel(new BorderLayout(10, 10));
-        conversionPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        conversionPanel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
 
         // 输入面板
         JPanel inputPanel = new JPanel(new GridLayout(2, 2, 10, 10));
@@ -157,7 +157,7 @@ public class DateCalculatorGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(calculationResult);
         resultPanel.add(scrollPane, BorderLayout.CENTER);
 
-        calculationPanel.add(inputPanel, BorderLayout.NORTH);
+        calculationPanel.add(inputPanel, BorderLayout.WEST);
         calculationPanel.add(resultPanel, BorderLayout.CENTER);
 
         // 添加事件监听
@@ -216,7 +216,7 @@ public class DateCalculatorGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(intervalResult);
         resultPanel.add(scrollPane, BorderLayout.CENTER);
 
-        intervalPanel.add(inputPanel, BorderLayout.NORTH);
+        intervalPanel.add(inputPanel, BorderLayout.WEST);
         intervalPanel.add(resultPanel, BorderLayout.CENTER);
 
         // 添加事件监听
@@ -260,7 +260,7 @@ public class DateCalculatorGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(lunarResult);
         resultPanel.add(scrollPane, BorderLayout.CENTER);
 
-        solarToLunarPanel.add(inputPanel, BorderLayout.NORTH);
+        solarToLunarPanel.add(inputPanel, BorderLayout.WEST);
         solarToLunarPanel.add(resultPanel, BorderLayout.CENTER);
 
         // 添加事件监听

@@ -22,7 +22,7 @@ public class Converts {
     // 体积单位名称数组
     public static final String[] VOLUME_UNITS = {
             "毫升(ml)", "升(L)", "立方米(m³)",
-            "加仑(gal)", "液量盎司(fl oz)"
+            "加仑(gal)", "液量盎司(oz)"
     };
 
     // 质量单位名称数组
