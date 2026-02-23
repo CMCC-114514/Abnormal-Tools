@@ -48,7 +48,7 @@ public class Converts {
 
     // 数据存储单位数组
     public static final String[] STORAGE_UNITS = {
-            "位(bit)", "字节(Byte)", "千字节(KB)",
+            "位(bit)", "字节(int)", "千字节(KB)",
             "兆字节(MB)", "吉字节(GB)", "太字节(TB)", "拍字节(PB)"
     };
 
@@ -58,7 +58,7 @@ public class Converts {
     };
 
     //换算方法1：长度换算
-    public static double[] length(byte choose, double num) {
+    public static double[] length(int choose, double num) {
 
         //将选择的单位转化为标准单位
         double std = AuxFunctions.getLengthStd(choose, num);
@@ -68,7 +68,7 @@ public class Converts {
     }
 
     //换算方法2：面积换算
-    public static double[] area(byte choose, double num) {
+    public static double[] area(int choose, double num) {
 
         //将选择的单位转化为标准单位
         double std = AuxFunctions.getAreaStd(choose, num);
@@ -78,7 +78,7 @@ public class Converts {
     }
 
     //换算方法3：体积换算
-    public static double[] volume(byte choose, double num) {
+    public static double[] volume(int choose, double num) {
 
         //将选择的单位转化为标准单位
         double std = AuxFunctions.getVolumeStd(choose, num);
@@ -88,7 +88,7 @@ public class Converts {
     }
 
     //换算方法4：质量换算
-    public static double[] mass(byte choose, double num) {
+    public static double[] mass(int choose, double num) {
         //将选择的单位转化为标准单位
         double std = AuxFunctions.getMassStd(choose, num);
 
@@ -97,7 +97,7 @@ public class Converts {
     }
 
     //换算方法5：进制换算
-    public static String[] numSystem(byte choose, String num) {
+    public static String[] numSystem(int choose, String num) {
         //将选择的进制转化为标准进制
         int std = AuxFunctions.getNumSystemStd(choose, num);
 
@@ -106,7 +106,7 @@ public class Converts {
     }
 
     //换算方法6：速度换算
-    public static double[] speed(byte choose, double num) {
+    public static double[] speed(int choose, double num) {
         //将选择的单位转化为标准单位
         double std = AuxFunctions.getSpeedStd(choose, num);
 
@@ -115,7 +115,7 @@ public class Converts {
     }
 
     //换算方法7：温度换算
-    public static double[] temperature(byte choose, double num) {
+    public static double[] temperature(int choose, double num) {
         //将选择的单位转化为标准单位
         double std = AuxFunctions.getTemperatureStd(choose, num);
 
@@ -124,7 +124,7 @@ public class Converts {
     }
 
     //换算方法8：数据存储单位换算
-    public static double[] storage(byte choose, double num) {
+    public static double[] storage(int choose, double num) {
         //将选择的单位转化为标准单位
         double std = AuxFunctions.getStorageStd(choose, num);
 

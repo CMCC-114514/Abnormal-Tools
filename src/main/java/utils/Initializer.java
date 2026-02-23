@@ -21,14 +21,16 @@ public class Initializer extends JFrame {
                 if (!Files.exists(libZip)){
                     Initializer.main(args);
                 }
-
-                JOptionPane.showMessageDialog(null, "需要时间解压依赖包，请等一会");
-                ZipExtractor.unzip(libZip, AppPath.appHome());
-                JOptionPane.showMessageDialog(null, "依赖解压完成，请重新启动程序");
-
+                new ZipExtractor(libZip, AppPath.appHome()).execute();
                 Files.write(initFile, "1".getBytes(), StandardOpenOption.CREATE_NEW);
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                JOptionPane.showMessageDialog(null,
+                        String.format("""
+                                错误： %s
+                                这将导致部分功能不可用
+                                请前往GitHub下载依赖包，并复制到程序根目录
+                                然后删除lib文件夹
+                                """, e.getMessage()));
             }
         }
         return false;

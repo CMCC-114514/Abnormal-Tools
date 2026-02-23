@@ -7,7 +7,6 @@ import java.time.Instant;
 
 public class DateCalculatorGUI extends JFrame {
     private JPanel mainPanel;
-    private JTabbedPane tabbedPane;
 
     // 天数转日期面板
     private JPanel conversionPanel;
@@ -57,7 +56,7 @@ public class DateCalculatorGUI extends JFrame {
 
     private void initComponents() {
         mainPanel = new JPanel(new BorderLayout());
-        tabbedPane = new JTabbedPane();
+        JTabbedPane tabbedPane = new JTabbedPane();
 
         // 创建四个功能面板
         createConversionPanel();
@@ -269,8 +268,8 @@ public class DateCalculatorGUI extends JFrame {
 
     private void setupLayout() {
         // 设置统一的组件样式
-        Font labelFont = new Font("宋体", Font.BOLD, 14);
-        Font buttonFont = new Font("宋体", Font.BOLD, 14);
+        // Font labelFont = new Font("宋体", Font.BOLD, 14);
+        Font buttonFont = new Font("微软雅黑", Font.PLAIN, 13);
 
         convertButton.setFont(buttonFont);
         calculateButton.setFont(buttonFont);

@@ -1,46 +1,51 @@
 package utils;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.nio.file.*;
+import java.util.Enumeration;
 import java.util.zip.*;
 
-public class ZipExtractor {
+/**
+ * 带 Swing GUI 进度条的 ZIP 解压器
+ */
+public class ZipExtractor extends SwingWorker<Void, Integer> {
 
-    public static void unzip(Path zipFilePath, Path destPath) throws IOException {
+    private final Path filePath;
+    private final Path target;
 
-        // 创建目标目录
-        if (!Files.exists(destPath)) {
-            Files.createDirectories(destPath);
-        }
+    private JDialog progressDialog;
+    private JProgressBar progressBar;
+    private JLabel progressLabel;
 
-        try (ZipInputStream zis = new ZipInputStream(new FileInputStream(zipFilePath.toString()))) {
-            ZipEntry entry;
+    private long totalBytes = 0;
+    private long extractedBytes = 0;
 
-            while ((entry = zis.getNextEntry()) != null) {
+    public ZipExtractor(Path filePath, Path target) {
+        this.filePath = filePath;
+        this.target = target;
+        initProgressUI();
+    }
 
-                Path newPath = resolveZipEntry(destPath, entry);
+    /** 初始化进度条窗口 */
+    private void initProgressUI() {
+        progressDialog = new JDialog((Frame) null, "正在解压依赖包", true);
+        progressDialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        progressDialog.setSize(400, 120);
+        progressDialog.setLocationRelativeTo(null);
 
-                if (entry.isDirectory()) {
-                    Files.createDirectories(newPath);
-                } else {
-                    // 创建父目录
-                    if (newPath.getParent() != null) {
-                        Files.createDirectories(newPath.getParent());
-                    }
+        progressBar = new JProgressBar(0, 100);
+        progressBar.setStringPainted(true);
 
-                    // 写入文件
-                    try (OutputStream os = Files.newOutputStream(newPath)) {
-                        byte[] buffer = new byte[8192];
-                        int len;
-                        while ((len = zis.read(buffer)) > 0) {
-                            os.write(buffer, 0, len);
-                        }
-                    }
-                }
+        progressLabel = new JLabel("准备解压...");
 
-                zis.closeEntry();
-            }
-        }
+        JPanel panel = new JPanel(new BorderLayout(10, 10));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        panel.add(progressLabel, BorderLayout.NORTH);
+        panel.add(progressBar, BorderLayout.CENTER);
+
+        progressDialog.setContentPane(panel);
     }
 
     /**
@@ -55,5 +60,96 @@ public class ZipExtractor {
 
         return resolvedPath;
     }
-}
 
+    /** 预扫描 ZIP 获取总字节数 */
+    private void calculateTotalBytes() throws IOException {
+        try (ZipFile zipFile = new ZipFile(filePath.toFile())) {
+            Enumeration<? extends ZipEntry> entries = zipFile.entries();
+            while (entries.hasMoreElements()) {
+                ZipEntry e = entries.nextElement();
+                if (!e.isDirectory() && e.getSize() > 0) {
+                    totalBytes += e.getSize();
+                }
+            }
+        }
+    }
+
+    @Override
+    protected Void doInBackground() throws Exception {
+        SwingUtilities.invokeLater(() -> progressDialog.setVisible(true));
+
+        calculateTotalBytes();
+
+        if (!Files.exists(target)) {
+            Files.createDirectories(target);
+        }
+
+        try (ZipInputStream zis = new ZipInputStream(new FileInputStream(filePath.toFile()))) {
+            ZipEntry entry;
+
+            while ((entry = zis.getNextEntry()) != null) {
+                Path newPath = resolveZipEntry(target, entry);
+
+                progressLabel.setText("正在解压: " + entry.getName());
+
+                if (entry.isDirectory()) {
+                    Files.createDirectories(newPath);
+                } else {
+                    if (newPath.getParent() != null) {
+                        Files.createDirectories(newPath.getParent());
+                    }
+
+                    try (OutputStream os = Files.newOutputStream(newPath)) {
+                        byte[] buffer = new byte[8192];
+                        int len;
+                        while ((len = zis.read(buffer)) > 0) {
+                            os.write(buffer, 0, len);
+                            extractedBytes += len;
+                            updateProgress();
+                        }
+                    }
+                }
+
+                zis.closeEntry();
+            }
+        }
+
+        return null;
+    }
+
+    /** 更新进度 */
+    private void updateProgress() {
+        if (totalBytes == 0) return;
+        int percent = (int) ((extractedBytes * 100) / totalBytes);
+        setProgress(percent);
+        publish(percent);
+    }
+
+    @Override
+    protected void process(java.util.List<Integer> chunks) {
+        int value = chunks.get(chunks.size() - 1);
+        progressBar.setValue(value);
+    }
+
+    @Override
+    protected void done() {
+        progressDialog.dispose();
+        try {
+            get();
+
+            String message = "初始化完成，请重新启动程序";
+            if (!filePath.toFile().delete())
+                JOptionPane.showMessageDialog(null, message + "，可能需要手动删除下载的压缩包");
+            else
+                JOptionPane.showMessageDialog(null, message);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "解压失败：" + e.getMessage(),
+                    "错误",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
+}

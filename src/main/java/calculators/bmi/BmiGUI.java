@@ -22,7 +22,7 @@ public class BmiGUI extends JFrame {
         JTextField weightField = new JTextField();
         JTextField heightField = new JTextField();
 
-        inputPanel.add(new JLabel("身高（m）："));
+        inputPanel.add(new JLabel("身高（cm）："));
         inputPanel.add(heightField);
         inputPanel.add(new JLabel("体重（kg)："));
         inputPanel.add(weightField);
@@ -44,7 +44,7 @@ public class BmiGUI extends JFrame {
         // 事件处理
         calculateButton.addActionListener(e -> {
             try {
-                double height = Double.parseDouble(heightField.getText().trim());
+                double height = Double.parseDouble(heightField.getText().trim()) / 100;
                 double weight = Double.parseDouble(weightField.getText().trim());
 
                 double result = BMI.calculate(weight, height);
@@ -52,11 +52,11 @@ public class BmiGUI extends JFrame {
 
                 String outText = String.format(
                         """
-                        身高：%.2f m
+                        身高：%.1f cm / %.2f m
                         体重：%.2f kg
                         
                         BMI：%.2f
-                        你的体重%s""", height, weight, result, type);
+                        你的体重%s""", height * 100, height, weight, result, type);
 
                 resultArea.setText(outText);
             } catch (NumberFormatException ex) {
@@ -70,8 +70,6 @@ public class BmiGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new BmiGUI().setVisible(true);
-        });
+        SwingUtilities.invokeLater(() -> new BmiGUI().setVisible(true));
     }
 }

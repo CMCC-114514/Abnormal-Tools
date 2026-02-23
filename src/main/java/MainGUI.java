@@ -66,9 +66,9 @@ public class MainGUI extends JFrame{
 
     // 底部标签
     private static JLabel getFooterLabel(Font font) {
-        JLabel footerLabel = new JLabel("选择功能开始使用", SwingConstants.CENTER);
+        JLabel footerLabel = new JLabel("<html><center>选择功能开始使用</center></html>", SwingConstants.CENTER);
         footerLabel.setFont(font);
-        footerLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        footerLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         return footerLabel;
     }
 
@@ -83,7 +83,7 @@ public class MainGUI extends JFrame{
         aboutItem.addActionListener(e -> JOptionPane.showMessageDialog(
                 frame,
                 """
-                        某科学的工具箱 v1.6.0
+                        某科学的工具箱 v1.6.1
                         
                         爱来自kk3TWT
                         

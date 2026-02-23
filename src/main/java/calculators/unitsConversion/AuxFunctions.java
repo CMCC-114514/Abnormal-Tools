@@ -1,13 +1,10 @@
 package calculators.unitsConversion;
 
-import javax.swing.*;
-import java.awt.*;
-
 public class AuxFunctions {
     private AuxFunctions(){}
 
     //面积标准单位
-    public static double getAreaStd(byte choose, double num) {
+    public static double getAreaStd(int choose, double num) {
         double std = 0;    //标准单位（平方米）
         switch (choose) {               //将对应单位转换成平方米
             case 1 -> std = num / 1e6;              //平方毫米
@@ -27,7 +24,7 @@ public class AuxFunctions {
     }
 
     //长度标准单位
-    public static double getLengthStd(byte choose, double num) {
+    public static double getLengthStd(int choose, double num) {
         double std = 0;    //标准单位（米）
         switch (choose) {               //将对应单位转换成米（num是要转换单位的数值）
             case 1 -> std = num / 1e3;      //毫米
@@ -48,7 +45,7 @@ public class AuxFunctions {
     }
 
     //体积标准单位
-    public static double getVolumeStd(byte choose, double num) {
+    public static double getVolumeStd(int choose, double num) {
         double std = 0;    //标准单位（立方米）
         switch (choose) {               //将对应单位转换成立方米
             case 1 -> std = num / 1e6;          //毫升
@@ -61,7 +58,7 @@ public class AuxFunctions {
     }
 
     //质量标准单位
-    public static double getMassStd(byte choose, double num) {
+    public static double getMassStd(int choose, double num) {
         double std = 0;    //标准单位（千克）
         switch (choose) {               //将对应单位转换成千克
             case 1 -> std = num / 1e3;          //克
@@ -76,7 +73,7 @@ public class AuxFunctions {
     }
 
     //标准进制
-    public static int getNumSystemStd(byte choose, String num) {
+    public static int getNumSystemStd(int choose, String num) {
         int std = 0;
         switch (choose) {
             case 1 -> std = Integer.parseInt(num, 2);
@@ -88,7 +85,7 @@ public class AuxFunctions {
     }
 
     //速度标准单位
-    public static double getSpeedStd(byte choose, double num) {
+    public static double getSpeedStd(int choose, double num) {
         double std = 0;
         switch (choose) {
             case 1 -> std = num;
@@ -100,7 +97,7 @@ public class AuxFunctions {
     }
 
     //温度标准单位
-    public static double getTemperatureStd(byte choose, double num) {
+    public static double getTemperatureStd(int choose, double num) {
         double std = 0;
         switch (choose) {
             case 1 -> std = num;                //摄氏度
@@ -111,7 +108,7 @@ public class AuxFunctions {
     }
 
     //存储空间标准单位
-    public static double getStorageStd(byte choose, double num) {
+    public static double getStorageStd(int choose, double num) {
         double std;
         if (choose == 1) {
             std = num / 8;    //bit

@@ -1,4 +1,4 @@
-// UnitConverterGUI.java
+// calculators.unitsConversion.UnitConverterGUI.java
 package calculators.unitsConversion;
 
 import javax.swing.*;
@@ -10,17 +10,6 @@ import java.util.Arrays;
 public class UnitConverterGUI extends JFrame {
     private JPanel mainPanel;
     private JTabbedPane tabbedPane;
-
-    // 各个换算面板
-    private JPanel lengthPanel;
-    private JPanel areaPanel;
-    private JPanel volumePanel;
-    private JPanel massPanel;
-    private JPanel numSystemPanel;
-    private JPanel speedPanel;
-    private JPanel temperaturePanel;
-    private JPanel storagePanel;
-    private JPanel colorCodePanel;
 
     public UnitConverterGUI() {
         setTitle("单位换算器");
@@ -38,27 +27,16 @@ public class UnitConverterGUI extends JFrame {
         mainPanel = new JPanel(new BorderLayout());
         tabbedPane = new JTabbedPane();
 
-        // 创建各个功能面板
-        createLengthPanel();
-        createAreaPanel();
-        createVolumePanel();
-        createMassPanel();
-        createNumSystemPanel();
-        createSpeedPanel();
-        createTemperaturePanel();
-        createStoragePanel();
-        createColorCodePanel();
-
         // 添加标签页
-        tabbedPane.addTab("长度换算", lengthPanel);
-        tabbedPane.addTab("面积换算", areaPanel);
-        tabbedPane.addTab("体积换算", volumePanel);
-        tabbedPane.addTab("质量换算", massPanel);
-        tabbedPane.addTab("进制换算", numSystemPanel);
-        tabbedPane.addTab("速度换算", speedPanel);
-        tabbedPane.addTab("温度换算", temperaturePanel);
-        tabbedPane.addTab("存储单位换算", storagePanel);
-        tabbedPane.addTab("颜色码转换", colorCodePanel);
+        tabbedPane.addTab("长度换算", createPanels(Converts.LENGTH_UNITS));
+        tabbedPane.addTab("面积换算", createPanels(Converts.AREA_UNITS));
+        tabbedPane.addTab("体积换算", createPanels(Converts.VOLUME_UNITS));
+        tabbedPane.addTab("质量换算", createPanels(Converts.MASS_UNITS));
+        tabbedPane.addTab("速度换算", createPanels(Converts.SPEED_UNITS));
+        tabbedPane.addTab("温度换算", createPanels(Converts.TEMPERATURE_UNITS));
+        tabbedPane.addTab("存储单位换算", createPanels(Converts.STORAGE_UNITS));
+        tabbedPane.addTab("进制换算", createNumSystemPanel());
+        tabbedPane.addTab("颜色码转换", createColorCodePanel());
 
         mainPanel.add(tabbedPane, BorderLayout.CENTER);
 
@@ -73,9 +51,9 @@ public class UnitConverterGUI extends JFrame {
         mainPanel.add(infoLabel, BorderLayout.SOUTH);
     }
 
-    private void createLengthPanel() {
-        lengthPanel = new JPanel(new BorderLayout(10, 10));
-        lengthPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+    private JPanel createPanels(String[] units) {
+        JPanel panel = new JPanel(new BorderLayout(10, 10));
+        panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 
         // 输入面板 - 修改布局
         JPanel inputPanel = new JPanel(new GridBagLayout());
@@ -111,7 +89,7 @@ public class UnitConverterGUI extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 4;
         gbc.weightx = 1;
-        JComboBox<String> unitCombo = new JComboBox<>(Converts.LENGTH_UNITS);
+        JComboBox<String> unitCombo = new JComboBox<>(units);
         inputPanel.add(unitCombo, gbc);
 
         // 分隔符
@@ -144,17 +122,17 @@ public class UnitConverterGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(resultTable);
         scrollPane.setBorder(new TitledBorder("长度换算结果"));
 
-        lengthPanel.add(inputPanel, BorderLayout.WEST);
-        lengthPanel.add(scrollPane, BorderLayout.CENTER);
+        panel.add(inputPanel, BorderLayout.WEST);
+        panel.add(scrollPane, BorderLayout.CENTER);
 
         // 事件处理
         convertButton.addActionListener(e -> {
             try {
                 double value = Double.parseDouble(valueField.getText().trim());
                 int selectedIndex = unitCombo.getSelectedIndex();
-                byte unitChoice = (byte)(selectedIndex + 1);
+                int unitChoice = selectedIndex + 1;
 
-                double[] results = Converts.length(unitChoice, value);
+                double[] results = getDoubleResult(unitChoice, value);
 
                 // 清空表格
                 tableModel.setRowCount(0);
@@ -166,7 +144,7 @@ public class UnitConverterGUI extends JFrame {
                     formattedResult = formattedResult.replaceAll("0*$", "").replaceAll("\\.$", "");
 
                     Object[] rowData = {
-                            Converts.LENGTH_UNITS[i],
+                            units[i],
                             formattedResult
                     };
                     tableModel.addRow(rowData);
@@ -188,821 +166,13 @@ public class UnitConverterGUI extends JFrame {
 
         // 回车键转换
         valueField.addActionListener(e -> convertButton.doClick());
+
+        return panel;
     }
 
-    private void createAreaPanel() {
-        areaPanel = new JPanel(new BorderLayout(10, 10));
-        areaPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-
-        // 输入面板 - 修改布局
-        JPanel inputPanel = new JPanel(new GridBagLayout());
-        inputPanel.setBorder(new TitledBorder("面积换算输入"));
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        // 第一列：数值输入
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0;
-        inputPanel.add(new JLabel("数值:"), gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.weightx = 1;
-        JTextField valueField = new JTextField();
-        inputPanel.add(valueField, gbc);
-
-        // 分隔符
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.weightx = 1;
-        inputPanel.add(new JLabel(" "), gbc);
-
-        // 第二列：单位选择
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.weightx = 0;
-        inputPanel.add(new JLabel("单位:"), gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        gbc.weightx = 1;
-        JComboBox<String> unitCombo = new JComboBox<>(Converts.AREA_UNITS);
-        inputPanel.add(unitCombo, gbc);
-
-        // 分隔符
-        gbc.gridx = 0;
-        gbc.gridy = 5;
-        gbc.weightx = 1;
-        inputPanel.add(new JLabel(" "), gbc);
-
-        // 第三列：按钮
-        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
-        JButton convertButton = new JButton("换算");
-        JButton clearButton = new JButton("清空");
-        buttonPanel.add(convertButton);
-        buttonPanel.add(clearButton);
-
-        gbc.gridx = 0;
-        gbc.gridy = 6;
-        gbc.gridwidth = 2;
-        gbc.weightx = 0;
-        inputPanel.add(buttonPanel, gbc);
-        // 结果表格
-        String[] columnNames = {"单位", "换算结果"};
-        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
-        JTable resultTable = new JTable(tableModel);
-        resultTable.setRowHeight(25);
-        resultTable.getColumnModel().getColumn(0).setPreferredWidth(150);
-        resultTable.getColumnModel().getColumn(1).setPreferredWidth(200);
-
-        JScrollPane scrollPane = new JScrollPane(resultTable);
-        scrollPane.setBorder(new TitledBorder("面积换算结果"));
-
-        areaPanel.add(inputPanel, BorderLayout.WEST);
-        areaPanel.add(scrollPane, BorderLayout.CENTER);
-
-        // 事件处理
-        convertButton.addActionListener(e -> {
-            try {
-                double value = Double.parseDouble(valueField.getText().trim());
-                int selectedIndex = unitCombo.getSelectedIndex();
-                byte unitChoice = (byte)(selectedIndex + 1);
-
-                double[] results = Converts.area(unitChoice, value);
-
-                // 清空表格
-                tableModel.setRowCount(0);
-
-                // 添加结果
-                for (int i = 0; i < results.length; i++) {
-                    String formattedResult = String.format("%.10f", results[i]);
-                    formattedResult = formattedResult.replaceAll("0*$", "").replaceAll("\\.$", "");
-
-                    Object[] rowData = {
-                            Converts.AREA_UNITS[i],
-                            formattedResult
-                    };
-                    tableModel.addRow(rowData);
-                }
-
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "请输入有效的数字！", "错误", JOptionPane.ERROR_MESSAGE);
-            } catch (IllegalArgumentException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "换算过程中出现错误！", "错误", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        clearButton.addActionListener(e -> {
-            valueField.setText("");
-            tableModel.setRowCount(0);
-        });
-
-        // 回车键转换
-        valueField.addActionListener(e -> convertButton.doClick());
-    }
-
-    private void createVolumePanel() {
-        volumePanel = new JPanel(new BorderLayout(10, 10));
-        volumePanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-
-        // 输入面板 - 修改布局
-        JPanel inputPanel = new JPanel(new GridBagLayout());
-        inputPanel.setBorder(new TitledBorder("体积换算输入"));
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        // 第一列：数值输入
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0;
-        inputPanel.add(new JLabel("数值:"), gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.weightx = 1;
-        JTextField valueField = new JTextField();
-        inputPanel.add(valueField, gbc);
-
-        // 分隔符
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.weightx = 1;
-        inputPanel.add(new JLabel(" "), gbc);
-
-        // 第二列：单位选择
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.weightx = 0;
-        inputPanel.add(new JLabel("单位:"), gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        gbc.weightx = 1;
-        JComboBox<String> unitCombo = new JComboBox<>(Converts.VOLUME_UNITS);
-        inputPanel.add(unitCombo, gbc);
-
-        // 分隔符
-        gbc.gridx = 0;
-        gbc.gridy = 5;
-        gbc.weightx = 1;
-        inputPanel.add(new JLabel(" "), gbc);
-
-        // 第三列：按钮
-        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
-        JButton convertButton = new JButton("换算");
-        JButton clearButton = new JButton("清空");
-        buttonPanel.add(convertButton);
-        buttonPanel.add(clearButton);
-
-        gbc.gridx = 0;
-        gbc.gridy = 6;
-        gbc.gridwidth = 2;
-        gbc.weightx = 0;
-        inputPanel.add(buttonPanel, gbc);
-
-        // 结果表格
-        String[] columnNames = {"单位", "换算结果"};
-        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
-        JTable resultTable = new JTable(tableModel);
-        resultTable.setRowHeight(25);
-        resultTable.getColumnModel().getColumn(0).setPreferredWidth(150);
-        resultTable.getColumnModel().getColumn(1).setPreferredWidth(200);
-
-        JScrollPane scrollPane = new JScrollPane(resultTable);
-        scrollPane.setBorder(new TitledBorder("体积换算结果"));
-
-        volumePanel.add(inputPanel, BorderLayout.WEST);
-        volumePanel.add(scrollPane, BorderLayout.CENTER);
-
-        // 事件处理
-        convertButton.addActionListener(e -> {
-            try {
-                double value = Double.parseDouble(valueField.getText().trim());
-                int selectedIndex = unitCombo.getSelectedIndex();
-                byte unitChoice = (byte)(selectedIndex + 1);
-
-                double[] results = Converts.volume(unitChoice, value);
-
-                // 清空表格
-                tableModel.setRowCount(0);
-
-                // 添加结果
-                for (int i = 0; i < results.length; i++) {
-                    String formattedResult = String.format("%.10f", results[i]);
-                    formattedResult = formattedResult.replaceAll("0*$", "").replaceAll("\\.$", "");
-
-                    Object[] rowData = {
-                            Converts.VOLUME_UNITS[i],
-                            formattedResult
-                    };
-                    tableModel.addRow(rowData);
-                }
-
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "请输入有效的数字！", "错误", JOptionPane.ERROR_MESSAGE);
-            } catch (IllegalArgumentException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "换算过程中出现错误！", "错误", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        clearButton.addActionListener(e -> {
-            valueField.setText("");
-            tableModel.setRowCount(0);
-        });
-
-        // 回车键转换
-        valueField.addActionListener(e -> convertButton.doClick());
-    }
-
-    private void createMassPanel() {
-        massPanel = new JPanel(new BorderLayout(10, 10));
-        massPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-
-        // 输入面板 - 修改布局
-        JPanel inputPanel = new JPanel(new GridBagLayout());
-        inputPanel.setBorder(new TitledBorder("质量换算输入"));
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        // 第一列：数值输入
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0;
-        inputPanel.add(new JLabel("数值:"), gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.weightx = 1;
-        JTextField valueField = new JTextField();
-        inputPanel.add(valueField, gbc);
-
-        // 分隔符
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.weightx = 1;
-        inputPanel.add(new JLabel(" "), gbc);
-
-        // 第二列：单位选择
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.weightx = 0;
-        inputPanel.add(new JLabel("单位:"), gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        gbc.weightx = 1;
-        JComboBox<String> unitCombo = new JComboBox<>(Converts.MASS_UNITS);
-        inputPanel.add(unitCombo, gbc);
-
-        // 分隔符
-        gbc.gridx = 0;
-        gbc.gridy = 5;
-        gbc.weightx = 1;
-        inputPanel.add(new JLabel(" "), gbc);
-
-        // 第三列：按钮
-        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
-        JButton convertButton = new JButton("换算");
-        JButton clearButton = new JButton("清空");
-        buttonPanel.add(convertButton);
-        buttonPanel.add(clearButton);
-
-        gbc.gridx = 0;
-        gbc.gridy = 6;
-        gbc.gridwidth = 2;
-        gbc.weightx = 0;
-        inputPanel.add(buttonPanel, gbc);
-
-        // 结果表格
-        String[] columnNames = {"单位", "换算结果"};
-        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
-        JTable resultTable = new JTable(tableModel);
-        resultTable.setRowHeight(25);
-        resultTable.getColumnModel().getColumn(0).setPreferredWidth(150);
-        resultTable.getColumnModel().getColumn(1).setPreferredWidth(200);
-
-        JScrollPane scrollPane = new JScrollPane(resultTable);
-        scrollPane.setBorder(new TitledBorder("质量换算结果"));
-
-        massPanel.add(inputPanel, BorderLayout.WEST);
-        massPanel.add(scrollPane, BorderLayout.CENTER);
-
-        // 事件处理
-        convertButton.addActionListener(e -> {
-            try {
-                double value = Double.parseDouble(valueField.getText().trim());
-                int selectedIndex = unitCombo.getSelectedIndex();
-                byte unitChoice = (byte)(selectedIndex + 1);
-
-                double[] results = Converts.mass(unitChoice, value);
-
-                // 清空表格
-                tableModel.setRowCount(0);
-
-                // 添加结果
-                for (int i = 0; i < results.length; i++) {
-                    String formattedResult = String.format("%.10f", results[i]);
-                    formattedResult = formattedResult.replaceAll("0*$", "").replaceAll("\\.$", "");
-
-                    Object[] rowData = {
-                            Converts.MASS_UNITS[i],
-                            formattedResult
-                    };
-                    tableModel.addRow(rowData);
-                }
-
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "请输入有效的数字！", "错误", JOptionPane.ERROR_MESSAGE);
-            } catch (IllegalArgumentException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "换算过程中出现错误！", "错误", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        clearButton.addActionListener(e -> {
-            valueField.setText("");
-            tableModel.setRowCount(0);
-        });
-
-        // 回车键转换
-        valueField.addActionListener(e -> convertButton.doClick());
-    }
-
-    private void createNumSystemPanel() {
-        numSystemPanel = new JPanel(new BorderLayout(10, 10));
-        numSystemPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-
-        // 输入面板 - 修改布局
-        JPanel inputPanel = new JPanel(new GridBagLayout());
-        inputPanel.setBorder(new TitledBorder("进制换算输入"));
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        // 第一列：数值输入
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0;
-        inputPanel.add(new JLabel("数值:"), gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.weightx = 1;
-        JTextField valueField = new JTextField();
-        inputPanel.add(valueField, gbc);
-
-        // 分隔符
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.weightx = 1;
-        inputPanel.add(new JLabel(" "), gbc);
-
-        // 第二列：单位选择
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.weightx = 0;
-        inputPanel.add(new JLabel("单位:"), gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        gbc.weightx = 1;
-        JComboBox<String> unitCombo = new JComboBox<>(Converts.NUM_SYSTEM_UNITS);
-        inputPanel.add(unitCombo, gbc);
-
-        // 分隔符
-        gbc.gridx = 0;
-        gbc.gridy = 5;
-        gbc.weightx = 1;
-        inputPanel.add(new JLabel(" "), gbc);
-
-        // 第三列：按钮
-        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
-        JButton convertButton = new JButton("换算");
-        JButton clearButton = new JButton("清空");
-        buttonPanel.add(convertButton);
-        buttonPanel.add(clearButton);
-
-        gbc.gridx = 0;
-        gbc.gridy = 6;
-        gbc.gridwidth = 2;
-        gbc.weightx = 0;
-        inputPanel.add(buttonPanel, gbc);
-
-        // 结果表格
-        String[] columnNames = {"进制", "换算结果"};
-        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
-        JTable resultTable = new JTable(tableModel);
-        resultTable.setRowHeight(25);
-        resultTable.getColumnModel().getColumn(0).setPreferredWidth(150);
-        resultTable.getColumnModel().getColumn(1).setPreferredWidth(200);
-
-        JScrollPane scrollPane = new JScrollPane(resultTable);
-        scrollPane.setBorder(new TitledBorder("进制换算结果"));
-
-        numSystemPanel.add(inputPanel, BorderLayout.WEST);
-        numSystemPanel.add(scrollPane, BorderLayout.CENTER);
-
-        // 事件处理
-        convertButton.addActionListener(e -> {
-            try {
-                String value = valueField.getText().trim();
-                int selectedIndex = unitCombo.getSelectedIndex();
-                byte unitChoice = (byte)(selectedIndex + 1);
-
-                String[] results = Converts.numSystem(unitChoice, value);
-
-                // 清空表格
-                tableModel.setRowCount(0);
-
-                // 添加结果
-                for (int i = 0; i < results.length; i++) {
-                    String formattedResult = String.format("%s", results[i]);
-
-                    Object[] rowData = {
-                            Converts.NUM_SYSTEM_UNITS[i],
-                            formattedResult
-                    };
-                    tableModel.addRow(rowData);
-                }
-
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "请输入有效的数字！", "错误", JOptionPane.ERROR_MESSAGE);
-            } catch (IllegalArgumentException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "换算过程中出现错误！", "错误", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        clearButton.addActionListener(e -> {
-            valueField.setText("");
-            tableModel.setRowCount(0);
-        });
-
-        // 回车键转换
-        valueField.addActionListener(e -> convertButton.doClick());
-    }
-
-    private void createSpeedPanel() {
-        speedPanel = new JPanel(new BorderLayout(10, 10));
-        speedPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-
-        // 输入面板 - 修改布局
-        JPanel inputPanel = new JPanel(new GridBagLayout());
-        inputPanel.setBorder(new TitledBorder("速度换算输入"));
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        // 第一列：数值输入
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0;
-        inputPanel.add(new JLabel("数值:"), gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.weightx = 1;
-        JTextField valueField = new JTextField();
-        inputPanel.add(valueField, gbc);
-
-        // 分隔符
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.weightx = 1;
-        inputPanel.add(new JLabel(" "), gbc);
-
-        // 第二列：单位选择
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.weightx = 0;
-        inputPanel.add(new JLabel("单位:"), gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        gbc.weightx = 1;
-        JComboBox<String> unitCombo = new JComboBox<>(Converts.SPEED_UNITS);
-        inputPanel.add(unitCombo, gbc);
-
-        // 分隔符
-        gbc.gridx = 0;
-        gbc.gridy = 5;
-        gbc.weightx = 1;
-        inputPanel.add(new JLabel(" "), gbc);
-
-        // 第三列：按钮
-        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
-        JButton convertButton = new JButton("换算");
-        JButton clearButton = new JButton("清空");
-        buttonPanel.add(convertButton);
-        buttonPanel.add(clearButton);
-
-        gbc.gridx = 0;
-        gbc.gridy = 6;
-        gbc.gridwidth = 2;
-        gbc.weightx = 0;
-        inputPanel.add(buttonPanel, gbc);
-
-        // 结果表格
-        String[] columnNames = {"单位", "换算结果"};
-        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
-        JTable resultTable = new JTable(tableModel);
-        resultTable.setRowHeight(25);
-        resultTable.getColumnModel().getColumn(0).setPreferredWidth(150);
-        resultTable.getColumnModel().getColumn(1).setPreferredWidth(200);
-
-        JScrollPane scrollPane = new JScrollPane(resultTable);
-        scrollPane.setBorder(new TitledBorder("单位换算结果"));
-
-        speedPanel.add(inputPanel, BorderLayout.WEST);
-        speedPanel.add(scrollPane, BorderLayout.CENTER);
-
-        // 事件处理
-        convertButton.addActionListener(e -> {
-            try {
-                double value = Double.parseDouble(valueField.getText().trim());
-                int selectedIndex = unitCombo.getSelectedIndex();
-                byte unitChoice = (byte)(selectedIndex + 1);
-
-                double[] results = Converts.speed(unitChoice, value);
-
-                // 清空表格
-                tableModel.setRowCount(0);
-
-                // 添加结果
-                for (int i = 0; i < results.length; i++) {
-                    String formattedResult = String.format("%.10f", results[i]);
-                    formattedResult = formattedResult.replaceAll("0*$", "").replaceAll("\\.$", "");
-
-                    Object[] rowData = {
-                            Converts.SPEED_UNITS[i],
-                            formattedResult
-                    };
-                    tableModel.addRow(rowData);
-                }
-
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "请输入有效的数字！", "错误", JOptionPane.ERROR_MESSAGE);
-            } catch (IllegalArgumentException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "换算过程中出现错误！", "错误", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        clearButton.addActionListener(e -> {
-            valueField.setText("");
-            tableModel.setRowCount(0);
-        });
-
-        // 回车键转换
-        valueField.addActionListener(e -> convertButton.doClick());
-    }
-
-    private void createTemperaturePanel() {
-        temperaturePanel = new JPanel(new BorderLayout(10, 10));
-        temperaturePanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-
-        // 输入面板 - 修改布局
-        JPanel inputPanel = new JPanel(new GridBagLayout());
-        inputPanel.setBorder(new TitledBorder("温度换算输入"));
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        // 第一列：数值输入
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0;
-        inputPanel.add(new JLabel("数值:"), gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.weightx = 1;
-        JTextField valueField = new JTextField();
-        inputPanel.add(valueField, gbc);
-
-        // 分隔符
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.weightx = 1;
-        inputPanel.add(new JLabel(" "), gbc);
-
-        // 第二列：单位选择
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.weightx = 0;
-        inputPanel.add(new JLabel("单位:"), gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        gbc.weightx = 1;
-        JComboBox<String> unitCombo = new JComboBox<>(Converts.TEMPERATURE_UNITS);
-        inputPanel.add(unitCombo, gbc);
-
-        // 分隔符
-        gbc.gridx = 0;
-        gbc.gridy = 5;
-        gbc.weightx = 1;
-        inputPanel.add(new JLabel(" "), gbc);
-
-        // 第三列：按钮
-        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
-        JButton convertButton = new JButton("换算");
-        JButton clearButton = new JButton("清空");
-        buttonPanel.add(convertButton);
-        buttonPanel.add(clearButton);
-
-        gbc.gridx = 0;
-        gbc.gridy = 6;
-        gbc.gridwidth = 2;
-        gbc.weightx = 0;
-        inputPanel.add(buttonPanel, gbc);
-
-        // 结果表格
-        String[] columnNames = {"单位", "换算结果"};
-        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
-        JTable resultTable = new JTable(tableModel);
-        resultTable.setRowHeight(25);
-        resultTable.getColumnModel().getColumn(0).setPreferredWidth(150);
-        resultTable.getColumnModel().getColumn(1).setPreferredWidth(200);
-
-        JScrollPane scrollPane = new JScrollPane(resultTable);
-        scrollPane.setBorder(new TitledBorder("单位换算结果"));
-
-        temperaturePanel.add(inputPanel, BorderLayout.WEST);
-        temperaturePanel.add(scrollPane, BorderLayout.CENTER);
-
-        // 事件处理
-        convertButton.addActionListener(e -> {
-            try {
-                double value = Double.parseDouble(valueField.getText().trim());
-                int selectedIndex = unitCombo.getSelectedIndex();
-                byte unitChoice = (byte)(selectedIndex + 1);
-
-                double[] results = Converts.temperature(unitChoice, value);
-
-                // 清空表格
-                tableModel.setRowCount(0);
-
-                // 添加结果
-                for (int i = 0; i < results.length; i++) {
-                    String formattedResult = String.format("%.10f", results[i]);
-                    formattedResult = formattedResult.replaceAll("0*$", "").replaceAll("\\.$", "");
-
-                    Object[] rowData = {
-                            Converts.TEMPERATURE_UNITS[i],
-                            formattedResult
-                    };
-                    tableModel.addRow(rowData);
-                }
-
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "请输入有效的数字！", "错误", JOptionPane.ERROR_MESSAGE);
-            } catch (IllegalArgumentException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "换算过程中出现错误！", "错误", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        clearButton.addActionListener(e -> {
-            valueField.setText("");
-            tableModel.setRowCount(0);
-        });
-
-        // 回车键转换
-        valueField.addActionListener(e -> convertButton.doClick());
-    }
-
-    private void createStoragePanel() {
-        storagePanel = new JPanel(new BorderLayout(10, 10));
-        storagePanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-
-        // 输入面板 - 修改布局
-        JPanel inputPanel = new JPanel(new GridBagLayout());
-        inputPanel.setBorder(new TitledBorder("数据单位换算输入"));
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        // 第一列：数值输入
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0;
-        inputPanel.add(new JLabel("数值:"), gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.weightx = 1;
-        JTextField valueField = new JTextField();
-        inputPanel.add(valueField, gbc);
-
-        // 分隔符
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.weightx = 1;
-        inputPanel.add(new JLabel(" "), gbc);
-
-        // 第二列：单位选择
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.weightx = 0;
-        inputPanel.add(new JLabel("单位:"), gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        gbc.weightx = 1;
-        JComboBox<String> unitCombo = new JComboBox<>(Converts.STORAGE_UNITS);
-        inputPanel.add(unitCombo, gbc);
-
-        // 分隔符
-        gbc.gridx = 0;
-        gbc.gridy = 5;
-        gbc.weightx = 1;
-        inputPanel.add(new JLabel(" "), gbc);
-
-        // 第三列：按钮
-        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
-        JButton convertButton = new JButton("换算");
-        JButton clearButton = new JButton("清空");
-        buttonPanel.add(convertButton);
-        buttonPanel.add(clearButton);
-
-        gbc.gridx = 0;
-        gbc.gridy = 6;
-        gbc.gridwidth = 2;
-        gbc.weightx = 0;
-        inputPanel.add(buttonPanel, gbc);
-
-        // 结果表格
-        String[] columnNames = {"单位", "换算结果"};
-        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
-        JTable resultTable = new JTable(tableModel);
-        resultTable.setRowHeight(25);
-        resultTable.getColumnModel().getColumn(0).setPreferredWidth(150);
-        resultTable.getColumnModel().getColumn(1).setPreferredWidth(200);
-
-        JScrollPane scrollPane = new JScrollPane(resultTable);
-        scrollPane.setBorder(new TitledBorder("单位换算结果"));
-
-        storagePanel.add(inputPanel, BorderLayout.WEST);
-        storagePanel.add(scrollPane, BorderLayout.CENTER);
-
-        // 事件处理
-        convertButton.addActionListener(e -> {
-            try {
-                double value = Double.parseDouble(valueField.getText().trim());
-                int selectedIndex = unitCombo.getSelectedIndex();
-                byte unitChoice = (byte)(selectedIndex + 1);
-
-                double[] results = Converts.storage(unitChoice, value);
-
-                // 清空表格
-                tableModel.setRowCount(0);
-
-                // 添加结果
-                for (int i = 0; i < results.length; i++) {
-                    String formattedResult = String.format("%.10f", results[i]);
-                    formattedResult = formattedResult.replaceAll("0*$", "").replaceAll("\\.$", "");
-
-                    Object[] rowData = {
-                            Converts.STORAGE_UNITS[i],
-                            formattedResult
-                    };
-                    tableModel.addRow(rowData);
-                }
-
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "请输入有效的数字！", "错误", JOptionPane.ERROR_MESSAGE);
-            } catch (IllegalArgumentException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "换算过程中出现错误！", "错误", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        clearButton.addActionListener(e -> {
-            valueField.setText("");
-            tableModel.setRowCount(0);
-        });
-
-        // 回车键转换
-        valueField.addActionListener(e -> convertButton.doClick());
-    }
-
-    private void createColorCodePanel() {
-        colorCodePanel = new JPanel(new BorderLayout(10, 10));
-        colorCodePanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+    private JPanel createColorCodePanel() {
+        JPanel panel = new JPanel(new BorderLayout(10, 10));
+        panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 
         JPanel inputPanel = new JPanel(new GridBagLayout());
         inputPanel.setBorder(new TitledBorder("输入编码"));
@@ -1092,8 +262,8 @@ public class UnitConverterGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(resultTable);
         scrollPane.setBorder(new TitledBorder("颜色码换算结果"));
 
-        colorCodePanel.add(inputPanel, BorderLayout.WEST);
-        colorCodePanel.add(scrollPane, BorderLayout.CENTER);
+        panel.add(inputPanel, BorderLayout.WEST);
+        panel.add(scrollPane, BorderLayout.CENTER);
 
         // 事件处理
         gbc.gridx = 0;
@@ -1175,11 +345,148 @@ public class UnitConverterGUI extends JFrame {
         hexField.addActionListener(e -> convertButton.doClick());
         bField.addActionListener(e -> convertButton.doClick());
         kField.addActionListener(e -> convertButton.doClick());
+
+        return panel;
+    }
+
+    private JPanel createNumSystemPanel() {
+        JPanel panel = new JPanel(new BorderLayout(10, 10));
+        panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+
+        // 输入面板 - 修改布局
+        JPanel inputPanel = new JPanel(new GridBagLayout());
+        inputPanel.setBorder(new TitledBorder("进制换算输入"));
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        // 第一列：数值输入
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0;
+        inputPanel.add(new JLabel("数值:"), gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 1;
+        JTextField valueField = new JTextField();
+        inputPanel.add(valueField, gbc);
+
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
+        // 第二列：单位选择
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.weightx = 0;
+        inputPanel.add(new JLabel("单位:"), gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.weightx = 1;
+        JComboBox<String> unitCombo = new JComboBox<>(Converts.NUM_SYSTEM_UNITS);
+        inputPanel.add(unitCombo, gbc);
+
+        // 分隔符
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.weightx = 1;
+        inputPanel.add(new JLabel(" "), gbc);
+
+        // 第三列：按钮
+        JPanel buttonPanel = new JPanel(new GridLayout(2,1, 5, 5));
+        JButton convertButton = new JButton("换算");
+        JButton clearButton = new JButton("清空");
+        buttonPanel.add(convertButton);
+        buttonPanel.add(clearButton);
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.gridwidth = 2;
+        gbc.weightx = 0;
+        inputPanel.add(buttonPanel, gbc);
+
+        // 结果表格
+        String[] columnNames = {"进制", "换算结果"};
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+        JTable resultTable = new JTable(tableModel);
+        resultTable.setRowHeight(25);
+        resultTable.getColumnModel().getColumn(0).setPreferredWidth(150);
+        resultTable.getColumnModel().getColumn(1).setPreferredWidth(200);
+
+        JScrollPane scrollPane = new JScrollPane(resultTable);
+        scrollPane.setBorder(new TitledBorder("进制换算结果"));
+
+        panel.add(inputPanel, BorderLayout.WEST);
+        panel.add(scrollPane, BorderLayout.CENTER);
+
+        // 事件处理
+        convertButton.addActionListener(e -> {
+            try {
+                String value = valueField.getText().trim();
+                int selectedIndex = unitCombo.getSelectedIndex();
+                byte unitChoice = (byte)(selectedIndex + 1);
+
+                String[] results = Converts.numSystem(unitChoice, value);
+
+                // 清空表格
+                tableModel.setRowCount(0);
+
+                // 添加结果
+                for (int i = 0; i < results.length; i++) {
+                    String formattedResult = String.format("%s", results[i]);
+
+                    Object[] rowData = {
+                            Converts.NUM_SYSTEM_UNITS[i],
+                            formattedResult
+                    };
+                    tableModel.addRow(rowData);
+                }
+
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "请输入有效的数字！", "错误", JOptionPane.ERROR_MESSAGE);
+            } catch (IllegalArgumentException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "换算过程中出现错误！", "错误", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
+        clearButton.addActionListener(e -> {
+            valueField.setText("");
+            tableModel.setRowCount(0);
+        });
+
+        // 回车键转换
+        valueField.addActionListener(e -> convertButton.doClick());
+
+        return panel;
+    }
+
+    // 返回结果是double类型的结果
+    private double[] getDoubleResult(int unitChoice, double value) {
+        double[] results = null;
+        int tabIndex = tabbedPane.getSelectedIndex();
+
+        switch (tabIndex) {
+            case 0 -> results = Converts.length(unitChoice, value);
+            case 1 -> results = Converts.area(unitChoice, value);
+            case 2 -> results = Converts.volume(unitChoice, value);
+            case 3 -> results = Converts.mass(unitChoice, value);
+            case 4 -> results = Converts.speed(unitChoice, value);
+            case 5 -> results = Converts.temperature(unitChoice, value);
+            case 6 -> results = Converts.storage(unitChoice, value);
+        }
+
+        return results;
     }
 
     private void setupLayout() {
         // 设置统一的字体
-        Font titleFont = new Font("微软雅黑", Font.BOLD, 16);
+        // Font titleFont = new Font("微软雅黑", Font.BOLD, 16);
         Font labelFont = new Font("宋体", Font.PLAIN, 14);
         Font buttonFont = new Font("微软雅黑", Font.PLAIN, 13);
         Font tableFont = new Font("微软雅黑", Font.PLAIN, 12);
