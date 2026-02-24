@@ -1,26 +1,95 @@
+
+
 # 某科学的工具箱
 
-~~看起来~~ 是一个项目，~~但实际上是为了JAVA大作业粗制滥造的一个东西~~
+看起来是一个项目，但实际上是为了JAVA大作业粗制滥造的一个东西
 
-先写着，有时间就更新一下，~~不知道以后能写成什么样子~~
+先写着，有时间就更新一下，不知道以后能写成什么样子
 
 目标是成为像“一个木函”那样的好程序
 
----
-# 更新日志
+<!-- PROJECT SHIELDS -->
 
-#### Abnormal-Tools v1.6.1
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 
-修正：
-1. 修改了“单位换算”的界面显示逻辑，代码量显著减少了
-2. 现在程序初始化的时候会显示解压进度，并且能够自动删除冗余文件
-3. 将“BMI计算器”中身高的输入单位修改为厘米（cm）
+<!-- PROJECT LOGO -->
+<br />
 
----
-# 食用方法
+<p align="center">
+  <a href="https://github.com/CMCC-114514/Abnormal-Tools/">
+    <img src="https://youke.xn--y7xa690gmna.cn/s1/2026/02/24/699d31d9243d9.webp" alt="Logo" width="128" height="105">
+  </a>
 
-电脑安装JRE 17及以上环境并设置了系统变量，下载 exe 或 jar 即可食用
+  <h3 align="center">这只是一只初音正在吃工具箱里的面</h3>
+  <p align="center">
+    <br />
+    <a href="https://github.com/CMCC-114514/Abnormal-Tools"><strong>探索本项目 »</strong></a>
+  </p>
 
-初次启动需要下载约250MB的依赖包，请保持网络畅通
+</p>
+ 
+## 目录
 
-meow ~
+- [上手指南](#上手指南)
+  - [开发前的配置要求](#开发前的配置要求)
+  - [安装步骤](#安装步骤)
+- [版本控制](#版本控制)
+- [作者](#作者)
+- [鸣谢](#鸣谢)
+
+### 上手指南
+
+###### 开发前的配置要求
+
+1. 计算机安装JDK17及以上依赖，并设置了系统变量
+
+###### **安装步骤**
+
+1. 在Releases板块下载exe文件，复制到一个空的文件夹
+2. 双击启动程序，届时程序会联网并自动下载依赖包并解压
+3. 解压后重新启动程序即可
+
+### 版本控制
+
+该项目使用Git进行版本管理。
+
+您可以在repository参看当前可用版本。
+
+### 作者
+
+kk3TWT
+
+email: kk3qaq@qq.com
+
+推特：https://x.com/Forrest81780021
+
+### 版权说明
+
+该项目签署了MIT 授权许可，详情请参阅 [LICENSE](https://github.com/CMCC-114514/Abnormal-Tools/blob/main/LICENSE)
+
+本软件使用了 FFmpeg 项目的二进制程序，FFmpeg 基于 LGPL/GPL 许可证，其源代码可以从 [FFmpeg 官网](http://ffmpeg.org) 获取
+
+本软件使用了 um 项目的二进制程序，um 基于 MIT 许可证，其源代码可以从 [um 源代码库](https://git.um-react.app/um/cli) 获取
+
+### 鸣谢
+
+- [Img Shields](https://shields.io)
+- [Choose an Open Source License](https://choosealicense.com)
+- [GitHub Pages](https://pages.github.com)
+
+<!-- links -->
+[your-project-path]:CMCC-114514/Abnormal-Tools
+[contributors-shield]: https://img.shields.io/github/contributors/CMCC-114514/Abnormal-Tools.svg?style=flat-square
+[contributors-url]: https://github.com/CMCC-114514/Abnormal-Tools/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/CMCC-114514/Abnormal-Tools.svg?style=flat-square
+[forks-url]: https://github.com/CMCC-114514/Abnormal-Tools/network/members
+[stars-shield]: https://img.shields.io/github/stars/CMCC-114514/Abnormal-Tools.svg?style=flat-square
+[stars-url]: https://github.com/CMCC-114514/Abnormal-Tools/stargazers
+[issues-shield]: https://img.shields.io/github/issues/CMCC-114514/Abnormal-Tools.svg?style=flat-square
+[issues-url]: https://img.shields.io/github/issues/CMCC-114514/Abnormal-Tools.svg
+[license-shield]: https://img.shields.io/github/license/CMCC-114514/Abnormal-Tools.svg?style=flat-square
+[license-url]: https://github.com/CMCC-114514/Abnormal-Tools/blob/master/LICENSE
