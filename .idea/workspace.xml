@@ -9,26 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7157c458-9316-40d9-89dc-5f8aa60a7c60" name="更改" comment="update: release v1.6.1">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+    <list default="true" id="7157c458-9316-40d9-89dc-5f8aa60a7c60" name="更改" comment="Add annotations">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/bmi/BMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/bmi/BMI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/bmi/BmiGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/bmi/BmiGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/AuxFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/AuxFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/Calculators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/Calculators.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/Date.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/DateCalculatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/DateCalculatorGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/LunarCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/LunarCalendar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/LunarDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/LunarDate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/otherFunctions/scoreBoard/ScoreBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/otherFunctions/scoreBoard/ScoreBoard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771832276090</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add annotations">
+      <option name="closed" value="true" />
+      <created>1771903933956</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1771903933956</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -280,6 +270,7 @@
     <MESSAGE value="update v1.5.2" />
     <MESSAGE value="update: release v1.6.0" />
     <MESSAGE value="update: release v1.6.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="update: release v1.6.1" />
+    <MESSAGE value="Add annotations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add annotations" />
   </component>
 </project>
