@@ -5,6 +5,13 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.time.Instant;
 
+/**
+ * 日期计算器的图形用户界面（GUI）类。
+ * 提供四个功能标签页：天数转日期、日期推算、日期间隔、公农历转换。
+ * 使用 Swing 组件构建，包含输入字段、按钮和结果展示区域。
+ *
+ * @author CMCC-114514
+ */
 public class DateCalculatorGUI extends JFrame {
     private JPanel mainPanel;
 
@@ -42,6 +49,9 @@ public class DateCalculatorGUI extends JFrame {
     private JButton toLunarButton;
     private JTextArea lunarResult;
 
+    /**
+     * 构造方法，初始化窗口并设置布局。
+     */
     public DateCalculatorGUI() {
         setTitle("日期计算器");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -54,6 +64,9 @@ public class DateCalculatorGUI extends JFrame {
         setContentPane(mainPanel);
     }
 
+    /**
+     * 初始化所有组件，创建标签页及面板。
+     */
     private void initComponents() {
         mainPanel = new JPanel(new BorderLayout());
         JTabbedPane tabbedPane = new JTabbedPane();
@@ -71,7 +84,7 @@ public class DateCalculatorGUI extends JFrame {
 
         mainPanel.add(tabbedPane, BorderLayout.CENTER);
 
-        // 添加状态栏
+        // 添加状态栏提示信息
         JLabel infoLabel = new JLabel(
                 "<html><center>计算结果可能有1~3天的误差，计算日期间隔时起始日期必须早于结束日期<br>" +
                         "公农历换算支持范围为1900年~2099年</center></html>",
@@ -82,6 +95,9 @@ public class DateCalculatorGUI extends JFrame {
         mainPanel.add(infoLabel, BorderLayout.SOUTH);
     }
 
+    /**
+     * 创建“天数转日期”面板
+     */
     private void createConversionPanel() {
         conversionPanel = new JPanel(new BorderLayout(10, 10));
         conversionPanel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
@@ -115,6 +131,9 @@ public class DateCalculatorGUI extends JFrame {
         convertButton.addActionListener(e -> convertDaysToDate());
     }
 
+    /**
+     * 创建“日期推算”面板
+     */
     private void createCalculationPanel() {
         calculationPanel = new JPanel(new BorderLayout(10, 10));
         calculationPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -163,6 +182,9 @@ public class DateCalculatorGUI extends JFrame {
         calculateButton.addActionListener(e -> calculateDate());
     }
 
+    /**
+     * 创建“日期间隔”面板
+     */
     private void createIntervalPanel() {
         intervalPanel = new JPanel(new BorderLayout(10, 10));
         intervalPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -222,6 +244,9 @@ public class DateCalculatorGUI extends JFrame {
         intervalButton.addActionListener(e -> calculateInterval());
     }
 
+    /**
+     * 创建“公农历转换”面板
+     */
     private void createSolarToLunarPanel() {
         solarToLunarPanel = new JPanel(new BorderLayout(10, 10));
         solarToLunarPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -266,17 +291,20 @@ public class DateCalculatorGUI extends JFrame {
         toLunarButton.addActionListener(e -> convertSolarToLunar());
     }
 
+    /**
+     * 设置统一组件样式（字体等）
+     */
     private void setupLayout() {
-        // 设置统一的组件样式
-        // Font labelFont = new Font("宋体", Font.BOLD, 14);
         Font buttonFont = new Font("微软雅黑", Font.PLAIN, 13);
-
         convertButton.setFont(buttonFont);
         calculateButton.setFont(buttonFont);
         intervalButton.setFont(buttonFont);
         toLunarButton.setFont(buttonFont);
     }
 
+    /**
+     * 处理“天数转日期”按钮的点击事件
+     */
     private void convertDaysToDate() {
         try {
             int days = Integer.parseInt(daysField.getText().trim());
@@ -297,6 +325,9 @@ public class DateCalculatorGUI extends JFrame {
         }
     }
 
+    /**
+     * 处理“日期推算”按钮的点击事件
+     */
     private void calculateDate() {
         try {
             int year = Integer.parseInt(calcYearField.getText().trim());
@@ -331,6 +362,9 @@ public class DateCalculatorGUI extends JFrame {
         }
     }
 
+    /**
+     * 处理“日期间隔”按钮的点击事件
+     */
     private void calculateInterval() {
         try {
             int startYear = Integer.parseInt(startYearField.getText().trim());
@@ -381,6 +415,9 @@ public class DateCalculatorGUI extends JFrame {
         }
     }
 
+    /**
+     * 处理“公农历转换”按钮的点击事件
+     */
     private void convertSolarToLunar() {
         try {
             int year = Integer.parseInt(solarYearField.getText().trim());
@@ -417,6 +454,10 @@ public class DateCalculatorGUI extends JFrame {
         }
     }
 
+    /**
+     * 程序入口，启动GUI
+     * @param args 命令行参数（未使用）
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new DateCalculatorGUI().setVisible(true));
     }

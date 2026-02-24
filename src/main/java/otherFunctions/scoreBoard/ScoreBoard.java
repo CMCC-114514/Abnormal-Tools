@@ -38,6 +38,7 @@ public class ScoreBoard extends JFrame {
         mainPanel.add(teamBPanel);
 
         JButton reset = new JButton("重置");
+        reset.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         reset.addActionListener(e -> {
             scoreA = 0;
             scoreB = 0;

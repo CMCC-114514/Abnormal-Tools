@@ -1,8 +1,23 @@
 package calculators.dateCalculation;
 
+/**
+ * 农历转换工具类，提供公历转农历的功能。
+ * 支持1900年至2099年范围内的公历日期转换为农历日期。
+ * 农历数据来源于内置的LUNAR_INFO数组，每个元素为一个32位整数，编码了该年的农历信息。
+ *
+ * @author CMCC-114514
+ */
 public class LunarCalendar {
 
-    // 农历数据表（1900-2099）
+    /**
+     * 农历数据表（1900-2099）
+     * 每个int表示一年的农历信息，按位编码：
+     * 低5位（0-4）：春节离元旦的天数减1（如果第6位为0，则还需加31）
+     * 第5位（bit5）：春节离元旦的天数是否需要加31的标志（0表示不加，1表示加）
+     * 第6-19位（bit6-bit19）：表示该年12或13个月的大小月情况，1表示30天，0表示29天
+     * 第20-23位（bit20-bit23）：闰月月份，0表示无闰月
+     * 具体格式参考农历算法资料。
+     */
     private static final int[] LUNAR_INFO = {
             0x04AE53, 0x0A5748, 0x5526BD, 0x0D2650, 0x0D9544, 0x46AAB9, 0x056A4D, 0x09AD42, 0x24AEB6, 0x04AE4A,/*1901-1910*/
             0x6A4DBE, 0x0A4D52, 0x0D2546, 0x5D52BA, 0x0B544E, 0x0D6A43, 0x296D37, 0x095B4B, 0x749BC1, 0x049754,/*1911-1920*/
@@ -26,12 +41,25 @@ public class LunarCalendar {
             0x0D5252, 0x0DAA47, 0x66B53B, 0x056D4F, 0x04AE45, 0x4A4EB9, 0x0A4D4C, 0x0D1541, 0x2D92B5          /*2091-2099*/
     };
 
+    /** 每月累积天数表（平年，不考虑闰年） */
     private static final int[] MONTH_ADD = {
             0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334
     };
 
+    /** 临时存储计算出的农历日（低位6位）、月（中间6位）、闰月标志（高位） */
     private static int lunarCalendarDay;
 
+    /**
+     * 核心农历转换算法，计算给定公历日期对应的农历信息，并将结果存入 lunarCalendarDay 静态变量。
+     * 算法步骤：
+     * 1. 获取该年的春节距元旦的天数 spring_NY
+     * 2. 计算公历日期距元旦的天数 sun_NY
+     * 3. 根据 sun_NY 与 spring_NY 的比较，判断是在春节前还是后，分别处理。
+     * 4. 通过循环减去月份天数，确定农历月份和日期，并判断是否闰月。
+     *
+     * @param date 公历日期
+     * @return true 表示当前农历月为闰月，false 表示非闰月
+     */
     private static boolean getLunarCalendar(Date date) {
         int year = date.getYear();
         int month = date.getMonth();
@@ -43,40 +71,46 @@ public class LunarCalendar {
          */
         int spring_NY, sun_NY;
 
+        // 从LUNAR_INFO中解析春节距元旦的天数
+        // 第5位（bit5）为1表示需要加31天，否则不加；低5位为春节距离元旦的天数减1
         if (((LUNAR_INFO[year - 1901] & 0x0060) >> 5) == 1)
             spring_NY = (LUNAR_INFO[year - 1901] & 0x001F) - 1;
         else
             spring_NY = (LUNAR_INFO[year - 1901] & 0x001f) - 1 + 31;
-        sun_NY = MONTH_ADD[month - 1] + day - 1;
 
+        // 公历日期距元旦的天数（1月1日为0）
+        sun_NY = MONTH_ADD[month - 1] + day - 1;
+        // 如果是闰年且月份大于2月，需加一天（因为MONTH_ADD是平年累积）
         if (!(year % 4 == 0) && (month > 2))
             sun_NY++;
 
         /*
-            staticDayCount 表示大小月的天数（29天或30天）
-            index 表示从哪个月开始计算
-            flag 用于处理闰月
+            staticDayCount 表示当前农历月份的天数（29天或30天）
+            index 表示从哪个月开始计算（月份序号，1表示正月）
+            flag 用于处理闰月标记
          */
         int staticDayCount, index;
         boolean flag;
 
         // 判断阳历日在春节之前还是春节之后
         if (sun_NY >= spring_NY) {  // 阳历日在春节后（含春节当天）
-
             sun_NY -= spring_NY;
             month = 1;
             index = 1;
             flag = false;
 
+            // 获取第一个月（正月）的天数，从LUNAR_INFO的高位（bit19开始）依次表示各月大小
             if ((LUNAR_INFO[year - 1901] & (0x80000 >> (0))) == 0)
                 staticDayCount = 29;
             else
                 staticDayCount = 30;
 
+            // 逐月减去天数，直到剩余天数小于当前月天数
             while (sun_NY >= staticDayCount) {
                 sun_NY -= staticDayCount;
                 index++;
 
+                // 判断当前月是否为闰月
                 if (month == ((LUNAR_INFO[year - 1901] & 0xF00000) >> 20)) {
                     flag = !flag;
                     if (!flag)
@@ -85,6 +119,7 @@ public class LunarCalendar {
                     month++;
                 }
 
+                // 获取下个月的天数
                 if ((LUNAR_INFO[year - 1901] & (0x80000 >> (index - 1))) != 0)
                     staticDayCount = 29;
                 else
@@ -92,12 +127,12 @@ public class LunarCalendar {
             }
 
             day = sun_NY + 1;
-        } else {    // 阳历日在春节前
-
+        } else {    // 阳历日在春节前（属于上一农历年）
             spring_NY -= sun_NY;
             year--;
             month = 12;
 
+            // 确定上一年的总月数（可能有闰月，所以可能是13）
             if (((LUNAR_INFO[year - 1901] & 0xF00000) >> 20) == 0)
                 index = 12;
             else
@@ -105,13 +140,13 @@ public class LunarCalendar {
 
             flag = false;
 
+            // 从最后一个月开始向前减去天数
             if ((LUNAR_INFO[year - 1901] & (0x80000 >> (index - 1))) == 0)
                 staticDayCount = 29;
             else
                 staticDayCount = 30;
 
             while (spring_NY > staticDayCount) {
-
                 spring_NY -= staticDayCount;
                 index--;
 
@@ -128,19 +163,27 @@ public class LunarCalendar {
             }
         }
 
+        // 将计算结果存入静态变量：低位6位存日，中间6位存月，高位（此处仅用于判断闰月）
         lunarCalendarDay |= day;
         lunarCalendarDay |= (month << 6);
 
+        // 返回当前月份是否为闰月
         return month == ((LUNAR_INFO[year - 1901] & 0xF00000) >> 20);
     }
 
+    /**
+     * 公历日期转农历日期
+     *
+     * @param solarDate 公历日期对象（年份需在1900-2099之间）
+     * @return 对应的农历日期对象 LunarDate
+     */
     public static LunarDate solarToLunar(Date solarDate) {
         boolean isHeap = getLunarCalendar(solarDate);
 
         return new LunarDate(
                 solarDate.getYear(),
-                (lunarCalendarDay & 0x3C0) >> 6,
-                lunarCalendarDay & 0x3F,
+                (lunarCalendarDay & 0x3C0) >> 6, // 取出中间6位得到月份
+                lunarCalendarDay & 0x3F,          // 取出低6位得到日期
                 isHeap
         );
     }

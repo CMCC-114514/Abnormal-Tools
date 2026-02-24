@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7157c458-9316-40d9-89dc-5f8aa60a7c60" name="更改" comment="update: release v1.6.0">
+    <list default="true" id="7157c458-9316-40d9-89dc-5f8aa60a7c60" name="更改" comment="update: release v1.6.1">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/fileHashes.bin" afterDir="false" />
@@ -17,18 +19,16 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.14/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.14/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md.bak" beforeDir="false" afterPath="$PROJECT_DIR$/README.md.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/bmi/BMI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/bmi/BMI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/calculators/bmi/BmiGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/bmi/BmiGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/AuxFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/AuxFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/Calculators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/Calculators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/Date.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/DateCalculatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/DateCalculatorGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/unitsConversion/AuxFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/unitsConversion/AuxFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/unitsConversion/Converts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/unitsConversion/Converts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/unitsConversion/UnitConverterGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/unitsConversion/UnitConverterGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ZipExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ZipExtractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/LunarCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/LunarCalendar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/LunarDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculators/dateCalculation/LunarDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/otherFunctions/scoreBoard/ScoreBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/otherFunctions/scoreBoard/ScoreBoard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +94,9 @@
   }
 }</component>
   <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="C:\Users\29395\.gradle\wrapper\dists\gradle-8.14-bin\38aieal9i53h9rfe7vjup95b9\gradle-8.14" javaHome="C:\Program Files\Java\jdk-17" gradleVersion="8.14" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -102,74 +105,74 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Abnormal-Tools [:AudioConvert.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:AudioConverter.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:BpmAnalyzer.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:LunarCalendarDemo.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:MainGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:ScoreBoard.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:UnitConverterGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:bpm.Mp3BpmAnalyzer.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:calculators.bmi.BmiGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:calculators.dateCalculation.DateCalculatorGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:calculators.dateCalculation.LunarCalendar.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:calculators.factorial.FactorialGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:calculators.geometricCalculation.GeometricCalculatorGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:calculators.unitsConversion.UnitConverterGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:fileFunctions.audioConversion.AudioConversionGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:fileFunctions.audioConversion.Converter.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:fileFunctions.musicUnlocker.MusicUnlockerGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:fileFunctions.ncmdump.NCMConverterGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:fileFunctions.unlockMusic.NCMConverterGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:otherFunctions.base64.Bas64GUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:otherFunctions.fileDownloader.Downloader.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:otherFunctions.fileDownloader.FileDownloaderGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:otherFunctions.fileDownloader.fileDownloader.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:otherFunctions.randomGenerator.RandomGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:otherFunctions.randomNumGenerator.Generators.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:otherFunctions.randomNumGenerator.RandomGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:utils.Initialize.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:utils.Initializer.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Abnormal-Tools [:utils.fileDownloader.Download.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:FileDownloaderGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:Hilbert.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:ImageScrambler.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:MainGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:ScambleWithHilbert.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:UnitConverterGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:calculators.bmi.BmiGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:calculators.dateCalculation.DateCalculatorGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:calculators.unitsConversion.UnitConverterGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:fileFunctions.audioConversion.AudioConversionGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:fileFunctions.fileDownloader.FileDownloaderGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:fileFunctions.imageScramble.ScramblerGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:otherFunctions.randomGenerator.Generators.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:otherFunctions.randomGenerator.RandomGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:otherFunctions.scoreBoard.ScoreBoard.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:randomGenerator.Generators.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:randomGenerator.RandomGUI.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:utils.AppPath.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.source_code [:utils.Initializer.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.下载源代码.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Code/java/Abnormal-Tools/source_code/src/test/java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;应用程序.MainGUI.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.Mp3BpmAnalyzer.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Abnormal-Tools [:AudioConvert.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:AudioConverter.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:BpmAnalyzer.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:LunarCalendarDemo.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:MainGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:ScoreBoard.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:UnitConverterGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:bpm.Mp3BpmAnalyzer.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:calculators.bmi.BmiGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:calculators.dateCalculation.DateCalculatorGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:calculators.dateCalculation.LunarCalendar.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:calculators.factorial.FactorialGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:calculators.geometricCalculation.GeometricCalculatorGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:calculators.unitsConversion.UnitConverterGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:fileFunctions.audioConversion.AudioConversionGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:fileFunctions.audioConversion.Converter.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:fileFunctions.musicUnlocker.MusicUnlockerGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:fileFunctions.ncmdump.NCMConverterGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:fileFunctions.unlockMusic.NCMConverterGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:otherFunctions.base64.Bas64GUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:otherFunctions.fileDownloader.Downloader.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:otherFunctions.fileDownloader.FileDownloaderGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:otherFunctions.fileDownloader.fileDownloader.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:otherFunctions.randomGenerator.RandomGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:otherFunctions.randomNumGenerator.Generators.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:otherFunctions.randomNumGenerator.RandomGUI.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:utils.Initialize.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:utils.Initializer.main()].executor": "Run",
+    "Gradle.Abnormal-Tools [:utils.fileDownloader.Download.main()].executor": "Run",
+    "Gradle.source_code [:FileDownloaderGUI.main()].executor": "Run",
+    "Gradle.source_code [:Hilbert.main()].executor": "Run",
+    "Gradle.source_code [:ImageScrambler.main()].executor": "Run",
+    "Gradle.source_code [:Main.main()].executor": "Run",
+    "Gradle.source_code [:MainGUI.main()].executor": "Run",
+    "Gradle.source_code [:ScambleWithHilbert.main()].executor": "Run",
+    "Gradle.source_code [:UnitConverterGUI.main()].executor": "Run",
+    "Gradle.source_code [:calculators.bmi.BmiGUI.main()].executor": "Run",
+    "Gradle.source_code [:calculators.dateCalculation.DateCalculatorGUI.main()].executor": "Run",
+    "Gradle.source_code [:calculators.unitsConversion.UnitConverterGUI.main()].executor": "Run",
+    "Gradle.source_code [:fileFunctions.audioConversion.AudioConversionGUI.main()].executor": "Run",
+    "Gradle.source_code [:fileFunctions.fileDownloader.FileDownloaderGUI.main()].executor": "Run",
+    "Gradle.source_code [:fileFunctions.imageScramble.ScramblerGUI.main()].executor": "Run",
+    "Gradle.source_code [:otherFunctions.randomGenerator.Generators.main()].executor": "Run",
+    "Gradle.source_code [:otherFunctions.randomGenerator.RandomGUI.main()].executor": "Run",
+    "Gradle.source_code [:otherFunctions.scoreBoard.ScoreBoard.main()].executor": "Run",
+    "Gradle.source_code [:randomGenerator.Generators.main()].executor": "Run",
+    "Gradle.source_code [:randomGenerator.RandomGUI.main()].executor": "Run",
+    "Gradle.source_code [:utils.AppPath.main()].executor": "Run",
+    "Gradle.source_code [:utils.Initializer.main()].executor": "Run",
+    "Gradle.下载源代码.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/Code/java/Abnormal-Tools/source_code/src/test/java",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "应用程序.MainGUI.executor": "Run",
+    "应用程序.Mp3BpmAnalyzer.executor": "Run"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Code\java\Abnormal-Tools\source_code\src\test\java" />
@@ -248,7 +251,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771669947854</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update: release v1.6.1">
+      <option name="closed" value="true" />
+      <created>1771832276090</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1771832276090</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -268,6 +279,7 @@
     <MESSAGE value="Edit README" />
     <MESSAGE value="update v1.5.2" />
     <MESSAGE value="update: release v1.6.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="update: release v1.6.0" />
+    <MESSAGE value="update: release v1.6.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="update: release v1.6.1" />
   </component>
 </project>
