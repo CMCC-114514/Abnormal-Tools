@@ -233,7 +233,7 @@ public class MainGUI extends JFrame{
             // 设置系统外观
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-            if (Initializer.isInitialized(args)) {
+            if (Initializer.isInitialized()) {
                 SwingUtilities.invokeLater(() -> new MainGUI(args).setVisible(true));
             }
 

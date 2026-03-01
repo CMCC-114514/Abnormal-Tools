@@ -130,26 +130,4 @@ public class ZipExtractor extends SwingWorker<Void, Integer> {
         int value = chunks.get(chunks.size() - 1);
         progressBar.setValue(value);
     }
-
-    @Override
-    protected void done() {
-        progressDialog.dispose();
-        try {
-            get();
-
-            String message = "初始化完成，请重新启动程序";
-            if (!filePath.toFile().delete())
-                JOptionPane.showMessageDialog(null, message + "，可能需要手动删除下载的压缩包");
-            else
-                JOptionPane.showMessageDialog(null, message);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(
-                    null,
-                    "解压失败：" + e.getMessage(),
-                    "错误",
-                    JOptionPane.ERROR_MESSAGE
-            );
-        }
-    }
 }
