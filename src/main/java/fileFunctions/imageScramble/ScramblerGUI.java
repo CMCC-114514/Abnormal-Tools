@@ -2,6 +2,7 @@ package fileFunctions.imageScramble;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -9,17 +10,15 @@ import java.io.IOException;
 
 public class ScramblerGUI extends JFrame {
     private JTextField inputField;
-    private JTextField passwordField;
     private String outputPath;
 
     private JPanel mainPanel;
-    private JTabbedPane tabbedPane;
 
     private JPanel imageScramblePanel;
     private JPanel videoScramblePanel;
 
     public ScramblerGUI() {
-        setTitle("图片混淆");
+        setTitle("图片与视频混淆");
         setSize(450, 250);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -31,7 +30,7 @@ public class ScramblerGUI extends JFrame {
 
     private void initComponents() {
         mainPanel = new JPanel(new BorderLayout());
-        tabbedPane = new JTabbedPane();
+        JTabbedPane tabbedPane = new JTabbedPane();
 
         // code to create panels
         createImageScramblePanel();
@@ -63,7 +62,7 @@ public class ScramblerGUI extends JFrame {
         JPanel typePanel = new JPanel(new GridLayout(2, 2, 10, 10));
         String[] type = {"密码混淆", "小番茄算法混淆"};
         JComboBox<String> typeBox = new JComboBox<>(type);
-        passwordField = new JTextField(30);
+        JTextField passwordField = new JTextField(30);
         typePanel.add(new JLabel("选择混淆类型："));
         typePanel.add(typeBox);
         JLabel passwordLabel = new JLabel("输入密码：");
@@ -90,7 +89,7 @@ public class ScramblerGUI extends JFrame {
 
         scrambleButton.addActionListener(e -> {
             try {
-                imgScramble(typeBox.getSelectedIndex());
+                imgScramble(typeBox.getSelectedIndex(), passwordField.getText().trim());
                 JOptionPane.showMessageDialog(this, "完成");
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(this, "错误：" + ex.getMessage());
@@ -99,7 +98,7 @@ public class ScramblerGUI extends JFrame {
 
         descrambleButton.addActionListener(e -> {
             try {
-                imgDescramble(typeBox.getSelectedIndex());
+                imgDescramble(typeBox.getSelectedIndex(), passwordField.getText().trim());
                 JOptionPane.showMessageDialog(this, "完成");
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(this, "错误：" + ex.getMessage());
@@ -127,7 +126,7 @@ public class ScramblerGUI extends JFrame {
         JPanel typePanel = new JPanel(new GridLayout(2, 2, 10, 10));
         String[] type = {"密码混淆", "小番茄算法混淆"};
         JComboBox<String> typeBox = new JComboBox<>(type);
-        passwordField = new JTextField(30);
+        JTextField passwordField = new JTextField(30);
         typePanel.add(new JLabel("选择混淆类型："));
         typePanel.add(typeBox);
         JLabel passwordLabel = new JLabel("输入密码：");
@@ -154,7 +153,7 @@ public class ScramblerGUI extends JFrame {
 
         scrambleButton.addActionListener(e -> {
             try {
-                videoScramble(typeBox.getSelectedIndex());
+                videoScramble(typeBox.getSelectedIndex(), passwordField.getText().trim());
                 JOptionPane.showMessageDialog(this, "完成");
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "错误：" + ex.getMessage());
@@ -163,7 +162,7 @@ public class ScramblerGUI extends JFrame {
 
         descrambleButton.addActionListener(e -> {
             try {
-                videoDescramble(typeBox.getSelectedIndex());
+                videoDescramble(typeBox.getSelectedIndex(), passwordField.getText().trim());
                 JOptionPane.showMessageDialog(this, "完成");
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "错误：" + ex.getMessage());
@@ -177,17 +176,10 @@ public class ScramblerGUI extends JFrame {
 
     private void chooseImgFile() {
         JFileChooser chooser = new JFileChooser();
-        chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
-            @Override
-            public boolean accept(File f) {
-                return f.isDirectory() || f.getName().endsWith(".png") || f.getName().endsWith(".PNG");
-            }
-
-            @Override
-            public String getDescription() {
-                return "图片文件（*.png）";
-            }
-        });
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        chooser.addChoosableFileFilter(
+                new FileNameExtensionFilter("PNG 文件（*.png）", "png")
+        );
 
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             inputField.setText(chooser.getSelectedFile().getAbsolutePath());
@@ -201,17 +193,10 @@ public class ScramblerGUI extends JFrame {
 
     private void chooseVideoFile() {
         JFileChooser chooser = new JFileChooser();
-        chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
-            @Override
-            public boolean accept(File f) {
-                return f.isDirectory() || f.getName().endsWith(".mp4") || f.getName().endsWith(".PNG");
-            }
-
-            @Override
-            public String getDescription() {
-                return "视频文件（*.mp4）";
-            }
-        });
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        chooser.addChoosableFileFilter(
+                new FileNameExtensionFilter("MP4 文件（*.mp4）", "mp4")
+        );
 
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             inputField.setText(chooser.getSelectedFile().getAbsolutePath());
@@ -223,15 +208,13 @@ public class ScramblerGUI extends JFrame {
         }
     }
 
-    private void imgScramble(int type) throws IOException {
+    private void imgScramble(int type, String password) throws IOException {
         String imgPath = inputField.getText();
         BufferedImage src = ImageIO.read(new File(imgPath));
 
         BufferedImage out;
         if (type == 0) {
-            String password = passwordField.getText().trim();
             long seed = PasswordScrambler.passwordToSeed(password);
-
             out = PasswordScrambler.scramble(src, seed);
         } else {
             out = HilbertScrambler.scramble(src);
@@ -240,15 +223,13 @@ public class ScramblerGUI extends JFrame {
         ImageIO.write(out, "PNG", new File(outputPath));
     }
 
-    private void imgDescramble(int type) throws IOException {
+    private void imgDescramble(int type, String password) throws IOException {
         String imgPath = inputField.getText();
         BufferedImage src = ImageIO.read(new File(imgPath));
 
         BufferedImage out;
         if (type == 0) {
-            String password = passwordField.getText().trim();
             long seed = PasswordScrambler.passwordToSeed(password);
-
             out = PasswordScrambler.descramble(src, seed);
         } else {
             out = HilbertScrambler.descramble(src);
@@ -257,13 +238,12 @@ public class ScramblerGUI extends JFrame {
         ImageIO.write(out, "PNG", new File(outputPath));
     }
 
-    private void videoScramble(int type) throws Exception {
+    private void videoScramble(int type, String password) throws Exception {
         String videoPath = inputField.getText().trim();
         int[] videoInfo = VideoScrambler.probeResolution(videoPath);
         long seed = 0;
 
         if (type == 0) {
-            String password = passwordField.getText().trim();
             seed = PasswordScrambler.passwordToSeed(password);
         }
 
@@ -276,13 +256,12 @@ public class ScramblerGUI extends JFrame {
                 type);
     }
 
-    private void videoDescramble(int type) throws Exception {
+    private void videoDescramble(int type, String password) throws Exception {
         String videoPath = inputField.getText().trim();
         int[] videoInfo = VideoScrambler.probeResolution(videoPath);
         long seed = 0;
 
         if (type == 0) {
-            String password = passwordField.getText().trim();
             seed = PasswordScrambler.passwordToSeed(password);
         }
 

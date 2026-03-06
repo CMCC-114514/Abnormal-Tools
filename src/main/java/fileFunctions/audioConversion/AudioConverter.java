@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class Converter {
+public class AudioConverter {
 
     private static final String FFMPEG_PATH_SYSTEM = System.getenv("ffmpeg");
     private static final String FFMPEG_PATH = AppPath.resourcePath("ffmpeg\\ffmpeg.exe").toString();
@@ -48,14 +48,6 @@ public class Converter {
         if (exitCode != 0) {
             throw new RuntimeException("FFmpeg failed with code " + exitCode);
         }
-    }
-
-    public static String getSupportedFormat() {
-        StringBuilder info = new StringBuilder();
-        for (String audioFormat : AUDIO_FORMATS) {
-            info.append("  *").append(".").append(audioFormat);
-        }
-        return info.toString();
     }
 }
 

@@ -1,14 +1,14 @@
 package fileFunctions.imgConversion;
 
 import java.awt.*;
-import java.io.File;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class ImageFormatConverterGUI extends JFrame {
+public class ImageConversionGUI extends JFrame {
     private final JTextField inputField;
     private final JTextField outputField;
 
-    public ImageFormatConverterGUI() {
+    public ImageConversionGUI() {
 
         // 窗口基本参数
         setTitle("图片格式转换");
@@ -35,7 +35,7 @@ public class ImageFormatConverterGUI extends JFrame {
         outputPanel.add(outputField);
 
         // 选择目标格式
-        JComboBox<String> formatCombo = new JComboBox<>(Converter.IMAGE_FORMATS);
+        JComboBox<String> formatCombo = new JComboBox<>(ImageConverter.IMAGE_FORMATS);
         outputPanel.add(formatCombo);
 
         // 转换过程
@@ -57,22 +57,11 @@ public class ImageFormatConverterGUI extends JFrame {
 
     private void chooseInputFile() {
         JFileChooser chooser = new JFileChooser();
-        chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
-            @Override
-            public boolean accept(File f) {
-                for (String format : Converter.IMAGE_FORMATS) {
-                    if (f.getName().endsWith("." + format) || f.getName().endsWith("." + format.toLowerCase())) {
-                        return true;
-                    }
-                }
-                return f.isDirectory();
-            }
-
-            @Override
-            public String getDescription() {
-                return "图片文件（" + Converter.getSupportedFormat() + "）";
-            }
-        });
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        for (String format : ImageConverter.IMAGE_FORMATS) {
+            chooser.addChoosableFileFilter(
+                    new FileNameExtensionFilter(format + " 文件（*."  + format.toLowerCase() + "）", format.toLowerCase()));
+        }
 
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             inputField.setText(chooser.getSelectedFile().getAbsolutePath());
@@ -85,7 +74,7 @@ public class ImageFormatConverterGUI extends JFrame {
     }
 
     private void convertFile(int formatIndex) {
-        String format = Converter.IMAGE_FORMATS[formatIndex];
+        String format = ImageConverter.IMAGE_FORMATS[formatIndex];
         String input = inputField.getText();
         String output = outputField.getText() + format;
 
@@ -95,7 +84,7 @@ public class ImageFormatConverterGUI extends JFrame {
         }
 
         try {
-            Converter.convert(input, output, format);
+            ImageConverter.convert(input, output, format);
             JOptionPane.showMessageDialog(this, "转换成功!");
         }catch (Exception e) {
             JOptionPane.showMessageDialog(this, "转换失败：" + e.getMessage());
@@ -103,13 +92,13 @@ public class ImageFormatConverterGUI extends JFrame {
     }
 
     private JLabel getFooterLabel(Font font) {
-        JLabel footerLabel = new JLabel("支持的格式:" + Converter.getSupportedFormat(), SwingConstants.CENTER);
+        JLabel footerLabel = new JLabel("支持的格式:" + ImageConverter.getSupportedFormat(), SwingConstants.CENTER);
         footerLabel.setFont(font);
         footerLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
         return footerLabel;
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new ImageFormatConverterGUI().setVisible(true));
+        SwingUtilities.invokeLater(() -> new ImageConversionGUI().setVisible(true));
     }
 }

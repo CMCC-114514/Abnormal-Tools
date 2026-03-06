@@ -1,8 +1,8 @@
 package fileFunctions.audioConversion;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.io.File;
 
 public class AudioConversionGUI extends JFrame {
     private final JTextField inputField;
@@ -37,7 +37,7 @@ public class AudioConversionGUI extends JFrame {
         outputPanel.add(outputField);
 
         // 选择目标格式
-        JComboBox<String> formatCombo = new JComboBox<>(Converter.AUDIO_FORMATS);
+        JComboBox<String> formatCombo = new JComboBox<>(AudioConverter.AUDIO_FORMATS);
         outputPanel.add(formatCombo);
 
         // 转换按钮
@@ -58,22 +58,11 @@ public class AudioConversionGUI extends JFrame {
 
     private void chooseInputFile() {
         JFileChooser chooser = new JFileChooser();
-        chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
-            @Override
-            public boolean accept(File f) {
-                for (String audioFormat : Converter.AUDIO_FORMATS) {
-                    if (f.getName().endsWith("." + audioFormat) || f.getName().endsWith("." + audioFormat.toLowerCase())) {
-                        return true;
-                    }
-                }
-                return f.isDirectory();
-            }
-
-            @Override
-            public String getDescription() {
-                return "音频文件（" + Converter.getSupportedFormat() + ")";
-            }
-        });
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        for (String format : AudioConverter.AUDIO_FORMATS) {
+            chooser.addChoosableFileFilter(
+                    new FileNameExtensionFilter(format + " 文件（*."  + format.toLowerCase() + "）", format.toLowerCase()));
+        }
 
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             inputField.setText(chooser.getSelectedFile().getAbsolutePath());
@@ -86,7 +75,7 @@ public class AudioConversionGUI extends JFrame {
     }
 
     private void convertFile(int formatIndex) {
-        String format = Converter.AUDIO_FORMATS[formatIndex];
+        String format = AudioConverter.AUDIO_FORMATS[formatIndex];
         String input = inputField.getText();
         String output = outputField.getText() + format;
 
@@ -96,7 +85,7 @@ public class AudioConversionGUI extends JFrame {
         }
 
         try {
-            Converter.convert(input, output);
+            AudioConverter.convert(input, output);
             JOptionPane.showMessageDialog(this, "转换成功！");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "转换失败: " + e.getMessage());

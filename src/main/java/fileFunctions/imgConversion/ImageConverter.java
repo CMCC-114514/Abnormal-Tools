@@ -5,10 +5,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 
-public class ImageFormatConverter {
-    private ImageFormatConverter(){}
+public class ImageConverter {
+    private ImageConverter(){}
 
     public static final String[] IMAGE_FORMATS = {
             "JPG", "TIFF", "GIF", "PNG", "TIF", "JPEG"

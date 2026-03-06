@@ -13,7 +13,7 @@ import calculators.houseLoan.HouseLoanGUI;
 // 文件功能
 import fileFunctions.audioConversion.AudioConversionGUI;
 import fileFunctions.imageScramble.ScramblerGUI;
-import fileFunctions.imgConversion.ImageFormatConverterGUI;
+import fileFunctions.imgConversion.ImageConversionGUI;
 import fileFunctions.musicUnlocker.MusicUnlockerGUI;
 import fileFunctions.fileDownloader.FileDownloaderGUI;
 
@@ -83,7 +83,7 @@ public class MainGUI extends JFrame{
         aboutItem.addActionListener(e -> JOptionPane.showMessageDialog(
                 frame,
                 """
-                        某科学的工具箱 v1.6.3
+                        某科学的工具箱 v1.6.2
                         
                         爱来自kk3TWT
                         
@@ -156,7 +156,7 @@ public class MainGUI extends JFrame{
         JButton imgConversion = new JButton("图片格式转换");
         JButton audioConversion = new JButton("音频格式转换");
         JButton fileDownload = new JButton("文件下载器");
-        JButton imageScramble = new JButton("图片混淆");
+        JButton imageScramble = new JButton("图片与视频混淆");
 
         // 设置按钮字体
         musicUnlock.setFont(font);
@@ -174,7 +174,7 @@ public class MainGUI extends JFrame{
 
         // 按钮监听
         musicUnlock.addActionListener(e -> MusicUnlockerGUI.main(args));
-        imgConversion.addActionListener(e -> ImageFormatConverterGUI.main(args));
+        imgConversion.addActionListener(e -> ImageConversionGUI.main(args));
         audioConversion.addActionListener(e -> AudioConversionGUI.main(args));
         fileDownload.addActionListener(e -> FileDownloaderGUI.main(args));
         imageScramble.addActionListener(e -> ScramblerGUI.main(args));

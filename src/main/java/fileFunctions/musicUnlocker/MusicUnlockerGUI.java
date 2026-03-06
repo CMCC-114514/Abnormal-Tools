@@ -1,6 +1,7 @@
 package fileFunctions.musicUnlocker;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.io.File;
 import java.nio.file.Path;
@@ -53,27 +54,16 @@ public class MusicUnlockerGUI extends JFrame {
 
     private void chooseInputFile() {
         JFileChooser chooser = new JFileChooser();
-        chooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
-            @Override
-            public boolean accept(File f) {
-                for (String format : Unlocker.DECRYPTED_FORMAT) {
-                    if (f.getName().endsWith("." + format) || f.getName().endsWith("." + format.toLowerCase())) {
-                        return true;
-                    }
-                }
-                return f.isDirectory();
-            }
-
-            @Override
-            public String getDescription() {
-                return "加密音频文件";
-            }
-        });
+        chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        for (String format : Unlocker.DECRYPTED_FORMAT) {
+            chooser.addChoosableFileFilter(
+                    new FileNameExtensionFilter(format + " 文件（*."  + format.toLowerCase() + "）", format.toLowerCase()));
+        }
 
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             inputField.setText(chooser.getSelectedFile().getAbsolutePath());
             // 自动生成输出文件名
-            Path outputPath = Path.of(inputField.getText()).getParent();
+            Path outputPath = Path.of(inputField.getText()).getParent().resolve("processed");
             outputField.setText(outputPath.toString());
         }
     }
