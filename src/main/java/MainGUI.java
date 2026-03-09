@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 // 计算功能
@@ -40,24 +39,27 @@ public class MainGUI extends JFrame{
         UIManager.put("MenuItem.font", font);
 
         // 设置窗口属性
-        setSize(380, 400);
+        setSize(400, 300);
         setLocationRelativeTo(null);      // 使窗口居中显示
         setLayout(new BorderLayout());
 
+        // 创建标签页
+        JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane.setFont(font);
+
         // 创建主面板和各功能面板，根据功能分类
-        JPanel mainPanel = new JPanel(new GridLayout(3, 1, 10, 10));
         JPanel calculatorPanel = getCalculatorPanel(args, font);
-        JPanel convertorPanel = getFileFunctionPanel(args, font);
+        JPanel fileFunctionPanel = getFileFunctionPanel(args, font);
         JPanel otherFunctionPanel = getOtherFunctionPanel(args, font);
 
         // 添加面板
-        mainPanel.add(calculatorPanel, BorderLayout.CENTER);
-        mainPanel.add(convertorPanel, BorderLayout.CENTER);
-        mainPanel.add(otherFunctionPanel, BorderLayout.CENTER);
-        add(mainPanel, BorderLayout.CENTER);
+        tabbedPane.addTab("计算功能", calculatorPanel);
+        tabbedPane.addTab("文件功能", fileFunctionPanel);
+        tabbedPane.addTab("其他功能", otherFunctionPanel);
+        add(tabbedPane);
 
         // 创建菜单栏和底部标签
-        JMenuBar menuBar = getMenuBar(font, this);
+        JMenuBar menuBar = getMenuBar(this);
         JLabel footerLabel = getFooterLabel(font);
         setJMenuBar(menuBar);
         add(footerLabel, BorderLayout.SOUTH);
@@ -72,20 +74,17 @@ public class MainGUI extends JFrame{
     }
 
     // 菜单栏和关于界面
-    private static JMenuBar getMenuBar(Font font, JFrame frame) {
+    private static JMenuBar getMenuBar(JFrame frame) {
         JMenuBar menuBar = new JMenuBar();
         JMenu aboutMenu = new JMenu("关于");
-        aboutMenu.setFont(font);
-
         JMenuItem aboutItem = new JMenuItem("关于本程序");
-        aboutItem.setFont(font);
         aboutItem.addActionListener(e -> JOptionPane.showMessageDialog(
                 frame,
                 """
-                        某科学的工具箱 v1.6.2
-                        
+                        某科学的工具箱 v1.6.3
+
                         爱来自kk3TWT
-                        
+
                         作者不会排版，别问为什么这么丑了
                         """,
                 "关于",
@@ -100,8 +99,8 @@ public class MainGUI extends JFrame{
     // 计算功能
     private static JPanel getCalculatorPanel(String[] args, Font font) {
         // 计算功能
-        JPanel calculatorPanel = new JPanel(new GridLayout(2, 3, 10, 10));
-        calculatorPanel.setBorder(new TitledBorder("计算功能"));
+        JPanel calculatorPanel = new JPanel(new GridLayout(2, 3, 20, 20));
+        calculatorPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         JButton dateCalculation = new JButton("日期计算");
         JButton unitConversion = new JButton("单位换算");
@@ -148,8 +147,8 @@ public class MainGUI extends JFrame{
     // 文件功能
     private static JPanel getFileFunctionPanel(String[] args, Font font) {
         // 文件功能
-        JPanel fileFunctionPanel = new JPanel(new GridLayout(2, 3, 10, 10));
-        fileFunctionPanel.setBorder(new TitledBorder("文件功能"));
+        JPanel fileFunctionPanel = new JPanel(new GridLayout(2, 3, 20, 20));
+        fileFunctionPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         JButton musicUnlock = new JButton("音乐解锁");
         JButton formatConversion = new JButton("音视频格式转换");
@@ -186,8 +185,8 @@ public class MainGUI extends JFrame{
     // 其他功能
     private static JPanel getOtherFunctionPanel(String[] args, Font font) {
         // 其他功能
-        JPanel otherFunctionPanel = new JPanel(new GridLayout(2, 3, 10, 10));
-        otherFunctionPanel.setBorder(new TitledBorder("其他功能"));
+        JPanel otherFunctionPanel = new JPanel(new GridLayout(2, 3, 20, 20));
+        otherFunctionPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         JButton md5 = new JButton("MD5摘要");
         JButton base64 = new JButton("Base64编解码");

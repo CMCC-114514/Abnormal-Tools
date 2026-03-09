@@ -102,7 +102,7 @@ public class Initializer extends JDialog {
                     System.exit(0);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(Initializer.this,
-                            "解压失败: " + e.getMessage() + "请重新启动程序",
+                            "解压失败: " + e.getMessage() + "，请尝试重新启动程序",
                             "错误",
                             JOptionPane.ERROR_MESSAGE);
                     System.exit(-1);

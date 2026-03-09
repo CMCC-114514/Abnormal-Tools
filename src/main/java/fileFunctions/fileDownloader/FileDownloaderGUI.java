@@ -14,6 +14,7 @@ public class FileDownloaderGUI extends JFrame {
     private final JProgressBar progressBar = new JProgressBar(0, 100);
     private final JTextField urlField = new JTextField();
     private final JTextField fileNameField = new JTextField();
+    private final JButton downloadButton;
     private final JCheckBox needExtract;
     private Downloader downloader;
 
@@ -37,7 +38,7 @@ public class FileDownloaderGUI extends JFrame {
         inputPanel.add(new JLabel("文件名："));
         inputPanel.add(fileNameField);
 
-        JButton downloadButton = new JButton("开始");
+        downloadButton = new JButton("开始");
         inputPanel.add(downloadButton);
 
         needExtract = new JCheckBox("解压zip格式压缩包");
@@ -164,27 +165,16 @@ public class FileDownloaderGUI extends JFrame {
 
                 try {
                     get(); // 完成 or 异常 or 取消
+                    downloadButton.setText("开始");
 
                     JOptionPane.showMessageDialog(null, "下载完成！");
 
                     // 自动解压压缩包
                     String fileName = fileNameField.getText();
                     if (needExtract.isSelected() && downloader.isDone() && (fileName.endsWith(".zip") || fileName.endsWith(".ZIP"))) {
+                        String folderName = fileName.substring(0, fileName.lastIndexOf('.'));
                         Path zipFile = Paths.get(System.getProperty("user.home"), "Downloads").resolve(fileName);
-                        ZipExtractor extractor = new ZipExtractor(zipFile, zipFile.getParent().resolve(fileName.substring(0, fileName.lastIndexOf('.')))) {
-                            @Override
-                            protected void done() {
-                                try {
-                                    get(); // 检查解压是否成功
-                                    JOptionPane.showMessageDialog(null, "解压完成");
-                                } catch (Exception e) {
-                                    JOptionPane.showMessageDialog(null,
-                                            "解压失败: " + e.getMessage() + "请手动解压",
-                                            "错误",
-                                            JOptionPane.ERROR_MESSAGE);
-                                }
-                            }
-                        };
+                        ZipExtractor extractor = new ZipExtractor(zipFile, zipFile.getParent().resolve(folderName));
                         extractor.execute();
                     }
 

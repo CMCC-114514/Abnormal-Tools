@@ -130,4 +130,18 @@ public class ZipExtractor extends SwingWorker<Void, Integer> {
         int value = chunks.get(chunks.size() - 1);
         progressBar.setValue(value);
     }
+
+    @Override
+    protected void done() {
+        try {
+            get(); // 检查解压是否成功
+            JOptionPane.showMessageDialog(null, "解压完成");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "解压失败: " + e.getMessage() + "，请尝试手动解压",
+                    "错误",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        progressDialog.setVisible(false);
+    }
 }
