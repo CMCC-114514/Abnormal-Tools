@@ -81,7 +81,7 @@ public class MainGUI extends JFrame{
         aboutItem.addActionListener(e -> JOptionPane.showMessageDialog(
                 frame,
                 """
-                        某科学的工具箱 v1.6.3
+                        某科学的工具箱 v1.6.4
 
                         爱来自kk3TWT
 

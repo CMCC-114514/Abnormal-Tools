@@ -1,5 +1,6 @@
 package fileFunctions.imageScramble;
 
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
@@ -200,17 +201,18 @@ public class VideoScrambler {
     }
 
     // 视频混淆
-    public static void scramble(String input, String output,
+    public static void scramble(String origin, String output,
                                 int w, int h, int fps,
                                 long seed,
                                 int choose,
                                 ProgressCallback callback) throws Exception {
 
-        File audio = extractAudio(input);
+        String shuffled = "shuffled.mp4";
+        File audio = extractAudio(origin);
 
         Process ffmpegDecode = new ProcessBuilder(
                 "ffmpeg",
-                "-i",input,
+                "-i",origin,
                 "-f","rawvideo",
                 "-pix_fmt","rgba",
                 "-"
@@ -233,7 +235,7 @@ public class VideoScrambler {
                 "-movflags","+faststart",
                 "-crf","18",
                 "-preset","fast",
-                output
+                shuffled
         )
                 .redirectError(ProcessBuilder.Redirect.INHERIT)
                 .start();
@@ -267,19 +269,25 @@ public class VideoScrambler {
         ffmpegDecode.waitFor();
         ffmpegEncode.waitFor();
 
-        mergeAudio(output, audio, output);
+        mergeAudio(shuffled, audio, output);
+
+        Files.delete(Path.of(shuffled));
+        Files.delete(audio.toPath());
     }
 
     // 视频解混淆
-    public static void descramble(String input, String output,
+    public static void descramble(String origin, String output,
                                   int w, int h, int fps,
                                   long seed,
                                   int choose,
                                   ProgressCallback callback) throws Exception {
 
+        String shuffled = "shuffled.mp4";
+        File audio = extractAudio(origin);
+
         Process ffmpegDecode = new ProcessBuilder(
                 "ffmpeg",
-                "-i", input,
+                "-i", origin,
                 "-f", "rawvideo",
                 "-pix_fmt", "rgba",
                 "-"
@@ -302,7 +310,7 @@ public class VideoScrambler {
                 "-movflags","+faststart",
                 "-crf","18",
                 "-preset","fast",
-                output
+                shuffled
         )
                 .redirectError(ProcessBuilder.Redirect.INHERIT)
                 .start();
@@ -335,6 +343,11 @@ public class VideoScrambler {
 
         ffmpegDecode.waitFor();
         ffmpegEncode.waitFor();
+
+        mergeAudio(shuffled, audio, output);
+
+        Files.delete(Path.of(shuffled));
+        Files.delete(audio.toPath());
     }
 
     public interface ProgressCallback {
