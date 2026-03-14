@@ -27,6 +27,11 @@ import utils.Initializer;
 public class MainGUI extends JFrame{
     private static final Dimension BUTTON_SIZE = new Dimension(80, 40);
 
+    private JPanel calculatorPanel;
+    private JPanel fileFunctionPanel;
+    private JPanel otherFunctionPanel;
+    private JPanel aboutPanel;
+
     public MainGUI(String[] args) {
         setTitle("某科学的工具箱");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,25 +53,25 @@ public class MainGUI extends JFrame{
         tabbedPane.setFont(font);
 
         // 创建主面板和各功能面板，根据功能分类
-        JPanel calculatorPanel = getCalculatorPanel(args, font);
-        JPanel fileFunctionPanel = getFileFunctionPanel(args, font);
-        JPanel otherFunctionPanel = getOtherFunctionPanel(args, font);
+        getCalculatorPanel(args, font);
+        getFileFunctionPanel(args, font);
+        getOtherFunctionPanel(args, font);
+        getAboutPanel(font);
 
         // 添加面板
         tabbedPane.addTab("计算功能", calculatorPanel);
         tabbedPane.addTab("文件功能", fileFunctionPanel);
         tabbedPane.addTab("其他功能", otherFunctionPanel);
+        tabbedPane.addTab("关于", aboutPanel);
         add(tabbedPane);
 
-        // 创建菜单栏和底部标签
-        JMenuBar menuBar = getMenuBar(this);
+        // 创建底部标签
         JLabel footerLabel = getFooterLabel(font);
-        setJMenuBar(menuBar);
         add(footerLabel, BorderLayout.SOUTH);
     }
 
     // 底部标签
-    private static JLabel getFooterLabel(Font font) {
+    private JLabel getFooterLabel(Font font) {
         JLabel footerLabel = new JLabel("<html><center>选择功能开始使用</center></html>", SwingConstants.CENTER);
         footerLabel.setFont(font);
         footerLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -74,32 +79,68 @@ public class MainGUI extends JFrame{
     }
 
     // 菜单栏和关于界面
-    private static JMenuBar getMenuBar(JFrame frame) {
-        JMenuBar menuBar = new JMenuBar();
-        JMenu aboutMenu = new JMenu("关于");
-        JMenuItem aboutItem = new JMenuItem("关于本程序");
-        aboutItem.addActionListener(e -> JOptionPane.showMessageDialog(
-                frame,
+    private void getAboutPanel(Font font) {
+        aboutPanel = new JPanel(new GridLayout(1, 3, 20, 20));
+        aboutPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
+
+        JButton aboutButton = new JButton("关于本程序");
+        aboutButton.setFont(font);
+        aboutButton.addActionListener(e -> JOptionPane.showMessageDialog(
+                null,
                 """
-                        某科学的工具箱 v1.6.4
+                        某科学的工具箱
 
                         爱来自kk3TWT
 
                         作者不会排版，别问为什么这么丑了
                         """,
-                "关于",
+                "关于本程序",
                 JOptionPane.INFORMATION_MESSAGE
         ));
 
-        aboutMenu.add(aboutItem);
-        menuBar.add(aboutMenu);
-        return menuBar;
+        JButton updateButton = new JButton("更新日志");
+        updateButton.setFont(font);
+        updateButton.addActionListener(e -> JOptionPane.showMessageDialog(
+                null,
+                """
+                        某科学的工具箱 v1.6.4
+                        
+                        修正：
+                        1. 解决了“文件下载器”无法解压带有中文路径的压缩包的问题
+                        2. 解决了“视频混淆”混淆（或解混淆）后的视频没有声音的问题
+                        """,
+                "更新日志",
+                JOptionPane.INFORMATION_MESSAGE
+        ));
+
+        JButton qwq = new JButton("QWQ");
+        qwq.setFont(font);
+        qwq.addActionListener(e -> JOptionPane.showMessageDialog(
+                null,
+                """
+                        QWQ TAT AWA TWT
+                        
+                        都看到这里了，来Q群：904976878 玩呗
+                        
+                        [某群聊的空间移动]是由<某科学管理组>和 Test 为中心并基于<某康康的聊天群>的神奇群聊.
+                        以Tencent QQ 为据点为群友提供安全稳定的涩图环境，
+                        在以邀请制为核心的制度下没有阴间人和广告等困扰的优良涩图氛围，
+                        管理组积极负责24小时全天在线解决问题.
+                        群内巨佬云集, 不乏有「嘉心糖」,「二刺螈」,「音游人」,「程序猿」,「男酮」,「原农粥撸幻批」等等重量级选手.
+                        """,
+                "QWQ",
+                JOptionPane.QUESTION_MESSAGE
+        ));
+
+        aboutPanel.add(aboutButton);
+        aboutPanel.add(updateButton);
+        aboutPanel.add(qwq);
     }
 
     // 计算功能
-    private static JPanel getCalculatorPanel(String[] args, Font font) {
+    private void getCalculatorPanel(String[] args, Font font) {
         // 计算功能
-        JPanel calculatorPanel = new JPanel(new GridLayout(2, 3, 20, 20));
+        calculatorPanel = new JPanel(new GridLayout(2, 3, 20, 20));
         calculatorPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         JButton dateCalculation = new JButton("日期计算");
@@ -140,14 +181,12 @@ public class MainGUI extends JFrame{
         calculatorPanel.add(bmiCalculation);
         calculatorPanel.add(houseLoanCalculation);
         calculatorPanel.add(factorialCalculation);
-
-        return calculatorPanel;
     }
 
     // 文件功能
-    private static JPanel getFileFunctionPanel(String[] args, Font font) {
+    private void getFileFunctionPanel(String[] args, Font font) {
         // 文件功能
-        JPanel fileFunctionPanel = new JPanel(new GridLayout(2, 3, 20, 20));
+        fileFunctionPanel = new JPanel(new GridLayout(2, 3, 20, 20));
         fileFunctionPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         JButton musicUnlock = new JButton("音乐解锁");
@@ -178,14 +217,12 @@ public class MainGUI extends JFrame{
         fileFunctionPanel.add(formatConversion);
         fileFunctionPanel.add(fileDownload);
         fileFunctionPanel.add(imageScramble);
-
-        return fileFunctionPanel;
     }
 
     // 其他功能
-    private static JPanel getOtherFunctionPanel(String[] args, Font font) {
+    private void getOtherFunctionPanel(String[] args, Font font) {
         // 其他功能
-        JPanel otherFunctionPanel = new JPanel(new GridLayout(2, 3, 20, 20));
+        otherFunctionPanel = new JPanel(new GridLayout(2, 3, 20, 20));
         otherFunctionPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         JButton md5 = new JButton("MD5摘要");
@@ -216,8 +253,6 @@ public class MainGUI extends JFrame{
         otherFunctionPanel.add(base64);
         otherFunctionPanel.add(randomNum);
         otherFunctionPanel.add(scoreBoard);
-
-        return otherFunctionPanel;
     }
 
     // 程序入口
