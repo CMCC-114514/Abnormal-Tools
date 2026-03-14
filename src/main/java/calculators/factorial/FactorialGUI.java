@@ -7,7 +7,6 @@ import java.awt.*;
 public class FactorialGUI extends JFrame {
 
     private JPanel mainPanel;
-    private JTabbedPane tabbedPane;
 
     private JPanel combinationPanel;
     private JPanel factorialPanel;
@@ -24,7 +23,7 @@ public class FactorialGUI extends JFrame {
 
     private void initComponents() {
         mainPanel = new JPanel(new BorderLayout());
-        tabbedPane = new JTabbedPane();
+        JTabbedPane tabbedPane = new JTabbedPane();
 
         createFactorialPanel();
         createCombinationPanel();
