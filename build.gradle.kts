@@ -17,6 +17,7 @@ repositories {
 dependencies {
     implementation("net.java.dev.jna:jna:5.13.0")
     implementation("com.googlecode.soundlibs:mp3spi:1.9.5.4")
+    implementation("com.alibaba:fastjson:2.0.52")
 
     testImplementation("junit:junit:4.13.1")
     testImplementation("org.hamcrest:hamcrest-core:1.3")

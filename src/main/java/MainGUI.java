@@ -5,6 +5,7 @@ import java.awt.*;
 import calculators.date.DateCalculatorGUI;
 import calculators.factorial.FactorialGUI;
 import calculators.geometry.GeometricCalculatorGUI;
+import calculators.probability.ProbabilityGUI;
 import calculators.unitsConversion.UnitConverterGUI;
 import calculators.bmi.BmiGUI;
 import calculators.houseLoan.HouseLoanGUI;
@@ -17,6 +18,7 @@ import fileFunctions.fileDownloader.FileDownloaderGUI;
 
 // 其他功能
 import otherFunctions.base64.Bas64GUI;
+import otherFunctions.loliconImage.LoliconGUI;
 import otherFunctions.md5.Md5GUI;
 import otherFunctions.randomGenerator.RandomGUI;
 import otherFunctions.scoreBoard.ScoreBoard;
@@ -44,7 +46,7 @@ public class MainGUI extends JFrame{
         UIManager.put("MenuItem.font", font);
 
         // 设置窗口属性
-        setSize(400, 300);
+        setSize(430, 300);
         setLocationRelativeTo(null);      // 使窗口居中显示
         setLayout(new BorderLayout());
 
@@ -78,7 +80,7 @@ public class MainGUI extends JFrame{
         return footerLabel;
     }
 
-    // 菜单栏和关于界面
+    // 关于界面
     private void getAboutPanel(Font font) {
         aboutPanel = new JPanel(new GridLayout(1, 3, 20, 20));
         aboutPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
@@ -103,11 +105,16 @@ public class MainGUI extends JFrame{
         updateButton.addActionListener(e -> JOptionPane.showMessageDialog(
                 null,
                 """
-                        某科学的工具箱 v1.6.4
+                        Abnormal-Tools v1.7.0
+                        
+                        新增：
+                        1. 计算功能 -> 概率计算：根据概率模型和相关参数进行离散型随机变量的概率计算
+                        2. 其他功能 -> Pixiv 图片检索与下载：根据 pid、tag 等参数进行图片检索，Lolicon API 提供支持
                         
                         修正：
-                        1. 解决了“文件下载器”无法解压带有中文路径的压缩包的问题
-                        2. 解决了“视频混淆”混淆（或解混淆）后的视频没有声音的问题
+                        1. 删除了菜单栏，添加了“关于”标签页
+                        2. 现在可以在软件内查看更新日志了
+                        3. QWQ
                         """,
                 "更新日志",
                 JOptionPane.INFORMATION_MESSAGE
@@ -140,7 +147,7 @@ public class MainGUI extends JFrame{
     // 计算功能
     private void getCalculatorPanel(String[] args, Font font) {
         // 计算功能
-        calculatorPanel = new JPanel(new GridLayout(2, 3, 20, 20));
+        calculatorPanel = new JPanel(new GridLayout(3, 3, 20, 20));
         calculatorPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         JButton dateCalculation = new JButton("日期计算");
@@ -149,6 +156,7 @@ public class MainGUI extends JFrame{
         JButton bmiCalculation = new JButton("BMI计算");
         JButton houseLoanCalculation = new JButton("房贷计算");
         JButton factorialCalculation = new JButton("阶乘计算");
+        JButton probabilityCalculation = new JButton("概率计算");
 
         // 设置按钮字体
         dateCalculation.setFont(font);
@@ -157,6 +165,7 @@ public class MainGUI extends JFrame{
         bmiCalculation.setFont(font);
         houseLoanCalculation.setFont(font);
         factorialCalculation.setFont(font);
+        probabilityCalculation.setFont(font);
 
         // 设置按钮大小
         dateCalculation.setPreferredSize(BUTTON_SIZE);
@@ -165,6 +174,7 @@ public class MainGUI extends JFrame{
         bmiCalculation.setPreferredSize(BUTTON_SIZE);
         houseLoanCalculation.setPreferredSize(BUTTON_SIZE);
         factorialCalculation.setPreferredSize(BUTTON_SIZE);
+        probabilityCalculation.setPreferredSize(BUTTON_SIZE);
 
         // 按钮监听
         dateCalculation.addActionListener(e -> DateCalculatorGUI.main(args));
@@ -173,6 +183,7 @@ public class MainGUI extends JFrame{
         bmiCalculation.addActionListener(e -> BmiGUI.main(args));
         houseLoanCalculation.addActionListener(e -> HouseLoanGUI.main(args));
         factorialCalculation.addActionListener(e -> FactorialGUI.main(args));
+        probabilityCalculation.addActionListener(e -> ProbabilityGUI.main(args));
 
         // 添加按钮到面板
         calculatorPanel.add(dateCalculation);
@@ -181,6 +192,7 @@ public class MainGUI extends JFrame{
         calculatorPanel.add(bmiCalculation);
         calculatorPanel.add(houseLoanCalculation);
         calculatorPanel.add(factorialCalculation);
+        calculatorPanel.add(probabilityCalculation);
     }
 
     // 文件功能
@@ -229,30 +241,35 @@ public class MainGUI extends JFrame{
         JButton base64 = new JButton("Base64编解码");
         JButton randomNum = new JButton("随机数生成");
         JButton scoreBoard = new JButton("计分板");
+        JButton loliconImage = new JButton("Pixiv图片搜索");
 
         // 设置按钮字体
         md5.setFont(font);
         base64.setFont(font);
         randomNum.setFont(font);
         scoreBoard.setFont(font);
+        loliconImage.setFont(font);
 
         // 设置按钮大小
         md5.setPreferredSize(BUTTON_SIZE);
         base64.setPreferredSize(BUTTON_SIZE);
         randomNum.setPreferredSize(BUTTON_SIZE);
         scoreBoard.setPreferredSize(BUTTON_SIZE);
+        loliconImage.setPreferredSize(BUTTON_SIZE);
 
         // 按钮监听
         md5.addActionListener(e -> Md5GUI.main(args));
         base64.addActionListener(e -> Bas64GUI.main(args));
         randomNum.addActionListener(e -> RandomGUI.main(args));
         scoreBoard.addActionListener(e -> ScoreBoard.main(args));
+        loliconImage.addActionListener(e -> LoliconGUI.main(args));
 
         // 添加按钮
         otherFunctionPanel.add(md5);
         otherFunctionPanel.add(base64);
         otherFunctionPanel.add(randomNum);
         otherFunctionPanel.add(scoreBoard);
+        otherFunctionPanel.add(loliconImage);
     }
 
     // 程序入口
