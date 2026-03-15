@@ -22,11 +22,10 @@ public final class AppPath {
             if (path.contains("/build/classes/")) {
                 // 回到项目根目录
                 return location
-                        .getParent()   // main
-                        .getParent()   // java
-                        .getParent()   // classes
-                        .getParent()   // build
-                        .getParent();   // 项目根目录的父目录
+                        .getParent()    // main
+                        .getParent()    // java
+                        .getParent()    // classes
+                        .getParent();   // build
             }
 
             // ② 发布期：jar 在 app 目录
@@ -53,10 +52,6 @@ public final class AppPath {
 
     public static Path resourcePath(String name) {
         return libDir().resolve(name);
-    }
-
-    public static boolean resourceCheck(String name) {
-        return Files.exists(AppPath.resourcePath(name));
     }
 
     public static void main(String[] args) {
