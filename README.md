@@ -19,7 +19,7 @@
 
 <p align="center">
   <a href="https://github.com/CMCC-114514/Abnormal-Tools/">
-    <img src="https://youke.xn--y7xa690gmna.cn/s1/2026/02/24/699d31d9243d9.webp" alt="Logo" width="128" height="105">
+    <img src="https://picui.ogmua.cn/s1/2026/03/15/69b6681501b62.webp" alt="Logo" width="128" height="105">
   </a>
 
   <h3 align="center">这只是一只初音正在吃工具箱里的面</h3>
