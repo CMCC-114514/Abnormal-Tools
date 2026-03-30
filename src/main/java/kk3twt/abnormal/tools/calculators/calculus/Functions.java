@@ -3,9 +3,9 @@ package kk3twt.abnormal.tools.calculators.calculus;
 /**
  * 积分计算类
  * 进行初等函数的定积分运算
- * 使用梯形法进行数值运算
+ * 使用辛普森法进行数值运算
  */
-public class Integral {
+public class Functions {
 
     public static String[] FUNCTION_TYPE = {
             "一次函数", "二次函数", "正弦/余弦函数", "指数/对数函数"
@@ -16,7 +16,7 @@ public class Integral {
      * @param m 斜率
      * @param n y轴截距
      */
-    public Integral(double m, double n) {
+    public Functions(double m, double n) {
         this.m = m;
         this.n = n;
     }
@@ -41,7 +41,7 @@ public class Integral {
      * @param b 一次项参数
      * @param c 常数
      */
-    public Integral(double a, double b, double c) {
+    public Functions(double a, double b, double c) {
         this.a = a;
         this.b = b;
         this.c = c;
@@ -69,7 +69,7 @@ public class Integral {
      * @param phi 初相位
      * @param isCos 是否为 cos 函数
      */
-    public Integral(double A, double omega, double phi, boolean isCos) {
+    public Functions(double A, double omega, double phi, boolean isCos) {
         this.A = A;
         this.m = omega;
         this.n = phi;
@@ -100,7 +100,7 @@ public class Integral {
      * @param n 指数参数2
      * @param k 常数
      */
-    public Integral(double C, double m, double n, double k, boolean isLn) {
+    public Functions(double C, double m, double n, double k, boolean isLn) {
         this.C = C;
         this.m = m;
         this.n = n;
@@ -134,7 +134,7 @@ public class Integral {
      * @param functionType 函数类型
      * @return 函数值
      */
-    private double f(double x, int functionType) {
+    public double getF(double x, int functionType) {
         double result = 0;
         switch (functionType) {
             case 0 -> result = linear(x);
@@ -144,44 +144,5 @@ public class Integral {
         }
 
         return result;
-    }
-
-    //////////////////////////////////////////////////////////////////////////////
-
-    /**
-     * 定积分计算方法
-     * 使用辛普森法进行积分
-     * 需要自行输入精度和递归深度
-     *
-     * @param a 积分上限
-     * @param b 积分下限
-     * @param i 函数类型
-     * @param tolerance 计算精度
-     * @param maxDepth 最大递归深度
-     * @return 积分结果
-     */
-    public double calculate(double a, double b, int i, double tolerance, int maxDepth) {
-        double mid = (a + b) / 2;
-        double s = simpson(a, b, i);
-        double s_left = simpson(a, mid, i);
-        double s_right = simpson(mid, b, i);
-
-        if (maxDepth <= 0 || Math.abs(s_left + s_right - s) < 15 * tolerance) {
-            return s_left + s_right + (s_left + s_right - s) / 15;
-        }
-
-        return calculate(a, mid, i, tolerance / 2, maxDepth - 1) + calculate(mid, b, i, tolerance / 2, maxDepth - 1);
-    }
-
-    /**
-     * 辅助方法：使用辛普森公式计算区间的积分
-     *
-     * @param a 区间下界
-     * @param b 区间上界
-     * @param i 函数类型
-     * @return 积分结果
-     */
-    private double simpson(double a, double b, int i) {
-        return (b - a) / 6 * (f(a, i) + 4 * f((a + b) / 2, i) + f(b, i));
     }
 }

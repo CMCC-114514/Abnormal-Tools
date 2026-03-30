@@ -19,6 +19,7 @@ import java.awt.*;
 public class CalculusGUI extends JFrame {
 
     private JPanel[] funcPanels;
+    private final JComboBox<String> calculateType;
     private final JComboBox<String> functionType;
     private final JTextArea resultArea;
     private final JButton calculateButton = new JButton("计算");
@@ -42,8 +43,11 @@ public class CalculusGUI extends JFrame {
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // 计算类型（微分或积分）和函数类型
-        JPanel typePanel = new JPanel(new GridLayout(1, 2, 10, 10));
-        functionType = new JComboBox<>(Integral.FUNCTION_TYPE);
+        JPanel typePanel = new JPanel(new GridLayout(2, 2, 10, 10));
+        calculateType = new JComboBox<>(new String[]{"求定积分", "求导"});
+        functionType = new JComboBox<>(Functions.FUNCTION_TYPE);
+        typePanel.add(new JLabel("选择计算类型："));
+        typePanel.add(calculateType);
         typePanel.add(new JLabel("选择函数类型："));
         typePanel.add(functionType);
         mainPanel.add(typePanel, BorderLayout.NORTH);
@@ -53,7 +57,8 @@ public class CalculusGUI extends JFrame {
         JPanel rangeAndTolPanel = new JPanel(new GridLayout(2, 2, 5, 5));
         rangeAndTolPanel.add(new JLabel("精度（10^-x）："));
         rangeAndTolPanel.add(tolField);
-        rangeAndTolPanel.add(new JLabel("积分区间："));
+        JLabel rangeLabel = new JLabel("积分区间：");
+        rangeAndTolPanel.add(rangeLabel);
         rangeAndTolPanel.add(rangeField);
         inputPanel.add(rangeAndTolPanel);
         setFuncPanels();
@@ -91,6 +96,15 @@ public class CalculusGUI extends JFrame {
 
             isCos.setEnabled(panelIndex[1] == 2);
             isLn.setEnabled(panelIndex[1] == 3);
+        });
+
+        // 计算类型下拉框切换时更换区间标签
+        calculateType.addActionListener(e -> {
+            if (calculateType.getSelectedIndex() == 0) {
+                rangeLabel.setText("积分区间：");
+            } else {
+                rangeLabel.setText("求导点：");
+            }
         });
 
         add(mainPanel);
@@ -225,21 +239,21 @@ public class CalculusGUI extends JFrame {
         // 构造 Integral 对象，进行积分计算并显示结果。
         calculateButton.addActionListener(e -> {
             try {
-                Integral integral = switch (functionType.getSelectedIndex()) {
+                Functions functions = switch (functionType.getSelectedIndex()) {
                     case 0 -> // 一次函数
-                            new Integral(Double.parseDouble(mField.getText().trim()),
+                            new Functions(Double.parseDouble(mField.getText().trim()),
                                     Double.parseDouble(nField.getText().trim()));
                     case 1 -> // 二次函数
-                            new Integral(Double.parseDouble(aField.getText().trim()),
+                            new Functions(Double.parseDouble(aField.getText().trim()),
                                     Double.parseDouble(bField.getText().trim()),
                                     Double.parseDouble(cField.getText().trim()));
                     case 2 -> // 三角函数
-                            new Integral(Double.parseDouble(AField.getText().trim()),
+                            new Functions(Double.parseDouble(AField.getText().trim()),
                                     Double.parseDouble(omegaField.getText().trim()),
                                     Double.parseDouble(phiField.getText().trim()),
                                     isCos.isSelected());
                     case 3 -> // 指数/对数函数
-                            new Integral(Double.parseDouble(CField.getText().trim()),
+                            new Functions(Double.parseDouble(CField.getText().trim()),
                                     Double.parseDouble(meField.getText().trim()),
                                     Double.parseDouble(neField.getText().trim()),
                                     Double.parseDouble(kField.getText().trim()),
@@ -247,32 +261,56 @@ public class CalculusGUI extends JFrame {
                     default -> null;
                 };
 
+                Calculators calculators = new Calculators(functions);
                 double tolerance = Math.pow(10, Double.parseDouble(tolField.getText().trim()));
                 int maxDepth = 50;
 
-                // 解析积分区间（格式：a,b）
-                if (rangeField.getText().contains("，"))
-                    throw new NumberFormatException("请使用英文逗号分隔区间");
-                String[] range = rangeField.getText().trim().split(",");
-                double a = Double.parseDouble(range[0]);
-                double b = Double.parseDouble(range[1]);
+                if (functions != null) {
+                    switch (calculateType.getSelectedIndex()) {
+                        case 0 : {
+                            // 解析积分区间（格式：a,b）
+                            if (rangeField.getText().contains("，"))
+                                throw new NumberFormatException("请使用英文逗号分隔区间");
+                            String[] range = rangeField.getText().trim().split(",");
+                            double a = Double.parseDouble(range[0]);
+                            double b = Double.parseDouble(range[1]);
 
-                // 对数函数时，检查真数取值范围（m*x + n > 0）
-                if (isLn.isSelected()) {
-                    double antilogarithm = -Double.parseDouble(neField.getText().trim()) /
-                            Double.parseDouble(meField.getText().trim());
-                    if (a <= antilogarithm || b <= antilogarithm)
-                        throw new NumberFormatException("真数的取值范围必须为正实数");
-                }
+                            // 对数函数时，检查真数取值范围（m*x + n > 0）
+                            if (isLn.isSelected()) {
+                                double antilogarithm = -Double.parseDouble(neField.getText().trim()) /
+                                        Double.parseDouble(meField.getText().trim());
+                                if (a <= antilogarithm || b <= antilogarithm)
+                                    throw new NumberFormatException("真数的取值范围必须为正实数");
+                            }
 
-                if (integral != null) {
-                    resultArea.setText(String.format("""
+                            resultArea.setText(String.format("""
+                                        结果：%.4f
+                                        积分区间：（%s, %s）
+                                        计算精度为10^-%s
+                                        """,
+                                    calculators.integral(a, b, functionType.getSelectedIndex(), tolerance, maxDepth),
+                                    range[0], range[1], tolField.getText().trim()));
+                            break;
+                        } case 1 : {
+                            double x = Double.parseDouble(rangeField.getText().trim());
+
+                            // 对数函数时，检查真数取值范围（m*x + n > 0）
+                            if (isLn.isSelected()) {
+                                double antilogarithm = -Double.parseDouble(neField.getText().trim()) /
+                                        Double.parseDouble(meField.getText().trim());
+                                if (x <= antilogarithm)
+                                    throw new NumberFormatException("真数的取值范围必须为正实数");
+                            }
+
+                            resultArea.setText(String.format("""
                                     结果：%.4f
-                                    积分区间：（%s, %s）
+                                    求导点：%.2f
                                     计算精度为10^-%s
                                     """,
-                            integral.calculate(a, b, functionType.getSelectedIndex(), tolerance, maxDepth),
-                            range[0], range[1], tolField.getText().trim()));
+                                    calculators.differentiation(x, tolerance, functionType.getSelectedIndex()),
+                                    x, tolField.getText().trim()));
+                        }
+                    }
                 }
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this,
