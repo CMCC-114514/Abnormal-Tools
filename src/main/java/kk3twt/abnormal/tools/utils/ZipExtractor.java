@@ -176,7 +176,7 @@ public class ZipExtractor extends SwingWorker<Void, Integer> {
      * @return 检测到的字符集
      */
     private static java.nio.charset.Charset detectCharset(Path zipPath) {
-        try (ZipFile zip = new ZipFile(zipPath.toFile(), java.nio.charset.StandardCharsets.UTF_8)) {
+        try (ZipFile ignored = new ZipFile(zipPath.toFile(), java.nio.charset.StandardCharsets.UTF_8)) {
             return java.nio.charset.StandardCharsets.UTF_8;
         } catch (Exception e) {
             return java.nio.charset.Charset.forName("GBK");

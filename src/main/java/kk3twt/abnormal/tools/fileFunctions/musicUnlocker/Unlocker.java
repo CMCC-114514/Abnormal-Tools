@@ -66,17 +66,4 @@ public class Unlocker {
             throw new RuntimeException("um failed with code " + exitCode);
         }
     }
-
-    /**
-     * 获取支持的解密格式列表，格式化为易读的字符串。
-     *
-     * @return 包含所有支持格式的文本，每行一个格式，带点号前缀
-     */
-    public static String getSupportedFormat() {
-        StringBuilder info = new StringBuilder();
-        for (String audioFormat : DECRYPTED_FORMAT) {
-            info.append("  *").append(".").append(audioFormat).append("\n");
-        }
-        return info.toString();
-    }
 }

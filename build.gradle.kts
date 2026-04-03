@@ -15,6 +15,7 @@ application {
 }
 
 group = "kk3twt.abnormal.tools"
+version = "1.8.1"
 
 repositories {
     mavenCentral()
@@ -129,7 +130,7 @@ tasks.register("createCustomJre") {
         val command = listOf(
             "jlink",
             "--module-path", System.getProperty("java.home") + "/jmods",
-            "--add-modules", modules,
+            "--add-modules", modules + ",java.xml,jdk.crypto.ec,jdk.unsupported,java.management,java.naming",
             "--output", jreDir.absolutePath,
             "--strip-debug",
             "--compress", "2",

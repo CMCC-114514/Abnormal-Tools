@@ -92,7 +92,6 @@ public class MainGUI extends JFrame{
                 null,
                 """
                         某科学的工具箱
-
                         爱来自kk3TWT
                         """,
                 "关于本程序",
@@ -104,15 +103,13 @@ public class MainGUI extends JFrame{
         updateButton.addActionListener(e -> JOptionPane.showMessageDialog(
                 null,
                 """
-                    Abnormal-Tools v1.8.0
-                    
-                    新增：
-                    1. 计算功能 -> 简单定积分：目前支持四种初等函数的定积分计算，用户可选择函数类型、输入参数、积分区间和精度，计算定积分结果。
+                    Abnormal-Tools v1.8.1 (a-t 26.04.03)
                     
                     修正：
-                    1. 概率计算新增“正态分布”模型支持
-                    2. 将依赖下载目录改为“C:\\Users\\username\\Documents\\Abnormal_Dependencies”
-                    3. 现在应用使用安装包安装，将自带jre环境，无需手动配置环境了
+                    1. 简单定积分新增“求导”功能
+                    2. 将“简单定积分”改为“简单微积分”
+                    3. 修复了“Pixiv图片搜索”报错“received fatal alert: handshake_failure”导致无法搜索图片的问题
+                    4. 将“Pixiv图片搜索”移至“文件功能”标签页
                     """,
                 "更新日志",
                 JOptionPane.INFORMATION_MESSAGE
@@ -208,30 +205,35 @@ public class MainGUI extends JFrame{
         JButton formatConversion = new JButton("音视频格式转换");
         JButton fileDownload = new JButton("文件下载器");
         JButton imageScramble = new JButton("图片与视频混淆");
+        JButton loliconImage = new JButton("Pixiv图片搜索");
 
         // 设置按钮字体
         musicUnlock.setFont(font);
         formatConversion.setFont(font);
         fileDownload.setFont(font);
         imageScramble.setFont(font);
+        loliconImage.setFont(font);
 
         // 设置按钮大小
         musicUnlock.setPreferredSize(BUTTON_SIZE);
         formatConversion.setPreferredSize(BUTTON_SIZE);
         fileDownload.setPreferredSize(BUTTON_SIZE);
         formatConversion.setPreferredSize(BUTTON_SIZE);
+        loliconImage.setPreferredSize(BUTTON_SIZE);
 
         // 按钮监听
         musicUnlock.addActionListener(e -> MusicUnlockerGUI.main(args));
         formatConversion.addActionListener(e -> FormatConversionGUI.main(args));
         fileDownload.addActionListener(e -> FileDownloaderGUI.main(args));
         imageScramble.addActionListener(e -> ScramblerGUI.main(args));
+        loliconImage.addActionListener(e -> LoliconGUI.main(args));
 
         // 添加按钮
         fileFunctionPanel.add(musicUnlock);
         fileFunctionPanel.add(formatConversion);
         fileFunctionPanel.add(fileDownload);
         fileFunctionPanel.add(imageScramble);
+        fileFunctionPanel.add(loliconImage);
     }
 
     // 其他功能
@@ -244,35 +246,30 @@ public class MainGUI extends JFrame{
         JButton base64 = new JButton("Base64编解码");
         JButton randomNum = new JButton("随机数生成");
         JButton scoreBoard = new JButton("计分板");
-        JButton loliconImage = new JButton("Pixiv图片搜索");
 
         // 设置按钮字体
         md5.setFont(font);
         base64.setFont(font);
         randomNum.setFont(font);
         scoreBoard.setFont(font);
-        loliconImage.setFont(font);
 
         // 设置按钮大小
         md5.setPreferredSize(BUTTON_SIZE);
         base64.setPreferredSize(BUTTON_SIZE);
         randomNum.setPreferredSize(BUTTON_SIZE);
         scoreBoard.setPreferredSize(BUTTON_SIZE);
-        loliconImage.setPreferredSize(BUTTON_SIZE);
 
         // 按钮监听
         md5.addActionListener(e -> Md5GUI.main(args));
         base64.addActionListener(e -> Bas64GUI.main(args));
         randomNum.addActionListener(e -> RandomGUI.main(args));
         scoreBoard.addActionListener(e -> ScoreBoard.main(args));
-        loliconImage.addActionListener(e -> LoliconGUI.main(args));
 
         // 添加按钮
         otherFunctionPanel.add(md5);
         otherFunctionPanel.add(base64);
         otherFunctionPanel.add(randomNum);
         otherFunctionPanel.add(scoreBoard);
-        otherFunctionPanel.add(loliconImage);
     }
 
     // 程序入口
