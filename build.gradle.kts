@@ -15,6 +15,7 @@ application {
 }
 
 group = "kk3twt.abnormal.tools"
+version = "1.8.1"
 
 repositories {
     mavenCentral()
@@ -54,7 +55,7 @@ tasks.jar {
 
 tasks.register<Copy>("copyDependencies") {
     from(configurations.runtimeClasspath)
-    into("$buildDir/libs/lib")
+    into("${layout.buildDirectory}/libs/lib")
 }
 
 // -------------------- 新增任务 --------------------
@@ -64,7 +65,7 @@ tasks.register("analyzeModules") {
     group = "distribution"
     description = "分析项目所需模块，用于 jlink 裁剪 JRE"
 
-    val outputFile = file("$buildDir/modules.txt")
+    val outputFile = file("${layout.buildDirectory}/modules.txt")
     inputs.files(tasks.jar.get().archiveFile, configurations.runtimeClasspath)
     outputs.file(outputFile)
 
@@ -109,8 +110,8 @@ tasks.register("createCustomJre") {
     description = "使用 jlink 创建自定义 JRE"
     dependsOn("analyzeModules")
 
-    val modulesFile = file("$buildDir/modules.txt")
-    val jreDir = file("$buildDir/custom-jre")
+    val modulesFile = file("${layout.buildDirectory}/modules.txt")
+    val jreDir = file("${layout.buildDirectory}/custom-jre")
     outputs.dir(jreDir)
 
     doLast {
@@ -129,7 +130,7 @@ tasks.register("createCustomJre") {
         val command = listOf(
             "jlink",
             "--module-path", System.getProperty("java.home") + "/jmods",
-            "--add-modules", modules,
+            "--add-modules", modules + ",java.xml,jdk.crypto.ec,jdk.unsupported,java.management,java.naming",
             "--output", jreDir.absolutePath,
             "--strip-debug",
             "--compress", "2",
@@ -154,10 +155,10 @@ tasks.register("createInstaller") {
 
     val appName = project.name
     val appVersion = project.version.toString().takeIf { it != "unspecified" } ?: "1.0"
-    val installerOutput = file("$buildDir/installer")
+    val installerOutput = file("${layout.buildDirectory}/installer")
 
     doLast {
-        val stagingDir = file("$buildDir/jpackage-staging")
+        val stagingDir = file("${layout.buildDirectory}/jpackage-staging")
         stagingDir.deleteRecursively()
         stagingDir.mkdirs()
 
@@ -170,7 +171,7 @@ tasks.register("createInstaller") {
 
         // 复制所有依赖到根目录（重要！）
         copy {
-            from("$buildDir/libs/lib")  // 这里假设 copyDependencies 将依赖放在此目录
+            from("${layout.buildDirectory}/libs/lib")  // 这里假设 copyDependencies 将依赖放在此目录
             into(stagingDir)
         }
 
@@ -183,7 +184,7 @@ tasks.register("createInstaller") {
             "--input", stagingDir.absolutePath,
             "--main-jar", "app.jar",
             "--main-class", "kk3twt.abnormal.tools.MainGUI",
-            "--runtime-image", file("$buildDir/custom-jre").absolutePath,
+            "--runtime-image", file("${layout.buildDirectory}/custom-jre").absolutePath,
             "--dest", installerOutput.absolutePath,
             //"--win-console",          // 调试时可保留，正式发布可去掉
             "--win-dir-chooser",

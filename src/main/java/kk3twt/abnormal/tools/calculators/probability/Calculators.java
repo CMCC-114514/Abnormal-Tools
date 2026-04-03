@@ -105,7 +105,7 @@ public class Calculators {
         } else if (x >= b) {
             return 1;
         } else {
-            return (x - a) / (double)(b - a);
+            return (x - a) / (b - a);
         }
     }
 
@@ -115,9 +115,9 @@ public class Calculators {
      * 当 x < 0 时 P(X <= x) = 0；
      * 当 x >= 0 时 P(X <= x) = 1 - e^(-lambda * x)
      * 
-     * @param lambda
-     * @param x
-     * @return
+     * @param lambda 参数lambda
+     * @param x 随机变量取值
+     * @return P(X <= x) 的概率值
      */
     public static double exponential(double lambda, double x) {
         if (x <= 0) {
