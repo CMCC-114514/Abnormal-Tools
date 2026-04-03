@@ -33,7 +33,7 @@ public class CalculusGUI extends JFrame {
      * 创建主面板，添加各个组件，并为下拉框添加切换面板的监听器。
      */
     public CalculusGUI() {
-        setTitle("定积分计算");
+        setTitle("简单微积分计算");
         setSize(450, 425);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -67,6 +67,7 @@ public class CalculusGUI extends JFrame {
 
         // 配置选项面板（三角/对数切换）
         JPanel optionPanel = new JPanel(new GridLayout(2, 1, 5, 5));
+        optionPanel.setBorder(new TitledBorder("切换函数"));
         isCos.setEnabled(false);
         optionPanel.add(isCos);
         isLn.setEnabled(false);
@@ -236,7 +237,7 @@ public class CalculusGUI extends JFrame {
         funcPanels = new JPanel[]{linearPanel, quadraticPanel, sinePanel, expPanel};
 
         // 计算按钮的监听器：根据当前选择的函数类型，读取对应输入框的值，
-        // 构造 Integral 对象，进行积分计算并显示结果。
+        // 构造 Function 对象，进行积分计算并显示结果。
         calculateButton.addActionListener(e -> {
             try {
                 Functions functions = switch (functionType.getSelectedIndex()) {
@@ -262,7 +263,7 @@ public class CalculusGUI extends JFrame {
                 };
 
                 Calculators calculators = new Calculators(functions);
-                double tolerance = Math.pow(10, Double.parseDouble(tolField.getText().trim()));
+                double tolerance = Math.pow(10, -Double.parseDouble(tolField.getText().trim()));
                 int maxDepth = 50;
 
                 if (functions != null) {

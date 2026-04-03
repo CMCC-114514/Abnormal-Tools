@@ -119,10 +119,6 @@ public class Functions {
      * @return 函数值
      */
     private double exponential(double x) {
-        if (isLn && linear(x) <= 0) {
-            return Double.NaN;
-        }
-
         return isLn ? C * Math.log(linear(x)) + k : C * Math.exp(linear(x)) + k;
     }
 

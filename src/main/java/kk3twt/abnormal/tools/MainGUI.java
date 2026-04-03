@@ -155,7 +155,7 @@ public class MainGUI extends JFrame{
         JButton houseLoanCalculation = new JButton("房贷计算");
         JButton factorialCalculation = new JButton("阶乘计算");
         JButton probabilityCalculation = new JButton("概率计算");
-        JButton calculusCalculation = new JButton("简单定积分");
+        JButton calculusCalculation = new JButton("简单微积分");
 
         // 设置按钮字体
         dateCalculation.setFont(font);
