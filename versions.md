@@ -272,3 +272,8 @@
 2. 将“简单定积分”改为“简单微积分”
 3. 修复了“Pixiv图片搜索”报错“received fatal alert: handshake_failure”导致无法搜索图片的问题
 4. 将“Pixiv图片搜索”移至“文件功能”标签页
+
+#### Abnormal-Tools v1.8.2_dev1 (26.04.06)
+
+修正：
+1. 手动重新编译了ffmpeg，现在ffmpeg资源包变得很小了
