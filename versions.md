@@ -253,18 +253,6 @@
 2. 将依赖下载目录改为“C:\Users\username\Documents\Abnormal_Dependencies”
 3. 现在应用使用安装包安装，将自带jre环境，无需手动配置环境了
 
-#### Abnormal-Tools v1.8.1_dev1 (26.03.30)
-
-修正：
-1. 简单定积分新增“求导”功能
-2. 将“简单定积分”改为“简单微积分”
-
-#### Abnormal-Tools v1.8.1_dev2 （26.04.03）
-
-修正：
-1. 修复了“求导”功能计算结果不合法的问题（三角函数始终为零，指数函数始终为无穷，对数函数始终为NaN）
-2. 修复了“Pixiv图片搜索”报错“received fatal alert: handshake_failure”导致无法搜索图片的问题
-
 #### Abnormal-Tools v1.8.1 (26.04.03)
 
 修正：
@@ -273,19 +261,12 @@
 3. 修复了“Pixiv图片搜索”报错“received fatal alert: handshake_failure”导致无法搜索图片的问题
 4. 将“Pixiv图片搜索”移至“文件功能”标签页
 
-#### Abnormal-Tools v1.8.2_dev1 (26.04.06)
+#### Abnormal-Tools v1.8.2 (26.04.19)
 
 修正：
 1. 手动重新编译了ffmpeg，现在ffmpeg资源包变得很小了
-
-#### Abnormal-Tools v1.8.2_dev2 (26.04.18)
-
-修正：
-1. 修复了“视频格式转换”转换失败的问题
-2. 修复了使用ffmpeg有关功能时，ffmpeg没有配置环境变量的情况下无法运行的问题
-
-#### Abnormal-Tools v1.8.2_dev3 (26.04.19)
-
-修正：
-1. 删除了“音频格式转换”中的“AMR”格式
-2. 修复了“视频混淆”会卡死的问题
+2. 修复了“视频格式转换”转换失败的问题 
+3. 修复了使用ffmpeg有关功能时，ffmpeg没有配置环境变量的情况下无法运行的问题
+4. 删除了“音频格式转换”中“AMR”格式的转换
+5. 修复了“视频混淆”会卡死的问题
+6. 添加了“我喜欢你”（在关于界面）
