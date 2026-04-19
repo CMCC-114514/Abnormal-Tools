@@ -6,8 +6,6 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 /**
  * 音频格式转换工具类，基于 FFmpeg 实现。
@@ -15,15 +13,12 @@ import java.nio.file.Path;
  */
 public class AudioConverter {
 
-    /** 从环境变量中获取的 FFmpeg 路径（可能为 null） */
-    private static final String FFMPEG_PATH_SYSTEM = System.getenv("ffmpeg");
-
     /** 内置于资源文件夹的 FFmpeg 路径（用于环境变量不存在时） */
-    private static final String FFMPEG_PATH = AppPath.resourcePath("ffmpeg\\ffmpeg.exe").toString();
+    private static final String FFMPEG = AppPath.resourcePath("ffmpeg\\ffmpeg.exe").toString();
 
     /** 支持的音频输出格式列表（扩展名） */
     public static final String[] AUDIO_FORMATS = {
-            "MP3", "WAV", "FLAC", "OGG", "AAC", "M4A", "AMR", "OPUS", "WMA"
+            "MP3", "WAV", "FLAC", "OGG", "AAC", "M4A", "OPUS", "WMA"
     };
 
     /**
@@ -35,12 +30,8 @@ public class AudioConverter {
      */
     public static void convert(String input, String output) throws Exception {
 
-        // 判定计算机是否已经配置ffmpeg为系统变量，优先使用系统自带
-        boolean envFileExists = FFMPEG_PATH_SYSTEM != null && Files.exists(Path.of(FFMPEG_PATH_SYSTEM));
-        String ffmpeg = envFileExists ? FFMPEG_PATH_SYSTEM : FFMPEG_PATH;
-
         ProcessBuilder pb = new ProcessBuilder(
-                ffmpeg,
+                FFMPEG,
                 "-y",                 // 覆盖输出文件
                 "-i", input,          // 指定输入文件
                 "-vn",                // 禁止处理视频流（纯音频）

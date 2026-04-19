@@ -46,7 +46,7 @@ public class MainGUI extends JFrame{
         UIManager.put("MenuItem.font", font);
 
         // 设置窗口属性
-        setSize(430, 300);
+        setSize(450, 320);
         setLocationRelativeTo(null);      // 使窗口居中显示
         setLayout(new BorderLayout());
         setVisible(true);
@@ -103,13 +103,11 @@ public class MainGUI extends JFrame{
         updateButton.addActionListener(e -> JOptionPane.showMessageDialog(
                 null,
                 """
-                    Abnormal-Tools v1.8.1 (a-t 26.04.03)
+                    #### Abnormal-Tools v1.8.2_dev3 (26.04.19)
                     
                     修正：
-                    1. 简单定积分新增“求导”功能
-                    2. 将“简单定积分”改为“简单微积分”
-                    3. 修复了“Pixiv图片搜索”报错“received fatal alert: handshake_failure”导致无法搜索图片的问题
-                    4. 将“Pixiv图片搜索”移至“文件功能”标签页
+                    1. 删除了“音频格式转换”中的“AMR”格式
+                    2. 修复了“视频混淆”会卡死的问题
                     """,
                 "更新日志",
                 JOptionPane.INFORMATION_MESSAGE

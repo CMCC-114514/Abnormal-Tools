@@ -20,10 +20,10 @@ public class VideoScrambler {
     private final long seed;
 
     /** ffmpeg 可执行文件路径（优先使用环境变量，否则使用内嵌资源） */
-    private static final String FFMPEG = Files.exists(Path.of(System.getenv("ffmpeg"))) ? "ffmpeg" : AppPath.resourcePath("ffmpeg\\ffmpeg.exe").toString();
+    private static final String FFMPEG = AppPath.resourcePath("ffmpeg\\ffmpeg.exe").toString();
 
     /** ffprobe 可执行文件路径 */
-    private static final String FFPROBE = Files.exists(Path.of(System.getenv("ffmpeg"))) ? "ffprobe" : AppPath.resourcePath("ffmpeg\\ffprobe.exe").toString();
+    private static final String FFPROBE = AppPath.resourcePath("ffmpeg\\ffprobe.exe").toString();
 
     /**
      * 构造视频混淆器实例。
@@ -263,7 +263,7 @@ public class VideoScrambler {
                                 int choose,
                                 ProgressCallback callback) throws Exception {
 
-        String shuffled = "shuffled.mp4";
+        String shuffled = AppPath.tempFilePath().resolve("shuffled.mp4").toString();
         File audio = extractAudio(origin);
 
         Process ffmpegDecode = new ProcessBuilder(
@@ -345,7 +345,7 @@ public class VideoScrambler {
                                   int choose,
                                   ProgressCallback callback) throws Exception {
 
-        String shuffled = "shuffled.mp4";
+        String shuffled = AppPath.tempFilePath().resolve("shuffled.mp4").toString();;
         File audio = extractAudio(origin);
 
         Process ffmpegDecode = new ProcessBuilder(

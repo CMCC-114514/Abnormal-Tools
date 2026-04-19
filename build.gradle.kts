@@ -186,7 +186,7 @@ tasks.register("createInstaller") {
             "--main-class", "kk3twt.abnormal.tools.MainGUI",
             "--runtime-image", file("$buildDir/custom-jre").absolutePath,
             "--dest", installerOutput.absolutePath,
-            //"--win-console",          // 调试时可保留，正式发布可去掉
+            "--win-console",          // 调试时可保留，正式发布可去掉
             "--win-dir-chooser",
             "--win-menu",
             "--win-shortcut"
