@@ -6,8 +6,6 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 /**
  * 视频格式转换工具类，基于 FFmpeg 实现。
@@ -16,11 +14,8 @@ import java.nio.file.Path;
 public class VideoConverter {
     private VideoConverter() {} // 私有构造，防止实例化
 
-    /** 从环境变量中获取的 FFmpeg 路径（可能为 null） */
-    private static final String FFMPEG_PATH_SYSTEM = System.getenv("ffmpeg");
-
     /** 内置于资源文件夹的 FFmpeg 路径（用于环境变量不存在时） */
-    private static final String FFMPEG_PATH = AppPath.resourcePath("ffmpeg\\ffmpeg.exe").toString();
+    private static final String FFMPEG = AppPath.resourcePath("ffmpeg\\ffmpeg.exe").toString();
 
     /** 支持的视频输出格式列表（扩展名） */
     public static final String[] VIDEO_FORMATS = {
@@ -36,15 +31,11 @@ public class VideoConverter {
      */
     public static void convert(String input, String output) throws Exception {
 
-        // 判定计算机是否已经配置ffmpeg为系统变量，优先使用系统自带
-        boolean envFileExists = FFMPEG_PATH_SYSTEM != null && Files.exists(Path.of(FFMPEG_PATH_SYSTEM));
-        String ffmpeg = envFileExists ? FFMPEG_PATH_SYSTEM : FFMPEG_PATH;
-
         ProcessBuilder pb = new ProcessBuilder(
-                ffmpeg,
-                "-y",                 // 覆盖输出文件
-                "-i", input,          // 指定输入文件
-                "-qscale 0",          // 尽量保持原视频质量（针对某些编码器）
+                FFMPEG,
+                "-y",                   // 覆盖输出文件
+                "-i", input,            // 指定输入文件
+                "-q:v", "0",         // 尽量保持原视频质量（针对某些编码器）
                 output
         );
 

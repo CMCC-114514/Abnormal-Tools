@@ -38,6 +38,16 @@ public final class AppPath {
         return resDir().resolve(name);
     }
 
+    public static Path tempFilePath() {
+        Path temp = resDir().resolve("temp");
+        try {
+            Files.createDirectories(temp);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return temp;
+    }
+
     /**
      * 测试方法，打印应用根目录。
      *

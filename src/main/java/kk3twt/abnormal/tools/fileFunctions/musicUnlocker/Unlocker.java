@@ -14,7 +14,7 @@ import java.nio.file.Path;
 public class Unlocker {
 
     /** 内置于资源文件夹的 um.exe 路径 */
-    private static final String UM_PATH = AppPath.resourcePath("um\\um.exe").toString();
+    private static final String UM = AppPath.resourcePath("um\\um.exe").toString();
 
     /** 支持解密的加密音频格式列表（扩展名） */
     public static final String[] DECRYPTED_FORMAT = {
@@ -39,12 +39,12 @@ public class Unlocker {
      * @throws Exception 如果 um.exe 不存在、执行失败或进程被中断
      */
     public static void decrypt(String input, String output) throws Exception {
-        if (!Files.exists(Path.of(UM_PATH))) {
+        if (!Files.exists(Path.of(UM))) {
             throw new Exception("没有在计算机上寻找到um，可能需要重新下载依赖");
         }
 
         ProcessBuilder pb = new ProcessBuilder(
-                UM_PATH,
+                UM,
                 "-o", output,
                 "-i", input
         );
