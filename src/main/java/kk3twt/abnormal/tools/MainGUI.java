@@ -93,6 +93,7 @@ public class MainGUI extends JFrame{
                 """
                         某科学的工具箱
                         爱来自kk3TWT
+                        我喜欢你
                         """,
                 "关于本程序",
                 JOptionPane.INFORMATION_MESSAGE
@@ -103,11 +104,15 @@ public class MainGUI extends JFrame{
         updateButton.addActionListener(e -> JOptionPane.showMessageDialog(
                 null,
                 """
-                    #### Abnormal-Tools v1.8.2_dev3 (26.04.19)
+                    Abnormal-Tools v1.8.2 (26.04.19)
                     
                     修正：
-                    1. 删除了“音频格式转换”中的“AMR”格式
-                    2. 修复了“视频混淆”会卡死的问题
+                    1. 手动重新编译了ffmpeg，现在ffmpeg资源包变得很小了
+                    2. 修复了“视频格式转换”转换失败的问题\s
+                    3. 修复了使用ffmpeg有关功能时，ffmpeg没有配置环境变量的情况下无法运行的问题
+                    4. 删除了“音频格式转换”中“AMR”格式的转换
+                    5. 修复了“视频混淆”会卡死的问题
+                    6. 添加了“我喜欢你”（在关于界面）
                     """,
                 "更新日志",
                 JOptionPane.INFORMATION_MESSAGE
