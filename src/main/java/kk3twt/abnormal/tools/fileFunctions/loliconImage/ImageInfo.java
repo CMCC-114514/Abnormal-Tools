@@ -1,4 +1,4 @@
-package kk3twt.abnormal.tools.otherFunctions.loliconImage;
+package kk3twt.abnormal.tools.fileFunctions.loliconImage;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;

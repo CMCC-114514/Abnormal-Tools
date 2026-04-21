@@ -1,4 +1,4 @@
-package kk3twt.abnormal.tools.otherFunctions.loliconImage;
+package kk3twt.abnormal.tools.fileFunctions.loliconImage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -27,7 +27,7 @@ public class ImageThumbnail extends JFrame {
      */
     public ImageThumbnail(boolean random, boolean usePid, int pid, int r18, String[] tags) throws Exception {
         setTitle("涩图搜索结果");
-        setSize(800, 600);
+        setSize(850, 650);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -55,6 +55,7 @@ public class ImageThumbnail extends JFrame {
         }
 
         JButton saveButton = new JButton("下载原图");
+        JButton reloadButton = new JButton("再来一张");
 
         // 使用 GridBagLayout 布局左侧内容
         JPanel imageData = new JPanel(new GridBagLayout());
@@ -75,6 +76,10 @@ public class ImageThumbnail extends JFrame {
         gbc.gridy = 10;
         gbc.gridheight = 1;
         imageData.add(saveButton, gbc);
+
+        gbc.gridy = 11;
+        gbc.gridheight = 1;
+        imageData.add(reloadButton, gbc);
         mainPanel.add(imageData, BorderLayout.EAST);
 
         // 中心图片显示区域
@@ -90,6 +95,16 @@ public class ImageThumbnail extends JFrame {
 
         // 保存原图按钮事件
         saveButton.addActionListener(e -> saveOriginalImage(loader.originalImage));
+
+        // 刷新图片按钮事件
+        reloadButton.addActionListener(e -> {
+            this.dispose();
+            try {
+                new ImageThumbnail(random, usePid, pid, r18, tags);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
     }
 
     /**
