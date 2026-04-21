@@ -21,7 +21,7 @@ import kk3twt.abnormal.tools.fileFunctions.fileDownloader.FileDownloaderGUI;
 
 // 其他功能
 import kk3twt.abnormal.tools.otherFunctions.base64.Bas64GUI;
-import kk3twt.abnormal.tools.otherFunctions.loliconImage.LoliconGUI;
+import kk3twt.abnormal.tools.fileFunctions.loliconImage.LoliconGUI;
 import kk3twt.abnormal.tools.otherFunctions.md5.Md5GUI;
 import kk3twt.abnormal.tools.otherFunctions.randomGenerator.RandomGUI;
 import kk3twt.abnormal.tools.otherFunctions.scoreBoard.ScoreBoard;
@@ -112,7 +112,8 @@ public class MainGUI extends JFrame{
                     3. 修复了使用ffmpeg有关功能时，ffmpeg没有配置环境变量的情况下无法运行的问题
                     4. 删除了“音频格式转换”中“AMR”格式的转换
                     5. 修复了“视频混淆”会卡死的问题
-                    6. 添加了“我喜欢你”（在关于界面）
+                    6. 为“pixiv图片搜索”缩略图界面添加了“再来一张”的按钮
+                    7. 添加了“我喜欢你”（在关于界面）
                     """,
                 "更新日志",
                 JOptionPane.INFORMATION_MESSAGE

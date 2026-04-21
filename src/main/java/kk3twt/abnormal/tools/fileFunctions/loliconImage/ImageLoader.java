@@ -1,4 +1,4 @@
-package kk3twt.abnormal.tools.otherFunctions.loliconImage;
+package kk3twt.abnormal.tools.fileFunctions.loliconImage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
