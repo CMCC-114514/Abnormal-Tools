@@ -11,7 +11,7 @@ java {
 }
 
 application {
-    mainClass.set("kk3twt.abnormal.tools.MainGUI")
+    mainClass.set("kk3twt.abnormal.tools.App")
 }
 
 group = "kk3twt.abnormal.tools"
